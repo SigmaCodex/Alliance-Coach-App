@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller // for view only
 //@RestController // for data only
-// localhost:8080/api/v1
+// localhost:6969/api/v1
 @RequestMapping("/api/v1")
 public class Test {
 
-    // localhost:8080/api/v1/greet
+    // localhost:6969/api/v1/greet
     @GetMapping("/greet")
     public String greet() {
         return "Test";
