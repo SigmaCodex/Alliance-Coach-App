@@ -1,5 +1,6 @@
 package com.solid.coaching.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,13 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
  * @created Mar 18, 2022 11:47 PM
  */
 
-@RestController
+@Controller // for view only
+//@RestController // for data only
+// localhost:8080/api/v1
 @RequestMapping("/api/v1")
 public class Test {
 
-    @GetMapping("/")
+    // localhost:8080/api/v1/greet
+    @GetMapping("/greet")
     public String greet() {
-        return "Hello, SOLIDS!";
+        return "Test";
     }
 
 }
