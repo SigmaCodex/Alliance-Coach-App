@@ -2,6 +2,7 @@ package com.solid.coaching.controller;
 
 import com.solid.coaching.entity.Employee;
 import com.solid.coaching.service.EmployeeService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,14 +19,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/employee")
+@RequiredArgsConstructor
 public class EmployeeController {
 
-    @Autowired
     private final EmployeeService employeeService;
-
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
 
     @PostMapping("/")
     public void addNewEmployee(HttpServletRequest request, ModelMap map) {
