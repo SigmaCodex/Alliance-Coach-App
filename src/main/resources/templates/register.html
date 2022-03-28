@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Coaching App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="d-flex justify-content-center align-items-center" th:style="${'height: 100vh;'}">
+        <div class="text-center" th:style="${
+        'width: 250px;
+        height: 500px;
+        padding: 5px 15px;
+        border-radius: 8px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;' }">
+            <h3 class="mt-4 mb-4">Coaching App</h3>
+            <form th:action="@{/team/}" method="post">
+                <input type="email" th:name="username" placeholder="Email" class="rounded mb-1" th:style="${
+                'font-size: 0.9rem;
+                padding: 4px 6px;
+                width: 200px;'}">
+                <input type="password" th:name="password" placeholder="Password" class="rounded mb-1" th:style="${
+                'font-size: 0.9rem;
+                padding: 4px 6px;
+                width: 200px;'}">
+                <input type="password" th:name="password" placeholder="Confirm password" class="rounded mb-1" th:style="${
+                'font-size: 0.9rem;
+                padding: 4px 6px;
+                width: 200px;'}">
+                <input type="text" th:name="firstName" placeholder="First name" class="rounded mb-1" th:style="${
+                'font-size: 0.9rem;
+                padding: 4px 6px;
+                width: 200px;'}">
+                <input type="text" th:name="lastName" placeholder="Last name" class="rounded mb-1" th:style="${
+                'font-size: 0.9rem;
+                padding: 4px 6px;
+                width: 200px;'}">
+                <input type="text" th:name="contactNo" placeholder="Contact number" class="rounded mb-1" th:style="${
+                'font-size: 0.9rem;
+                padding: 4px 6px;
+                width: 200px;'}">
+                <input type="text" th:name="employeeType" placeholder="Employee type" class="rounded mb-1" th:style="${
+                'font-size: 0.9rem;
+                padding: 4px 6px;
+                width: 200px;'}">
+                <input type="text" th:name="rolePosition" placeholder="Role or position" class="rounded mb-3" th:style="${
+                'font-size: 0.9rem;
+                padding: 4px 6px;
+                width: 200px;'}">
+                <input type="submit" value="REGISTER" class="btn btn-primary mb-4" th:style="${'width: 160px; font-weight: 500'}">
+            </form>
+            <p th:style="${'font-size: 0.7rem;'}">Already have an account? <a th:href="@{/}">Login here.</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

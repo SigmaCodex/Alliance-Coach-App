@@ -17,4 +17,6 @@ public interface TeamMemberRepository extends JpaRepository<TeamMember, Long> {
 
     List<TeamMember> findAllByCoachingFormId(Long id);
 
+    TeamMember findByUsernameAndPassword(String username, String password);
+
 }

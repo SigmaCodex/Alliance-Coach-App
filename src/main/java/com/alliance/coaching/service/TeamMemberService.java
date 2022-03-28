@@ -42,6 +42,15 @@ public class TeamMemberService {
         return teamMemberRepository.findAll();
     }
 
+    // TODO: 3/28/2022 login employee
+    public TeamMember loginEmployee(String username, String password) {
+        TeamMember teamMember = teamMemberRepository.findByUsernameAndPassword(username, password);
+        if (teamMemberRepository.existsById(teamMember.getId())) {
+            return teamMember;
+        }
+        throw new IllegalStateException("Employee not found");
+    }
+
     // TODO: 3/26/2022 update team member
     public void update(Long id, TeamMember teamMember) {
         TeamMember currentTeamMember = teamMemberRepository
