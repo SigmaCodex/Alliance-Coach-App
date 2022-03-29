@@ -33,18 +33,20 @@ public class TeamMemberController {
 
     // TODO: 3/28/2022 login team member
     @GetMapping("/login")
-    public String loginTeamMember(@RequestParam String username,
+    public ModelAndView loginTeamMember(@RequestParam String username,
                                   @RequestParam String password) {
+        ModelAndView modelAndView = new ModelAndView();
         TeamMember teamMember = teamMemberService.loginEmployee(username, password);
         // TODO: 3/28/2022 HR portal
         if (teamMember.getEmployeeType().equals("HR")) {
-            return "hr_portal";
+            modelAndView.setViewName("hr_portal");
         }
         // TODO: 3/28/2022 Coach portal
         if (teamMember.getEmployeeType().equals("Coach")) {
-            return "coach_portal";
+            modelAndView.setViewName("coach_portal");
         }
-        return "index";
+        modelAndView.addObject("member", teamMember);
+        return modelAndView;
     }
 
 }
