@@ -32,8 +32,8 @@
           <div data-hover="false" data-delay="0" class="w-dropdown">
             <div class="dropdown w-dropdown-toggle">
               <div class="w-icon-dropdown-toggle"></div>
-              <div class="username">James Adrian Ruiz</div>
-              <div class="position">Project Lead</div>
+              <div class="username" th:text="${member.firstName} + ' ' + ${member.lastName}"></div>
+              <div class="position" th:text="${member.rolePosition}"></div>
             </div>
             <nav class="dropdown-list w-dropdown-list">
               <a href="#" class="dropdown-link w-dropdown-link">Logout</a>
@@ -76,12 +76,12 @@
           </div>
         </div>
         <div class="flex-wrap"> <!-- th:each put here -->
-          <div class="user-card card">
+          <div class="user-card card" th:each="employee : ${members}">
             <div class="content-center mb-1">
-              <div class="username" th:text="${member.firstName}"></div> <!-- display username firstname lastname -->
-              <div class="position" th:text="${member.rolePosition}"></div> <!-- display position or role -->
-              <div class="position" th:text="${member.contactNo}"></div> <!-- display contact_no -->
-              <div class="position" th:text="${member.username}"></div> <!-- display email -->
+              <div class="username" th:text="${employee.firstName} + ' ' + ${employee.lastName}"></div> <!-- display username firstname lastname -->
+              <div class="position" th:text="${employee.rolePosition}"></div> <!-- display position or role -->
+              <div class="position" th:text="${employee.contactNo}"></div> <!-- display contact_no -->
+              <div class="position" th:text="${employee.username}"></div> <!-- display email -->
             </div>
             <a href="#" class="user-btn primary-button mb-0-5 w-button">EDIT</a>
             <a href="#" class="user-btn delete-button w-button">DELETE</a>
