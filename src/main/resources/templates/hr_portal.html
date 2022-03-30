@@ -57,7 +57,8 @@
         </div>
       </div>
       <div class="flex-v">
-        <a href="#" class="menu-link">Logout</a>
+        <a th:href="#" class="menu-link">Edit Profile</a> <!-- Add Link for edit profile of the user that login -->
+        <a th:href="#" class="menu-link">Logout</a> <!-- Add logout Link here -->
       </div>
     </div>
     <div data-w-id="85eb4a12-a70d-cf88-5e4e-08e0da993846" class="overlay"></div>
@@ -83,8 +84,8 @@
               <div class="position" th:text="${employee.contactNo}"></div> <!-- display contact_no -->
               <div class="position" th:text="${employee.username}"></div> <!-- display email -->
             </div>
-            <a href="#" class="user-btn primary-button mb-0-5 w-button">EDIT</a>
-            <a href="#" class="user-btn delete-button w-button">DELETE</a>
+            <a th:href="#" class="user-btn primary-button mb-0-5 w-button">EDIT</a> <!-- Add Link for Edit Profile Page -->
+            <a href="#" class="user-btn delete-button w-button">DELETE</a> <!-- I PLAN TO MAKE A MODAL FOR CONFIRMING OF DELETE -->
           </div>
         </div>
       </div>

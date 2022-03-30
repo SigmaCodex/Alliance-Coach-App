@@ -1029,6 +1029,17 @@ a {
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
+.user-card.card.coaching-form-card {
+  max-height: 125px;
+  max-width: 320px;
+  min-height: 125px;
+  min-width: 320px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
 .delete-button {
   border-radius: 0.25rem;
   background-color: #ec1414;
@@ -1044,8 +1055,32 @@ a {
   font-size: 14px;
 }
 
+.user-btn.primary-button.cf-btn {
+  width: 100%;
+}
+
 .user-btn.delete-button:hover {
   background-color: #c71010;
+}
+
+.user-btn.delete-button.cf-btn {
+  width: 100%;
+}
+
+.coaching-form-details {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
 }
 
 @media screen and (max-width: 991px) {
@@ -1476,6 +1511,11 @@ a {
     max-width: none;
     margin-right: 0.5rem;
     margin-left: 0.5rem;
+  }
+
+  .user-card.card.coaching-form-card {
+    max-width: 100%;
+    min-width: 100%;
   }
 }
 
