@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+
+.register-page {
+    height: 100vh;
+}
+
+.register-container {
+    width: 450px;
+    height: 350px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+h3 {
+    font-family: 'Poppins';
+    font-weight: 800;
+}
+
+.register-input {
+    font-family: 'Poppins';
+    font-size: 0.8rem;
+    padding: 5px 8px;
+    border: 0px;
+    border-radius: 5px;
+    outline: none;
+    background-color: #F2F2F2;
+    height: 30px;
+    width: 180px;
+    transition: .1s;
+}
+
+.register-input:focus {
+    border: 1.3px solid #006AFF;
+}
+
+.register-btn {
+    margin: auto;
+    height: 35px;
+    width: 200px;
+    font-family: 'Poppins';
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-indicator {
+    font-family: 'Poppins';
+    font-size: 0.6rem;
+    font-weight: 500;
+}
