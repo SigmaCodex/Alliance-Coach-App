@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 /**
  * @author Rieugene Basilisco (generieu17@gmail.com)
  * @project coaching
@@ -37,6 +39,7 @@ public class TeamMemberController {
                                   @RequestParam String password) {
         ModelAndView modelAndView = new ModelAndView();
         TeamMember teamMember = teamMemberService.loginEmployee(username, password);
+        List<TeamMember> members = teamMemberService.getAll();
         // TODO: 3/28/2022 HR portal
         if (teamMember.getEmployeeType().equals("HR")) {
             modelAndView.setViewName("hr_portal");
@@ -46,6 +49,7 @@ public class TeamMemberController {
             modelAndView.setViewName("coach_portal");
         }
         modelAndView.addObject("member", teamMember);
+        modelAndView.addObject("members", members);
         return modelAndView;
     }
 
