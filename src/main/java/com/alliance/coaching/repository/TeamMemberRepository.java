@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Rieugene Basilisco (generieu17@gmail.com)
@@ -19,4 +20,5 @@ public interface TeamMemberRepository extends JpaRepository<TeamMember, Long> {
 
     TeamMember findByUsernameAndPassword(String username, String password);
 
+    Optional<TeamMember> findByUsername(String username);
 }

@@ -6,13 +6,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link href="../static/assets/css/login.css" th:href="@{/assets/css/login.css}" rel="stylesheet" type="text/css">
+    <link rel="icon" href="../static/assets/svg/logo.svg" th:href="@{/assets/svg/logo.svg}">
 </head>
 <body>
 
     <div class="d-flex justify-content-center align-items-center login-page">
         <div class="text-center login-container">
             <h3 class="mt-4 mb-4">Coaching App</h3>
-            <form th:action="@{/team/login}">
+            <form th:action="@{/team/home}" method="post">
                 <input type="email" th:name="username" placeholder="Email" class="mt-1 mb-2 login-input">
                 <input type="password" th:name="password" placeholder="Password" class="mb-3 login-input">
                 <input type="submit" value="Login" class="btn btn-primary mb-4 login-btn">
