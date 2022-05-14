@@ -3,6 +3,8 @@ package com.alliance.coaching.service;
 import com.alliance.coaching.entity.TeamMember;
 import com.alliance.coaching.repository.TeamMemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,9 +20,17 @@ import java.util.List;
 public class TeamMemberService {
 
     private final TeamMemberRepository teamMemberRepository;
+    private PasswordEncoder passwordEncoder;
 
     // TODO: 3/26/2022 create new team member
     public TeamMember create(TeamMember teamMember) {
+        if (teamMemberRepository.findByUsername(teamMember.getUsername()).isPresent()) {
+            throw new IllegalStateException("Username already exist.");
+        }
+        // TODO: 5/14/2022 hash password
+        passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(teamMember.getPassword());
+        teamMember.setPassword(encodedPassword);
         return teamMemberRepository.save(teamMember);
     }
 
@@ -44,11 +54,16 @@ public class TeamMemberService {
 
     // TODO: 3/28/2022 login employee
     public TeamMember loginEmployee(String username, String password) {
-        TeamMember teamMember = teamMemberRepository.findByUsernameAndPassword(username, password);
-        if (teamMemberRepository.existsById(teamMember.getId())) {
-            return teamMember;
+        if (teamMemberRepository.findByUsername(username).isPresent()) {
+            TeamMember teamMember = teamMemberRepository.findByUsername(username).get();
+            passwordEncoder = new BCryptPasswordEncoder();
+            if (passwordEncoder.matches(password, teamMember.getPassword())) {
+                return teamMember;
+            } else {
+                throw new IllegalStateException("Password does not match.");
+            }
         }
-        throw new IllegalStateException("Employee not found");
+        throw new IllegalStateException("Email does not exist.");
     }
 
     // TODO: 3/26/2022 update team member

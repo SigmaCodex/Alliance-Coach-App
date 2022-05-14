@@ -34,11 +34,10 @@ public class TeamMemberController {
     }
 
     // TODO: 3/28/2022 login team member
-    @GetMapping("/login")
-    public ModelAndView loginTeamMember(@RequestParam String username,
-                                  @RequestParam String password) {
+    @PostMapping("/home")
+    public ModelAndView loginTeamMember(@ModelAttribute TeamMember login) {
         ModelAndView modelAndView = new ModelAndView();
-        TeamMember teamMember = teamMemberService.loginEmployee(username, password);
+        TeamMember teamMember = teamMemberService.loginEmployee(login.getUsername(), login.getPassword());
         List<TeamMember> members = teamMemberService.getAll();
         // TODO: 3/28/2022 HR portal
         if (teamMember.getEmployeeType().equals("HR")) {
