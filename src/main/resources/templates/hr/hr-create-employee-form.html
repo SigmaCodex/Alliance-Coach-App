@@ -48,8 +48,8 @@
               <div class="flex-h">
                 <div class="fa-text profile icon-blue"></div>
                 <div class="flex-v">
-                  <div class="username">James Adrian Ruiz</div>
-                  <div class="position">Project Lead</div>
+                  <div class="username" th:text="${session.member.firstName} + ' ' + ${session.member.lastName}"></div>
+                  <div class="position" th:text="${session.member.rolePosition}"></div>
                 </div>
               </div>
             </div>

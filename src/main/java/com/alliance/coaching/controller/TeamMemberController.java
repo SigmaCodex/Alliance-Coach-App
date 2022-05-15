@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -16,7 +18,7 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/team")
+@RequestMapping("/c")
 @RequiredArgsConstructor
 public class TeamMemberController {
 
@@ -24,30 +26,42 @@ public class TeamMemberController {
 
     // TODO: 3/26/2022 CRUD for team member
 
-    @PostMapping("/")
+    @PostMapping("/user-register")
     public ModelAndView registerEmployee(@ModelAttribute TeamMember teamMember) {
         ModelAndView modelAndView = new ModelAndView();
-        TeamMember savedTeamMember = teamMemberService.create(teamMember);
-        modelAndView.setViewName("home");
-        modelAndView.addObject("team_member", savedTeamMember);
+        teamMemberService.create(teamMember);
+        List<TeamMember> members = teamMemberService.getAll();
+        modelAndView.setViewName("hr/hr-user-management");
+        modelAndView.addObject("members", members);
         return modelAndView;
     }
 
     // TODO: 3/28/2022 login team member
-    @PostMapping("/home")
-    public ModelAndView loginTeamMember(@ModelAttribute TeamMember login) {
+    @PostMapping("/user-management")
+    public ModelAndView loginTeamMember(@ModelAttribute TeamMember login, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView();
         TeamMember teamMember = teamMemberService.loginEmployee(login.getUsername(), login.getPassword());
         List<TeamMember> members = teamMemberService.getAll();
         // TODO: 3/28/2022 HR portal
         if (teamMember.getEmployeeType().equals("HR")) {
-            modelAndView.setViewName("hr_portal");
+            modelAndView.setViewName("hr/hr-user-management");
         }
         // TODO: 3/28/2022 Coach portal
         if (teamMember.getEmployeeType().equals("Coach")) {
-            modelAndView.setViewName("coach_portal");
+            modelAndView.setViewName("coach/coach-employee-coaching-form-management");
         }
-        modelAndView.addObject("member", teamMember);
+        session.setAttribute("member", teamMember);
+        modelAndView.addObject("members", members);
+        return modelAndView;
+    }
+
+    @Transactional
+    @PostMapping("/user-update/{id}")
+    public ModelAndView updateUser(@PathVariable("id") Long id, @ModelAttribute TeamMember teamMember) {
+        ModelAndView modelAndView = new ModelAndView();
+        teamMemberService.update(id, teamMember);
+        List<TeamMember> members = teamMemberService.getAll();
+        modelAndView.setViewName("hr/hr-user-management");
         modelAndView.addObject("members", members);
         return modelAndView;
     }

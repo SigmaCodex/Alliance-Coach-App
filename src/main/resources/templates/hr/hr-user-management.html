@@ -48,8 +48,8 @@
               <div class="flex-h">
                 <div class="fa-text profile icon-blue"></div>
                 <div class="flex-v">
-                  <div class="username">James Adrian Ruiz</div>
-                  <div class="position">Project Lead</div>
+                  <div class="username" th:text="${session.member.firstName} + ' ' + ${session.member.lastName}"></div>
+                  <div class="position" th:text="${session.member.rolePosition}"></div>
                 </div>
               </div>
             </div>
@@ -59,7 +59,7 @@
               <!-- ACCOUNT BUTTON -->
               <a href="#" data-w-id="af6d5567-f3a1-66bf-0592-eb65a9df0fd2" class="dropdown-link w-dropdown-link">Account Detail</a>
               <!-- LOGOUT BUTTON -->
-              <a href="#" class="dropdown-link w-dropdown-link">Logout</a>
+              <a th:href="@{/}" class="dropdown-link w-dropdown-link">Logout</a>
             </nav>
           </div>
         </div>
@@ -268,28 +268,28 @@
         <!-- USER OUTPUT CONTENT !!! LOOP HERE !!! -->
         <div class="grid-list">
           <!-- USER INFO -->
-          <div class="user-card card">
+          <div class="user-card card" th:each="member : ${members}">
             <!-- USER DETAILS -->
             <div class="flex-v">
               <!-- POSITION EMP TYPE -->
-              <div class="position">Job position Emp_type</div>
+              <div class="position" th:text="${member.rolePosition}"></div>
 
               <!-- USERNAME -->
               <div class="flex-h">
                 <div class="fa-text profile"></div>
                 <div class="flex-v">
                   <!-- DISPLAY FIRST NAME -->
-                  <div class="username">Username</div>
+                  <div class="username" th:text="${member.firstName}"></div>
                   <!-- DISPLAY LAST NAME -->
-                  <div class="username">useruser</div>
+                  <div class="username" th:text="${member.lastName}"></div>
                 </div>
               </div>
 
               <!-- CONTACT NUMBER -->
-              <div class="position">Contact_no</div>
+              <div class="position" th:text="${member.contactNo}"></div>
 
               <!-- EMAIL -->
-              <div class="position">Email</div>
+              <div class="position" th:text="${member.username}"></div>
             </div>
             <!-- END OF USER DETAILS -->
 
@@ -304,16 +304,16 @@
                 <div data-w-id="6cc70ac9-e968-f779-b11c-59f44e6a2bee" class="modal-overlay"></div>
 
                 <!-- FORM MODAL CONTENT -->
-                <form class="modal-content mob-full-screen">
+                <form th:action="@{/c/user-update/} + ${member.id}" th:method="post" class="modal-content mob-full-screen">
                   <!-- HEADING -->
                   <div class="content-center mb-0-5">
                     <div class="content-vcenter">
                       <div class="mr-0-5"><span class="fa-text modal-action-icon"></span></div>
-                      <div class="modal-title mb-0">Update User Inforamtion</div>
+                      <div class="modal-title mb-0">Update User Information</div>
                     </div>
                   </div>
                   <!-- DISPLAY NAME ON STRONG -->
-                  <p class="modal-body mb-1">Update the information of the <strong>[NAME]</strong>.</p>
+                  <p class="modal-body mb-1">Update the information of <strong th:text="${member.firstName} + ' ' + ${member.lastName}"></strong>.</p>
                   <div data-w-id="6cc70ac9-e968-f779-b11c-59f44e6a2bf9" class="fa-text modal-close"></div>
                   <div class="block-weighted cf-block mb-1 mob-full-screen">
                     <div class="weight-50">
@@ -321,7 +321,7 @@
                         <!-- FIRST NAME INPUT -->
                         <div class="text-field-label"><strong>First name:</strong></div>
                         <div class="input-textfield w100 w-embed">
-                          <input type="text" th:name="firstName" class="text-field w100" placeholder="First Name" required="">
+                          <input type="text" th:name="firstName" th:value="${member.firstName}" class="text-field w100" placeholder="First Name" required="">
                         </div>
                       </div>
                     </div>
@@ -331,7 +331,7 @@
                         <!-- LAST NAME INPUT -->
                         <div class="text-field-label"><strong>Last name:</strong></div>
                         <div class="input-textfield w-embed">
-                          <input type="text" th:name="lastName" class="text-field w100" placeholder="Last Name" required="">
+                          <input type="text" th:name="lastName" th:value="${member.lastName}" class="text-field w100" placeholder="Last Name" required="">
                         </div>
                       </div>
                     </div>
@@ -355,7 +355,7 @@
                         <!-- ROLE / POSITION INPUT -->
                         <div class="text-field-label"><strong>Role / Position:</strong></div>
                         <div class="input-textfield w-embed">
-                          <input type="text" th:name="rolePosition" class="text-field w100" placeholder="Role / Position" required="">
+                          <input type="text" th:name="rolePosition" th:value="${member.rolePosition}" class="text-field w100" placeholder="Role / Position" required="">
                         </div>
                       </div>
                     </div>
@@ -366,7 +366,7 @@
                         <!-- CONTACT NUMBER INPUT -->
                         <div class="text-field-label"><strong>Contact number:</strong></div>
                         <div class="input-textfield w100 w-embed">
-                          <input type="number" th:name="contactNo" class="text-field w100" placeholder="Contact number" required="">
+                          <input type="number" th:name="contactNo" th:value="${member.contactNo}" class="text-field w100" placeholder="Contact number" required="">
                         </div>
                       </div>
                     </div>
@@ -376,7 +376,7 @@
                         <!-- EMAIL INPUT -->
                         <div class="text-field-label"><strong>Email:</strong></div>
                         <div class="input-textfield w-embed">
-                          <input type="email" th:name="username" class="text-field w100" placeholder="Email" required="">
+                          <input type="email" th:name="username" th:value="${member.username}" class="text-field w100" placeholder="Email" required="">
                         </div>
                       </div>
                     </div>
@@ -453,7 +453,7 @@
     <div data-w-id="e3c662ca-d710-e396-a08d-e0c7cfe0a891" class="modal-overlay"></div>
 
     <!-- REGISTER FORM -->
-    <form action="" class="modal-content mob-full-screen">
+    <form th:action="@{/c/user-register}" th:method="post" class="modal-content mob-full-screen">
       <!-- TITLE -->
       <div class="content-center mb-0-5">
         <div class="content-vcenter">

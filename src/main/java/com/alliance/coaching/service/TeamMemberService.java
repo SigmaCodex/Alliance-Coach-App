@@ -78,6 +78,7 @@ public class TeamMemberService {
         currentTeamMember.setContactNo(teamMember.getContactNo());
         currentTeamMember.setRolePosition(teamMember.getRolePosition());
         currentTeamMember.setEmployeeType(teamMember.getEmployeeType());
+        currentTeamMember.setPassword(teamMember.getPassword());
         teamMemberRepository.save(currentTeamMember);
     }
 
