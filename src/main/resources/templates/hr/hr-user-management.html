@@ -36,8 +36,8 @@
 
         <!-- NAV MENU ITEM -->
         <div class="content-vcenter tab-hidden">
-          <a href="#" class="navbar-link"><span class="fa-text nav-link"></span> User Management</a>
-          <a href="#" class="navbar-link"><span class="fa-text nav-link"></span> Employee Coaching Form</a>
+          <a th:href="@{/c/user-management}" class="navbar-link"><span class="fa-text nav-link"></span> User Management</a>
+          <a th:href="@{/f/form-management}" class="navbar-link"><span class="fa-text nav-link"></span> Employee Coaching Form</a>
         </div>
 
         <!-- DROPDOWN ACCOUNT AND LOGOUT -->
@@ -425,11 +425,11 @@
                   <div>
                     <div class="modal-icon"><span class="fa-text delete"></span></div>
                     <div class="modal-title">Delete Confirmation...</div>
-                    <p class="modal-body">Are you deleting <strong>[NAME]</strong>?</p>
+                    <p class="modal-body">Are you deleting <strong th:text="${member.firstName} + ' ' + ${member.lastName}"></strong>?</p>
                   </div>
                   <!-- CONFIRM DELETE BUTTON -->
                   <div class="flex-h justify-center">
-                    <a href="#" class="user-btn delete-button modal w-button">CONFIRM</a>
+                    <a th:href="@{/c/delete/} + ${member.id}" class="user-btn delete-button modal w-button">CONFIRM</a>
                   </div>
                   
                   <!-- CLOSE ICON -->

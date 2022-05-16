@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
@@ -28,41 +29,49 @@ public class TeamMemberController {
 
     @PostMapping("/user-register")
     public ModelAndView registerEmployee(@ModelAttribute TeamMember teamMember) {
-        ModelAndView modelAndView = new ModelAndView();
         teamMemberService.create(teamMember);
-        List<TeamMember> members = teamMemberService.getAll();
-        modelAndView.setViewName("hr/hr-user-management");
-        modelAndView.addObject("members", members);
-        return modelAndView;
+        return new ModelAndView(new RedirectView("/c/user-management"));
     }
 
     // TODO: 3/28/2022 login team member
     @PostMapping("/user-management")
     public ModelAndView loginTeamMember(@ModelAttribute TeamMember login, HttpSession session) {
-        ModelAndView modelAndView = new ModelAndView();
         TeamMember teamMember = teamMemberService.loginEmployee(login.getUsername(), login.getPassword());
-        List<TeamMember> members = teamMemberService.getAll();
-        // TODO: 3/28/2022 HR portal
-        if (teamMember.getEmployeeType().equals("HR")) {
-            modelAndView.setViewName("hr/hr-user-management");
-        }
-        // TODO: 3/28/2022 Coach portal
-        if (teamMember.getEmployeeType().equals("Coach")) {
-            modelAndView.setViewName("coach/coach-employee-coaching-form-management");
-        }
         session.setAttribute("member", teamMember);
-        modelAndView.addObject("members", members);
-        return modelAndView;
+        // TODO: 3/28/2022 Coach portal by condition
+        if (teamMember.getEmployeeType().equals("Coach")) {
+            return new ModelAndView(new RedirectView("/c/coaching-form-management"));
+        }
+        // TODO: 3/28/2022 HR portal as default
+        return new ModelAndView(new RedirectView("/c/user-management"));
     }
 
     @Transactional
     @PostMapping("/user-update/{id}")
     public ModelAndView updateUser(@PathVariable("id") Long id, @ModelAttribute TeamMember teamMember) {
-        ModelAndView modelAndView = new ModelAndView();
         teamMemberService.update(id, teamMember);
+        return new ModelAndView(new RedirectView("/c/user-management"));
+    }
+
+    @GetMapping("/delete/{id}")
+    public ModelAndView deleteUser(@PathVariable("id") Long id) {
+        teamMemberService.delete(id);
+        return new ModelAndView(new RedirectView("/c/user-management"));
+    }
+
+    @GetMapping("/user-management")
+    public ModelAndView redirectHome() {
+        ModelAndView modelAndView = new ModelAndView();
         List<TeamMember> members = teamMemberService.getAll();
         modelAndView.setViewName("hr/hr-user-management");
         modelAndView.addObject("members", members);
+        return modelAndView;
+    }
+
+    @GetMapping("/coaching-form-management")
+    public ModelAndView redirectForms() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("coach/coach-employee-coaching-form-management");
         return modelAndView;
     }
 
