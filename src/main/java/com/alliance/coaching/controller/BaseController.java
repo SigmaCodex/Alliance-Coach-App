@@ -3,7 +3,10 @@ package com.alliance.coaching.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author Rieugene Basilisco (generieu17@gmail.com)
@@ -27,4 +30,10 @@ public class BaseController {
         return "register";
     }
 
+    // TODO: 5/15/2022 logout user
+    @PostMapping("")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "index";
+    }
 }

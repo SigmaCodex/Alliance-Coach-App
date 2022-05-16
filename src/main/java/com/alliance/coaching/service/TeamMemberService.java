@@ -60,7 +60,7 @@ public class TeamMemberService {
             if (passwordEncoder.matches(password, teamMember.getPassword())) {
                 return teamMember;
             } else {
-                throw new IllegalStateException("Password does not match.");
+                throw new IllegalStateException("Incorrect password.");
             }
         }
         throw new IllegalStateException("Email does not exist.");
@@ -78,6 +78,9 @@ public class TeamMemberService {
         currentTeamMember.setContactNo(teamMember.getContactNo());
         currentTeamMember.setRolePosition(teamMember.getRolePosition());
         currentTeamMember.setEmployeeType(teamMember.getEmployeeType());
+        passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(teamMember.getPassword());
+        currentTeamMember.setPassword(encodedPassword);
         teamMemberRepository.save(currentTeamMember);
     }
 
