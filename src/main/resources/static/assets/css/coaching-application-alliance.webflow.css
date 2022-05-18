@@ -1769,6 +1769,22 @@ p {
   word-break: break-all;
 }
 
+.cb-input {
+  display: none;
+}
+
+.radio {
+  border-radius: 50%;
+  width: .5rem;
+  height: .5rem;
+  outline: 1px solid #007bff;
+  outline-offset: 2px;
+  position: absolute;
+  left: -2.25rem;
+  top:5px;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 1280px) {
   .grid-list {
     -ms-grid-columns: 1fr 1fr 1fr 1fr;

@@ -23,7 +23,7 @@
     }(window,document);
   </script>
 </head>
-<body>
+<body style="background: #fefefe">
   
   <!-- NAVIGATION BAR -->
   <nav class="navigation">
@@ -202,7 +202,7 @@
 
   
   <!-- EMPLOYEE COACHING FORM -->
-  <div class="section small">
+  <div class="section small" >
     <div class="container">
       <div class="block-weighted">
         <!-- COTENT -->
@@ -237,7 +237,7 @@
           </div>
 
           <!-- FORM -->
-          <form class="coaching-form">
+          <div class="coaching-form">
             <!-- TEAM MEMBER INFO -->
             <div id="team-member" class="content-topic pb-0">
               <h2 class="h2 cf">Team Member  <span class="fa-text cf-icon"></span></h2>
@@ -315,20 +315,23 @@
               </div> -->
 
             </div>
-
             
             <!-- ACTION PLAN -->
-            <div id="action" data-w-id="7fe4e72b-5dfe-5e06-2c5e-d9bf53808d02" class="content-topic pb-0">
+            <form action="" method="post" id="action" data-w-id="7fe4e72b-5dfe-5e06-2c5e-d9bf53808d02" class="content-topic pb-0">
               <h2 class="h2 cf">Actions <span class="fa-text cf-icon"></span></h2>
               <div class="flex-v">
+                
                 <div class="text-field-label"><strong>Action Plan</strong></div>
-                <ul role="list" class="text-field-label numberlist">
-                  <li>User the group Slack channel regularly to stay connected</li>
-                  <li>Create a collaborative status update document or task board</li>
-                  <li>Training in office communication norms and practices</li>
-                </ul>
+                <ol role="list" class="text-field-label">
+                  <li class="canvas"><input type="checkbox" class="cb-input" name="action1" id="action1"><label class="radio" for="action1"></label>User the group Slack channel regularly to stay connected</li>
+                  <li class="canvas"><input type="checkbox" class="cb-input" name="action2" id="action2"><label class="radio" for="action2"></label>Create a collaborative status update document or task board</li>
+                  <li class="canvas"><input type="checkbox" class="cb-input" name="action3" id="action3"><label class="radio" for="action3"></label>Training in office communication norms and practices</li>
+                </ol>
+                <div style="margin-bottom: 0.5rem;">Progress: <span style="font-weight: bold; color:#007bff; font-size: 21px;">0%</span></div>
+                <div><button type="submit" class="primary-button w-button">SAVE UPDATE</button></div>
+                
               </div>
-            </div>
+            </form>
 
             <!-- TIMELINE -->
             <div id="timeline" data-w-id="c0a6a371-4c36-094b-be6f-8be320ddb754" class="content-topic">
@@ -339,7 +342,7 @@
               </ul>
             </div>
 
-          </form>
+          </div>
           <!-- END COACHING FORM -->
 
         </div>
@@ -378,5 +381,22 @@
   ></script>
   <script th:src="@{/assets/js/webflow.js}" src="../../static/assets/js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  
+  <script
+  src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
+  integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY="
+  crossorigin="anonymous"></script>
 </body>
+<script>
+  $(document).ready(function(){
+    $('.radio').click(function(){
+      console.log($(this).closest('li').find('.cb-input').is(":checked"))
+      if($(this).closest('li').find('.cb-input').is(":checked")){
+        $(this).css('background', '#fff')
+      }else{
+        $(this).css('background', '#007bff')
+      }
+    })
+  })
+</script>
 </html>
