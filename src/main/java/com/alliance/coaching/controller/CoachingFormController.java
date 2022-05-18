@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/f")
+@RequestMapping("/c")
 @RequiredArgsConstructor
 public class CoachingFormController {
 
