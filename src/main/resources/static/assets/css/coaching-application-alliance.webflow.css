@@ -333,6 +333,10 @@ a {
   margin-bottom: 0px;
 }
 
+.mb-0.pl-1 {
+  padding-left: 1rem;
+}
+
 .ml-5 {
   margin-left: 5rem;
 }
@@ -352,6 +356,10 @@ a {
   margin-top: 0px;
   color: #212529;
   font-size: 24px;
+}
+
+.h2.cf.mb-0 {
+  margin-bottom: 0rem;
 }
 
 .content-hcenter {
@@ -769,6 +777,10 @@ a {
   padding-bottom: 3rem;
 }
 
+.section.small.bg-grey {
+  background-color: #f2f2f2;
+}
+
 .mb-2 {
   margin-bottom: 2rem;
 }
@@ -934,6 +946,10 @@ a {
   text-align: right;
 }
 
+.dropdown-link:hover {
+  background-color: #e4e4e4;
+}
+
 .dropdown-list {
   background-color: #928484;
 }
@@ -1047,6 +1063,12 @@ a {
   font-weight: 500;
 }
 
+.primary-button.add-btn-cf {
+  margin-left: 0.25rem;
+  padding: 0.5rem;
+  line-height: 1;
+}
+
 .text-field {
   padding: 0.375rem 0.75rem;
   border: 1px solid #212529;
@@ -1144,6 +1166,17 @@ a {
   background-color: #ec1414;
   font-weight: 700;
   text-align: center;
+}
+
+.delete-button.cf {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.delete-button.cf:hover {
+  background-color: #c71414;
 }
 
 .user-btn {
@@ -1280,6 +1313,13 @@ a {
 
 .flex-h.of-auto {
   overflow: auto;
+}
+
+.flex-h.align-top {
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
 }
 
 .stick-top {
@@ -1419,6 +1459,11 @@ a {
   color: #212529;
   font-size: 18px;
   line-height: 1;
+  cursor: pointer;
+}
+
+.content-link:hover {
+  background-color: #e4e4e4;
 }
 
 .coaching-form {
@@ -1502,6 +1547,10 @@ a {
 
 .text-field-label.mr-1.mob-mb-0-5 {
   margin-bottom: 0rem;
+}
+
+.text-field-label.numberlist {
+  list-style-type: decimal;
 }
 
 .tab-link-icon {
@@ -1659,6 +1708,65 @@ a {
 
 .p-0-25 {
   padding: 0.25rem;
+}
+
+.member-name {
+  font-weight: 400;
+}
+
+.remove-row {
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  color: #ec1414;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.edit-row {
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  color: #007bff;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.remove-row:hover {
+  background-color: #e4e4e4;
+}
+
+.edit-row:hover {
+  background-color: #e4e4e4;
+}
+
+.list-item {
+  margin-right: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.ol {
+  list-style-type: decimal;
+}
+
+.timelineOutput {
+  width: 100%;
+}
+
+.cancel-update-row {
+  margin-top: 1rem;
+  color: red;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#update-actions {
+  display: none;
+  margin-top: .5rem;
+}
+
+p {
+  word-break: break-all;
 }
 
 @media screen and (min-width: 1280px) {

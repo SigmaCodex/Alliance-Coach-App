@@ -36,7 +36,6 @@
 
         <!-- NAV MENU ITEM -->
         <div class="content-vcenter tab-hidden">
-          <a th:href="@{/c/user-management}" class="navbar-link"><span class="fa-text nav-link"></span> User Management</a>
           <a th:href="@{/f/form-management}" class="navbar-link"><span class="fa-text nav-link"></span> Employee Coaching Form</a>
         </div>
 
@@ -81,7 +80,6 @@
         </div>
         <div class="flex-v">
           <!-- EMPLOYEE FORM -->
-          <a href="#" class="navbar-link menubar mx-2">User Management</a>
           <a href="#" class="navbar-link menubar mx-2">Employee Coaching Form</a>
         </div>
       </div>
@@ -193,7 +191,7 @@
 
       <!-- BUTTON REGISTER -->
       <div class="flex-h justify-center">
-        <button type="submit" class="primary-button modal-button mob-mt-1 w-button">REGISTER</button>
+        <button type="submit" class="primary-button modal-button mob-mt-1 w-button">UPDATE</button>
       </div>
     </div>
   </form>
@@ -209,16 +207,16 @@
           <div class="flex-v stick-top">
             <h2 class="h1 ccf">Create Coaching Form</h2>
             <div class="all-content tab-hidden">
-              <a href="#team-member" class="content-link w-inline-block">
+              <a href="#team-member" class="content-link  w-inline-block">
                 <div>Team Member</div>
               </a>
-              <a href="#sumamry-evidence" class="content-link w-inline-block">
+              <a href="#sumamry-evidence" class="content-link  w-inline-block">
                 <div>Summary &amp; Evidence</div>
               </a>
-              <a href="#action" class="content-link w-inline-block">
+              <a href="#action" class="content-link  w-inline-block">
                 <div>Actions</div>
               </a>
-              <a href="#timeline" class="content-link w-inline-block">
+              <a href="#timeline" class="content-link  w-inline-block">
                 <div>Timeline</div>
               </a>
             </div>
@@ -226,6 +224,15 @@
         </div>
 
         <div class="weight-70">
+          <!-- ACTION BUTTONS -->
+          <div>
+            <div class="content-vcenter mb-1">
+              <h2 class="h2 cf mb-0 mr-2">Coaching Form</h2>
+              <a href="#" class="primary-button mr-1 w-button">UDATE FORM</a>
+              <a href="#" class="delete-button cf w-button">DELETE FORM</a>
+            </div>
+          </div>
+          
           <!-- FORM -->
           <form class="coaching-form">
             <!-- TEAM MEMBER INFO -->
@@ -234,39 +241,31 @@
               <div class="flex-v">
                 <div class="block-weighted cf-block">
                   <div class="weight-50">
-                    <div class="flex-v mb-1">
-                      <!-- TEAM MEMBER NAME INPUT -->
-                      <div class="text-field-label"><strong>Team Member Name:</strong></div>
-                      <div class="input-textfield w-embed">
-                        <input type="text" name="TeamMemberName" class="text-field w100" placeholder="Team Member Name">
-                      </div>
+                    <!-- TEAM MEMBER NAME OUTPUT -->
+                    <div class="flex-v">
+                      <div class="text-field-label"><strong>Team Member Name: </strong><span class="member-name">Daniel Gabriel Moratin</span></div>
                     </div>
                   </div>
                   <div class="px-1"></div>
                   <div class="weight-50">
-                    <div class="flex-v mb-1">
-                      <!-- DATE INPUT -->
-                      <div class="text-field-label"><strong>Date:</strong></div>
-                      <div class="input-textfield w-embed">
-                        <input type="date" name="date" class="text-field w100">
-                      </div>
+                    <!-- DATE OUTPUT -->
+                    <div class="flex-v">
+                      <div class="text-field-label"><strong>Date: </strong>5/17/2022</div>
                     </div>
                   </div>
                 </div>
                 <div class="block-weighted cf-block">
                   <div class="weight-50">
-                    <div class="flex-v mb-1">
-                      <!-- ROLE / POSITION INPUT -->
-                      <div class="text-field-label"><strong>Role / Position:</strong></div>
-                      <div class="input-textfield w-embed"><input type="text" name="rolePosition" class="text-field w100" placeholder="Role / Position"></div>
+                    <!-- ROLE / POSITION OUTPUT -->
+                    <div class="flex-v">
+                      <div class="text-field-label"><strong>Role / Position: </strong><span class="role-position">Software Developer</span></div>
                     </div>
                   </div>
                   <div class="px-1"></div>
                   <div class="weight-50">
+                    <!-- SUPERVISOR / MANAGER OUTPUT -->
                     <div class="flex-v">
-                      <!-- SUPERVISE / MANAGER INPUT -->
-                      <div class="text-field-label"><strong>Supervisor/Manager:</strong></div>
-                      <div class="input-textfield w-embed"><input type="text" name="supervisorManager" class="text-field w100" placeholder="Supervisor/Manager"></div>
+                      <div class="text-field-label"><strong>Supervisor/Manager: </strong>Rieugene Basilisco</div>
                     </div>
                   </div>
                 </div>
@@ -274,99 +273,69 @@
             </div>
 
             <!-- SUMMARY AND EVIDENCE -->
-            <div id="sumamry-evidence" class="content-topic">
+            <div id="sumamry-evidence" class="content-topic pb-0">
               <h2 class="h2 cf">Summary &amp; Evidence  <span class="fa-text cf-icon"></span></h2>
               <div class="flex-v mb-1">
                 <!-- COACHING TOPIC / AREA -->
                 <div class="text-field-label"><strong>Coaching Topic / Area</strong></div>
-                <div class="input-textfield w-embed">
-                  <textarea  
-                    rows="8" 
-                    name="coachingTopicArea" 
-                    class="text-field w100" 
-                    placeholder="Coaching Topic / Area" 
-                    style="resize: none;"
-                  ></textarea>
-                </div>
+                <div class="text-field-label ml-1">Communicating with the team:<br>Ned has struggled with communication and keeping the team updated on his tasks.<br>This has resulted in lack of visibility and workflow issues.</div>
               </div>
+              
+              <!-- DESITED OUTCOME -->
               <div class="flex-v mb-1">
-                <!-- DESITED OUTCOME -->
                 <div class="text-field-label"><strong>Desired Outcome</strong></div>
-                <div class="input-textfield w-embed">
-                  <textarea 
-                    rows="8" 
-                    name="desiredOutcome" 
-                    class="text-field w100" 
-                    placeholder="List desired behaviors, knowledge, skills, etc." 
-                    style="resize: none;"
-                  ></textarea>
-                </div>
+                <ul role="list" class="text-field-label">
+                  <li>Develop friendly relationships with co-workers.</li>
+                  <li>Be more present and connected.</li>
+                  <li>More visibility on what Ned is working on.</li>
+                </ul>
               </div>
-              <div class="flex-v mb-1">
-                <!-- BENEFITS OF CHANGE -->
-                <div class="text-field-label"><strong>Benefits of Change</strong></div>
-                <div class="input-textfield w-embed">
-                  <textarea 
-                    rows="8" 
-                    name="benefitsOfChanges" 
-                    class="text-field w100" 
-                    placeholder="How will employee actions or performance be positively impacted?" 
-                    style="resize: none;"
-                  ></textarea>
-                </div>
-              </div>
+
+              <!-- BENEFITS OF CHANGE -->
               <div class="flex-v">
+                <div class="text-field-label"><strong>Benefits of Change</strong></div>
+                <ul role="list" class="text-field-label">
+                  <li>Ned will be more comfortable sharing with teammates, increasing productivity and efficiency,</li>
+                  <li>Ned will be more engaged and satisfied at work.</li>
+                  <li>Improved team dynamic and office culture.</li>
+                </ul>
+              </div>
+
+              <!-- ATTACHMENTS INPUT -->
+              <!-- <div class="flex-v">
                 <div class="content-vcenter mob-port-flex-v">
-                  <!-- ATTACHMENTS INPUT -->
                   <div class="text-field-label mr-1 mob-mb-0-5"><strong>Attachments</strong></div>
                   <div class="w-embed">
                     <input type="file" name="evidence">
                   </div>
                 </div>
-              </div>
+              </div> -->
+
             </div>
 
+            
             <!-- ACTION PLAN -->
-            <div id="action" class="content-topic pb-0">
+            <div id="action" data-w-id="7fe4e72b-5dfe-5e06-2c5e-d9bf53808d02" class="content-topic pb-0">
               <h2 class="h2 cf">Actions <span class="fa-text cf-icon"></span></h2>
               <div class="flex-v">
-                <!-- ACTION PLAN INPUT -->
                 <div class="text-field-label"><strong>Action Plan</strong></div>
-                <div class="input-textfield w-embed">
-                  <textarea 
-                    rows="8" 
-                    name="actionPlan" 
-                    class="text-field w100" 
-                    placeholder="What actions can be taken to achieve these goals?" 
-                    style="resize: none;"></textarea>
-                </div>
-              </div>
-            </div>
-            <!-- TIMELINE -->
-            <div id="timeline" class="content-topic pb-0">
-              <!-- TIMELINE INPUT -->
-              <h2 class="h2 cf">Timeline <span class="fa-text cf-icon"></span></h2>
-              <div class="flex-v">
-                <div class="input-textfield w-embed">
-                  <textarea 
-                    rows="8" 
-                    name="timeline" 
-                    class="text-field w100" 
-                    placeholder="Write out a timeline for the plan and when to follow up" 
-                    style="resize: none;"
-                  ></textarea>
-                </div>
+                <ul role="list" class="text-field-label numberlist">
+                  <li>User the group Slack channel regularly to stay connected</li>
+                  <li>Create a collaborative status update document or task board</li>
+                  <li>Training in office communication norms and practices</li>
+                </ul>
               </div>
             </div>
 
-            <!-- CREATE BUTTON -->
-            <div class="content-topic">
-              <div class="content-center">
-                <div class="content-vcenter">
-                  <button type="submit" class="primary-button w-button">CREATE</button>
-                </div>
-              </div>
+            <!-- TIMELINE -->
+            <div id="timeline" data-w-id="c0a6a371-4c36-094b-be6f-8be320ddb754" class="content-topic">
+              <h2 class="h2 cf">Timeline <span class="fa-text cf-icon"></span></h2>
+              <ul role="list" class="text-field-label">
+                <li>Check in after one week to see how Slack and status updates are going.</li>
+                <li>After Ned&#x27;s training session in two weeks assess communication skill improvement.</li>
+              </ul>
             </div>
+
           </form>
           <!-- END COACHING FORM -->
 

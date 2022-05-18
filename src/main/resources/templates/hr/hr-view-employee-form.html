@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html data-wf-page="623ddea55e01df46f1c53138" data-wf-site="6239f161359dbcff9a96c08a" xmlns:th="http://www.thymeleaf.org">
+<html data-wf-page="626a596ad675de8a58c9368f" data-wf-site="6239f161359dbcff9a96c08a" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <title>Coaching Form | Coaching App - Alliance</title>
-  <meta content="Coaching Form | Coaching App - Alliance" property="og:title">
-  <meta content="Coaching Form | Coaching App - Alliance" property="twitter:title">
+  <title>Employee Coaching Form</title>
+  <meta content="Employee Coaching Form" property="og:title">
+  <meta content="Employee Coaching Form" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="SOLIDS" name="generator">
 
@@ -201,128 +201,159 @@
   <!-- END ACCOUNT MODAL -->
 
   
-  <!-- CONTENT -->
-  <section class="section small">
+  <!-- EMPLOYEE COACHING FORM -->
+  <div class="section small">
     <div class="container">
-      <div class="flex-v">
-
-        <!-- HEADING CONTENT -->
-        <div>
-          <!-- HEADING -->
-          <h2 class="h1 mb-flow tab-text-center"><span class="fa-text nav-link heading"></span> Employee Coaching Forms</h2>
-          <div class="content-hbetween mb-flow mob-flex-v">
-            <!-- LEFT CONTENT -->
-            <div class="content-vcenter tab-flex-left mob-flex-center">
-              <!-- SEARCH INPUT -->
-              <div class="content-vcenter">
-                <div class="mr-0-5 w-embed">
-                  <input type="search" name="search" class="text-field" placeholder="search here...">
-                </div>
-                <a href="#" class="primary-button w-button"><span class="fa-text"></span>  SEARCH</a>
-              </div>
-
-              <div class="p-0-5 mob-my-0-25"></div>
-
-              <!-- SORT SELECT -->
-              <div class="content-vcenter mob-mb-0-5">
-                <div class="mr-0-5">Sort by:</div>
-                <div class="w-embed">
-                  <select name="search" class="text-field">
-                    <option>User ID</option>
-                    <option>First Name</option>
-                    <option>Last Name</option>
-                    <option>Job Position</option>
-                    <option>Employee Type</option>
-                    <option>Email</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <!-- RIGHT CONTENT -->
-            <div class="content-vcenter tab-flex-right mob-flex-hbetween">
-              <!-- PAGINATION -->
-              <div class="content-vcenter mob-mb-0-5">
-                <!-- PREVIOUS -->
-                <a href="#" class="page-arrow w-inline-block">
-                  <img th:src="@{/assets/images/arrow-left-s-line.svg}" src="../../static/assets/images/arrow-left-s-line.svg" loading="lazy" alt="img arrow">
-                </a>
-                <a href="#" class="page-num">1</a>
-                <a href="#" class="page-num">2</a>
-                <a href="#" class="page-num">3</a>
-                <!-- NEXT -->
-                <a href="#" class="page-arrow w-inline-block">
-                  <img th:src="@{/assets/images/arrow-right-s-line.svg}" src="../../static/assets/images/arrow-right-s-line.svg" loading="lazy" alt="img arrow">
-                </a>
-              </div>
-
-              <div class="p-0-5 order-2"></div>
-
-              <!-- REGISTER USER BUTTON -->
-              <div class="content-vcenter mob-flex-v order-1">
-                <a data-w-id="3188676c-7068-596d-5eff-57a197a1bb84" href="#" class="primary-button add-btn w-button">REGISTER USER   <span class="fa-text"> </span></a>
-              </div>
+      <div class="block-weighted">
+        <!-- COTENT -->
+        <div class="weight-20 dual-content-left">
+          <div class="flex-v stick-top">
+            <h2 class="h1 ccf">View Coaching Form</h2>
+            <div class="all-content tab-hidden">
+              <a href="#team-member" class="content-link  w-inline-block">
+                <div>Team Member</div>
+              </a>
+              <a href="#sumamry-evidence" class="content-link  w-inline-block">
+                <div>Summary &amp; Evidence</div>
+              </a>
+              <a href="#action" class="content-link  w-inline-block">
+                <div>Actions</div>
+              </a>
+              <a href="#timeline" class="content-link  w-inline-block">
+                <div>Timeline</div>
+              </a>
             </div>
           </div>
         </div>
-        <!-- END OF HEADING CONTENT -->
 
-        <!-- FORM OUTPUT CONTENT !!! LOOP HERE !!! -->
-        <div class="grid-list">
-          <!-- FORM INFO -->
-          <div class="user-card card">
-
-            <!-- FORM DETAILS -->
-            <div class="flex-v mobp-w60">
-              <div class="flex-h">
-                <div class="flex-v">
-                  <!-- TOPIC AREA ID -->
-                  <div class="username">topic_area (id)</div>
-                  <!-- COACH -->
-                  <div class="position">Coach</div>
-                </div>
-              </div>
-              <!-- TRAINEE -->
-              <div class="position">Trainee</div>
-              <!-- CREATED DATE -->
-              <div class="position">Created_at</div>
-            </div>
-
-            <!-- ACTION BUTTONS -->
-            <div class="flex-v">
-              <!-- UPDATE BUTTON -->
-              <a data-w-id="964ab908-8291-0638-7797-493f54e02707" href="#" class="user-btn primary-button mb-0-5 w-button">UPDATE  <span class="fa-text"></span></a>
-              
-              <!-- DELETE BUTTON -->
-              <a data-w-id="964ab908-8291-0638-7797-493f54e02754" href="#" class="user-btn delete-button w-button">DELETE  <span class="fa-text"></span></a>
-              
-              <!-- DELETE MODAL -->
-              <div class="delete-modal">
-                <div data-w-id="964ab908-8291-0638-7797-493f54e02759" class="modal-overlay"></div>
-                <div class="modal-content delete">
-                  <div>
-                    <div class="modal-icon"><span class="fa-text delete"></span></div>
-                    <div class="modal-title">Delete Confirmation...</div>
-                    <p class="modal-body">Are you deleting <strong>[TOPIC AREA (ID)]</strong>?</p>
-                  </div>
-                  <div class="flex-h justify-center">
-                    <a href="#" class="user-btn delete-button modal w-button">CONFIRM</a>
-                  </div>
-                  <div data-w-id="964ab908-8291-0638-7797-493f54e02766" class="fa-text modal-close"></div>
-                </div>
-              </div>
-
+        <div class="weight-70">
+          <!-- ACTION BUTTONS -->
+          <div>
+            <div class="content-vcenter mb-1">
+              <h2 class="h2 cf mb-0 mr-2">Coaching Form</h2>
+              <a href="#" class="primary-button mr-1 w-button">UDATE FORM</a>
+              <a href="#" class="delete-button cf w-button">DELETE FORM</a>
             </div>
           </div>
 
-        </div>
-        <!-- END FORM OUTPUT -->
+          <!-- FORM -->
+          <form class="coaching-form">
+            <!-- TEAM MEMBER INFO -->
+            <div id="team-member" class="content-topic pb-0">
+              <h2 class="h2 cf">Team Member  <span class="fa-text cf-icon"></span></h2>
+              <div class="flex-v">
+                <div class="block-weighted cf-block">
+                  <div class="weight-50">
+                    <!-- TEAM MEMBER NAME OUTPUT -->
+                    <div class="flex-v">
+                      <div class="text-field-label"><strong>Team Member Name: </strong><span class="member-name">Daniel Gabriel Moratin</span></div>
+                    </div>
+                  </div>
+                  <div class="px-1"></div>
+                  <div class="weight-50">
+                    <!-- DATE OUTPUT -->
+                    <div class="flex-v">
+                      <div class="text-field-label"><strong>Date: </strong>5/17/2022</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="block-weighted cf-block">
+                  <div class="weight-50">
+                    <!-- ROLE / POSITION OUTPUT -->
+                    <div class="flex-v">
+                      <div class="text-field-label"><strong>Role / Position: </strong><span class="role-position">Software Developer</span></div>
+                    </div>
+                  </div>
+                  <div class="px-1"></div>
+                  <div class="weight-50">
+                    <!-- SUPERVISOR / MANAGER OUTPUT -->
+                    <div class="flex-v">
+                      <div class="text-field-label"><strong>Supervisor/Manager: </strong>Rieugene Basilisco</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <!-- SUMMARY AND EVIDENCE -->
+            <div id="sumamry-evidence" class="content-topic pb-0">
+              <h2 class="h2 cf">Summary &amp; Evidence  <span class="fa-text cf-icon"></span></h2>
+              <div class="flex-v mb-1">
+                <!-- COACHING TOPIC / AREA -->
+                <div class="text-field-label"><strong>Coaching Topic / Area</strong></div>
+                <div class="text-field-label ml-1">Communicating with the team:<br>Ned has struggled with communication and keeping the team updated on his tasks.<br>This has resulted in lack of visibility and workflow issues.</div>
+              </div>
+              
+              <!-- DESITED OUTCOME -->
+              <div class="flex-v mb-1">
+                <div class="text-field-label"><strong>Desired Outcome</strong></div>
+                <ul role="list" class="text-field-label">
+                  <li>Develop friendly relationships with co-workers.</li>
+                  <li>Be more present and connected.</li>
+                  <li>More visibility on what Ned is working on.</li>
+                </ul>
+              </div>
+
+              <!-- BENEFITS OF CHANGE -->
+              <div class="flex-v">
+                <div class="text-field-label"><strong>Benefits of Change</strong></div>
+                <ul role="list" class="text-field-label">
+                  <li>Ned will be more comfortable sharing with teammates, increasing productivity and efficiency,</li>
+                  <li>Ned will be more engaged and satisfied at work.</li>
+                  <li>Improved team dynamic and office culture.</li>
+                </ul>
+              </div>
+
+              <!-- ATTACHMENTS INPUT -->
+              <!-- <div class="flex-v">
+                <div class="content-vcenter mob-port-flex-v">
+                  <div class="text-field-label mr-1 mob-mb-0-5"><strong>Attachments</strong></div>
+                  <div class="w-embed">
+                    <input type="file" name="evidence">
+                  </div>
+                </div>
+              </div> -->
+
+            </div>
+
+            
+            <!-- ACTION PLAN -->
+            <div id="action" data-w-id="7fe4e72b-5dfe-5e06-2c5e-d9bf53808d02" class="content-topic pb-0">
+              <h2 class="h2 cf">Actions <span class="fa-text cf-icon"></span></h2>
+              <div class="flex-v">
+                <div class="text-field-label"><strong>Action Plan</strong></div>
+                <ul role="list" class="text-field-label numberlist">
+                  <li>User the group Slack channel regularly to stay connected</li>
+                  <li>Create a collaborative status update document or task board</li>
+                  <li>Training in office communication norms and practices</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- TIMELINE -->
+            <div id="timeline" data-w-id="c0a6a371-4c36-094b-be6f-8be320ddb754" class="content-topic">
+              <h2 class="h2 cf">Timeline <span class="fa-text cf-icon"></span></h2>
+              <ul role="list" class="text-field-label">
+                <li>Check in after one week to see how Slack and status updates are going.</li>
+                <li>After Ned&#x27;s training session in two weeks assess communication skill improvement.</li>
+              </ul>
+            </div>
+
+          </form>
+          <!-- END COACHING FORM -->
+
+        </div>
       </div>
     </div>
+  </div>
 
-  </section>
-  <!-- END CONTENT -->
+  <!-- MOBILE CONTENT NAV -->
+  <div class="tab-link-icon">
+    <a href="#team-member" class="link-icon-item"><span class="fa-text cf-icon"></span></a>
+    <a href="#sumamry-evidence" class="link-icon-item"><span class="fa-text cf-icon"></span></a>
+    <a href="#action" class="link-icon-item"><span class="fa-text cf-icon"></span></a>
+    <a href="#timeline" class="link-icon-item"><span class="fa-text cf-icon"></span></a>
+  </div>
 
   <!-- LOADING SCREEN -->
   <div data-w-id="9430a020-65d4-183b-ad78-94158639241f" class="loading-screen">
@@ -337,6 +368,7 @@
     <div>Loading</div>
   </div>
 
+  
   <!-- SCRIPTS -->
   <script 
     src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6239f161359dbcff9a96c08a" 

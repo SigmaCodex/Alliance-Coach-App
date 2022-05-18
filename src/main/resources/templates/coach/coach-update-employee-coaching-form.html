@@ -270,7 +270,7 @@
             </div>
 
             <!-- SUMMARY AND EVIDENCE -->
-            <div id="sumamry-evidence" class="content-topic">
+            <div id="sumamry-evidence" class="content-topic pb-0">
               <h2 class="h2 cf">Summary &amp; Evidence  <span class="fa-text cf-icon"></span></h2>
               <div class="flex-v mb-1">
                 <!-- COACHING TOPIC / AREA -->
@@ -285,73 +285,143 @@
                   ></textarea>
                 </div>
               </div>
+              
+              <!-- DESIRED OUTCOME -->
               <div class="flex-v mb-1">
-                <!-- DESITED OUTCOME -->
-                <div class="text-field-label"><strong>Desired Outcome</strong></div>
-                <div class="input-textfield w-embed">
-                  <textarea 
-                    rows="8" 
-                    name="desiredOutcome" 
-                    class="text-field w100" 
-                    placeholder="List desired behaviors, knowledge, skills, etc." 
-                    style="resize: none;"
-                  ></textarea>
+                <div class="text-field-label"><strong>Desired Outcome (List desired behaviors, knowledge, skills, etc)</strong></div>
+                <div class="content-vcenter mb-0-5">
+                  <!-- OUTCOME INPUT -->
+                  <div class="input-textfield w-embed">
+                    <input type="text" id="outcomeInput" name="outcome" class="text-field w100" placeholder="Outcome">
+                  </div>
+                  <!-- ADD BUTTON -->
+                  <a href="#" id="addDesiredOutcome" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></a>
                 </div>
+                <!-- OUTCOME DISPLAY -->
+                <ul id="desired-outcome-list" role="list" class="mb-0 pl-1">
+                  
+                  <!-- OUTPUT -->
+                  <li>
+                    <div id="row" class="flex-h align-top">
+                      <div class="list-item">
+                        <p class="text-field-label">Lorem ipsum dolor sit amet, consectetur adipiscing eli</p>
+                      </div>
+                      <!-- REMOVE BUTTON -->
+                      <div class="remove-row">
+                        <div><span class="fa-text"></span></div>
+                      </div>
+                    </div>
+                  </li>
+
+                </ul>
               </div>
-              <div class="flex-v mb-1">
-                <!-- BENEFITS OF CHANGE -->
-                <div class="text-field-label"><strong>Benefits of Change</strong></div>
-                <div class="input-textfield w-embed">
-                  <textarea 
-                    rows="8" 
-                    name="benefitsOfChanges" 
-                    class="text-field w100" 
-                    placeholder="How will employee actions or performance be positively impacted?" 
-                    style="resize: none;"
-                  ></textarea>
-                </div>
-              </div>
+
+              <!-- BENEFITS OF CHANGE -->
               <div class="flex-v">
+                <div class="text-field-label"><strong>Benefits of Change (How will employee actions or performance be positively impacted?)</strong></div>
+                <div class="content-vcenter mb-0-5">
+                  <!-- INPUT -->
+                  <div class="input-textfield w-embed">
+                    <input type="text" id="benefitInput" name="benifits" class="text-field w100" placeholder="Benefit">
+                  </div>
+                  <!-- ADD BUTTON -->
+                  <a href="#" id="addBenefitsOfChange" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></a>
+                </div>
+                <!-- BENEFITS DISPLAY -->
+                <ul id="benefits-of-change-list" role="list" class="mb-0 pl-1">
+                  
+                  <!-- OUTPUT -->
+                  <li>
+                    <div id="row" class="flex-h align-top">
+                      <div class="list-item">
+                        <p class="text-field-label">Lorem ipsum dolor sit amet, consectetur adipiscing eli</p>
+                      </div>
+                      <!-- REMOVE BUTTON -->
+                      <div class="remove-row">
+                        <div><span class="fa-text"></span></div>
+                      </div>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+
+              <!-- ATTACHMENTS INPUT -->
+              <!-- <div class="flex-v">
                 <div class="content-vcenter mob-port-flex-v">
-                  <!-- ATTACHMENTS INPUT -->
                   <div class="text-field-label mr-1 mob-mb-0-5"><strong>Attachments</strong></div>
                   <div class="w-embed">
                     <input type="file" name="evidence">
                   </div>
                 </div>
+              </div> -->
+
+            </div>
+
+            
+            <!-- ACTION PLAN -->
+            <div id="action" data-w-id="7fe4e72b-5dfe-5e06-2c5e-d9bf53808d02" class="content-topic pb-0">
+              <h2 class="h2 cf">Actions  <span class="fa-text cf-icon"></span></h2>
+              <div class="flex-v">
+                <div class="text-field-label"><strong>Action Plan (What actions can be taken to achieve these goals?)</strong></div>
+                <div class="content-vcenter mb-0-5">
+                  <!-- ACTION PLAN INPUT -->
+                  <div class="input-textfield w-embed">
+                    <input type="text" id="actionInput"  name="actionPlan" class="text-field w100" placeholder="Action">
+                  </div>
+                  <!-- ADD BUTTON -->
+                  <a href="#" id="addActionPlan" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></a>
+                </div>
+                <!-- ACTION PLAN DISPLAY -->
+                <ul id="action-plan-list" role="list" class="ol mb-0 pl-1">
+
+                  <!-- OUTPUT -->
+                  <li>
+                    <div id="row" class="flex-h align-top">
+                      <div class="list-item">
+                        <p class="text-field-label">Lorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eli</p>
+                      </div>
+                      <!-- REMOVE BUTTON -->
+                      <div class="remove-row">
+                        <div><span class="fa-text"></span></div>
+                      </div>
+                    </div>
+                  </li>
+
+                </ul>
               </div>
             </div>
 
-            <!-- ACTION PLAN -->
-            <div id="action" class="content-topic pb-0">
-              <h2 class="h2 cf">Actions <span class="fa-text cf-icon"></span></h2>
-              <div class="flex-v">
-                <!-- ACTION PLAN INPUT -->
-                <div class="text-field-label"><strong>Action Plan</strong></div>
-                <div class="input-textfield w-embed">
-                  <textarea 
-                    rows="8" 
-                    name="actionPlan" 
-                    class="text-field w100" 
-                    placeholder="What actions can be taken to achieve these goals?" 
-                    style="resize: none;"></textarea>
-                </div>
-              </div>
-            </div>
             <!-- TIMELINE -->
-            <div id="timeline" class="content-topic pb-0">
-              <!-- TIMELINE INPUT -->
-              <h2 class="h2 cf">Timeline <span class="fa-text cf-icon"></span></h2>
+            <div id="timeline" data-w-id="c0a6a371-4c36-094b-be6f-8be320ddb754" class="content-topic pb-0">
+              <h2 class="h2 cf">Timeline  <span class="fa-text cf-icon"></span></h2>
               <div class="flex-v">
-                <div class="input-textfield w-embed">
-                  <textarea 
-                    rows="8" 
-                    name="timeline" 
-                    class="text-field w100" 
-                    placeholder="Write out a timeline for the plan and when to follow up" 
-                    style="resize: none;"
-                  ></textarea>
+                <div class="text-field-label"><strong>Timeline (Write out a timeline for the plan and when to follow up)</strong></div>
+                <div class="content-vcenter mb-0-5">
+                  <!-- TIMELINE INPUT -->
+                  <div class="input-textfield w-embed">
+                    <input type="text" id="timelineInput" name="timeline" class="text-field w100" placeholder="Plan">
+                  </div>
+                  <!-- ADD BUTTON -->
+                  <a href="#" id="addTimeline" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></a>
                 </div>
+                <!-- TIMELINE DISPLAY -->
+                <ul id="timeline-list" role="list" class="mb-0 pl-1">
+                  
+                  <!-- OUTPUT -->
+                  <li>
+                    <div id="row" class="flex-h align-top">
+                      <div class="list-item">
+                        <p class="text-field-label">Lorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eli</p>
+                      </div>
+                      <!-- REMOVE BUTTON -->
+                      <div class="remove-row">
+                        <div><span class="fa-text"></span></div>
+                      </div>
+                    </div>
+                  </li>
+
+                </ul>
               </div>
             </div>
 
@@ -401,5 +471,99 @@
   ></script>
   <script th:src="@{/assets/js/webflow.js}" src="../../static/assets/js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+
+  <script
+  src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
+  integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY="
+  crossorigin="anonymous"></script>
 </body>
+<script>
+  $(document).ready(function(){
+    
+    // DESIRED OUTCOME
+    $('#addDesiredOutcome').click(function(){
+      var inputVal = $('<input type="hidden" th:name="[]timeline" />')
+      inputVal.val($('#outcomeInput').val())
+      var listItemVal = $('<div class="list-item"><p class="text-field-label">' +  $('#outcomeInput').val() + '</p></div>')
+      var deleteBtn = $('<div class="remove-row"><div><span class="fa-text"></span></div></div>').click(function(){
+        $(this).closest('li').remove()
+      })
+
+      listItemVal.append(inputVal)
+
+      var liList = $('<li></li>')
+      var row = $('<div id="row" class="flex-h align-top"></div>')
+      row.append(listItemVal)
+      row.append(deleteBtn)
+      liList.html(row)
+
+      $('#desired-outcome-list').append(liList)
+    })
+
+    // BENEFITS OF CHANGE
+    $('#addBenefitsOfChange').click(function(){
+      var inputVal = $('<input type="hidden" th:name="[]timeline" />')
+      inputVal.val($('#benefitInput').val())
+      var listItemVal = $('<div class="list-item"><p class="text-field-label">' +  $('#benefitInput').val() + '</p></div>')
+      var deleteBtn = $('<div class="remove-row"><div><span class="fa-text"></span></div></div>').click(function(){
+        $(this).closest('li').remove()
+      })
+
+      listItemVal.append(inputVal)
+
+      var liList = $('<li></li>')
+      var row = $('<div id="row" class="flex-h align-top"></div>')
+      row.append(listItemVal)
+      row.append(deleteBtn)
+      liList.html(row)
+
+      $('#benefits-of-change-list').append(liList)
+    })
+
+    // ACTION PLAN
+    $('#addActionPlan').click(function(){
+      var inputVal = $('<input type="hidden" th:name="[]timeline" />')
+      inputVal.val($('#actionInput').val())
+      var listItemVal = $('<div class="list-item"><p class="text-field-label">' +  $('#actionInput').val() + '</p></div>')
+      var deleteBtn = $('<div class="remove-row"><div><span class="fa-text"></span></div></div>').click(function(){
+        $(this).closest('li').remove()
+      })
+
+      listItemVal.append(inputVal)
+
+      var liList = $('<li></li>')
+      var row = $('<div id="row" class="flex-h align-top"></div>')
+      row.append(listItemVal)
+      row.append(deleteBtn)
+      liList.html(row)
+
+      $('#action-plan-list').append(liList)
+    })
+
+    // TIMELINE
+    $('#addTimeline').click(function(){
+      var inputVal = $('<input type="hidden" th:name="[]timeline" />')
+      inputVal.val($('#timelineInput').val())
+      var listItemVal = $('<div class="list-item"><p class="text-field-label">' +  $('#timelineInput').val() + '</p></div>')
+      var deleteBtn = $('<div class="remove-row"><div><span class="fa-text"></span></div></div>').click(function(){
+        $(this).closest('li').remove()
+      })
+
+      listItemVal.append(inputVal)
+
+      var liList = $('<li></li>')
+      var row = $('<div id="row" class="flex-h align-top"></div>')
+      row.append(listItemVal)
+      row.append(deleteBtn)
+      liList.html(row)
+
+      $('#timeline-list').append(liList)
+    })
+
+    $('.remove-row').click(function(){
+      console.log('HERE!')
+      $(this).closest('li').remove()
+    })
+  })
+</script>
 </html>

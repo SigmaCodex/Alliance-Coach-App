@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html data-wf-page="627e6ff269c34cb2d6934606" data-wf-site="6239f161359dbcff9a96c08a" xmlns:th="http://www.thymeleaf.org">
+<html data-wf-page="626a596ad675de8a58c9368f" data-wf-site="6239f161359dbcff9a96c08a" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <title>Coach | Employee Form Copy</title>
-  <meta content="Coach | Employee Form Copy" property="og:title">
-  <meta content="Coach | Employee Form Copy" property="twitter:title">
+  <title>Employee Coaching Form</title>
+  <meta content="Employee Coaching Form" property="og:title">
+  <meta content="Employee Coaching Form" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="SOLIDS" name="generator">
 
@@ -24,6 +24,7 @@
   </script>
 </head>
 <body>
+  
   <!-- NAVIGATION BAR -->
   <nav class="navigation">
     <div class="container h100">
@@ -31,11 +32,13 @@
         <!-- LOGO -->
         <div class="content-vcenter canvas">
           <h1 class="navbar-title">Coaching App</h1>
+          <div class="portal-position">Human Resource</div>
         </div>
 
         <!-- NAV MENU ITEM -->
         <div class="content-vcenter tab-hidden">
-          <a href="#" class="navbar-link"><span class="fa-text nav-link"></span> Employee Coaching Form</a>
+          <a th:href="@{/c/user-management}" class="navbar-link"><span class="fa-text nav-link"></span> User Management</a>
+          <a th:href="@{/f/form-management}" class="navbar-link"><span class="fa-text nav-link"></span> Employee Coaching Form</a>
         </div>
 
         <!-- DROPDOWN ACCOUNT AND LOGOUT -->
@@ -46,8 +49,8 @@
               <div class="flex-h">
                 <div class="fa-text profile icon-blue"></div>
                 <div class="flex-v">
-                  <div class="username">James Adrian Ruiz</div>
-                  <div class="position">Project Lead</div>
+                  <div class="username" th:text="${session.member.firstName} + ' ' + ${session.member.lastName}"></div>
+                  <div class="position" th:text="${session.member.rolePosition}"></div>
                 </div>
               </div>
             </div>
@@ -55,7 +58,7 @@
             <!-- DROPDOWN ITEM -->
             <nav class="dropdown-list w-dropdown-list">
               <!-- ACCOUNT BUTTON -->
-              <a data-w-id="af6d5567-f3a1-66bf-0592-eb65a9df0fd2" class="dropdown-link w-dropdown-link">Account Detail</a>
+              <a href="#" data-w-id="af6d5567-f3a1-66bf-0592-eb65a9df0fd2" class="dropdown-link w-dropdown-link">Account Detail</a>
               <!-- LOGOUT BUTTON -->
               <a href="#" class="dropdown-link w-dropdown-link">Logout</a>
             </nav>
@@ -79,6 +82,7 @@
         </div>
         <div class="flex-v">
           <!-- EMPLOYEE FORM -->
+          <a href="#" class="navbar-link menubar mx-2">User Management</a>
           <a href="#" class="navbar-link menubar mx-2">Employee Coaching Form</a>
         </div>
       </div>
@@ -196,6 +200,7 @@
   </form>
   <!-- END ACCOUNT MODAL -->
 
+  
   <!-- EMPLOYEE COACHING FORM -->
   <div class="section small">
     <div class="container">
@@ -205,16 +210,16 @@
           <div class="flex-v stick-top">
             <h2 class="h1 ccf">Create Coaching Form</h2>
             <div class="all-content tab-hidden">
-              <a href="#team-member" class="content-link w-inline-block">
+              <a href="#team-member" class="content-link  w-inline-block">
                 <div>Team Member</div>
               </a>
-              <a href="#sumamry-evidence" class="content-link w-inline-block">
+              <a href="#sumamry-evidence" class="content-link  w-inline-block">
                 <div>Summary &amp; Evidence</div>
               </a>
-              <a href="#action" class="content-link w-inline-block">
+              <a href="#action" class="content-link  w-inline-block">
                 <div>Actions</div>
               </a>
-              <a href="#timeline" class="content-link w-inline-block">
+              <a href="#timeline" class="content-link  w-inline-block">
                 <div>Timeline</div>
               </a>
             </div>
