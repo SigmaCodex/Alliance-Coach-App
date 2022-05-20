@@ -1,19 +1,21 @@
 package com.alliance.coaching.controller;
 
 import com.alliance.coaching.entity.CoachingForm;
+import com.alliance.coaching.entity.DesiredOutcome;
 import com.alliance.coaching.service.CoachingFormService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * @author Rieugene Basilisco (generieu17@gmail.com)
- * @project coaching
- * @created Mar 26, 2022 5:00 PM
+ * @project Alliance-Coach-App
+ * @created May 19, 2022 10:43 PM
  */
 
 @Controller
@@ -23,14 +25,35 @@ public class CoachingFormController {
 
     private final CoachingFormService coachingFormService;
 
-    // TODO: 3/26/2022 CRUD for coaching form
-
-    @GetMapping("/form-management")
-    public ModelAndView redirectForms() {
+    // TODO: 5/19/2022 view all forms associated with Coach on their home page
+    @GetMapping("/coach-home")
+    public ModelAndView redirectHomeCoach() {
         ModelAndView modelAndView = new ModelAndView();
-//        List<CoachingForm> coachingForm = coachingFormService.getAll();
-//        modelAndView.addObject("forms", coachingForm);
-        modelAndView.setViewName("hr/hr-coaching-form-management");
+        List<CoachingForm> forms = coachingFormService.getAll();
+        modelAndView.addObject("forms", forms);
+        modelAndView.setViewName("coach/coach-employee-coaching-form-management");
+        return modelAndView;
+    }
+
+    // TODO: 5/19/2022 create new form
+    @PostMapping("/add-form")
+    public ModelAndView createForm(@ModelAttribute CoachingForm coachingForm) {
+        return new ModelAndView(new RedirectView("/c/coach-home"));
+    }
+
+    // TODO: 5/20/2022 redirect to page for creating form
+    @GetMapping("/form")
+    public ModelAndView formView() {
+        return new ModelAndView("coach/coach-create-employee-coaching-form");
+    }
+
+    // TODO: 5/19/2022 view selected form
+    @GetMapping("/view-form/{id}")
+    public ModelAndView viewForm(@PathVariable("id") Long id) {
+        ModelAndView modelAndView = new ModelAndView();
+        CoachingForm coachingForm = coachingFormService.getById(id);
+        modelAndView.addObject("form", coachingForm);
+        modelAndView.setViewName("coach/coach-view-employee-form");
         return modelAndView;
     }
 

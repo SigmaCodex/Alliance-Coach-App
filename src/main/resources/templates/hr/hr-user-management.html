@@ -37,8 +37,8 @@
 
         <!-- NAV MENU ITEM -->
         <div class="content-vcenter tab-hidden">
-          <a th:href="@{/c/user-management}" class="navbar-link"><span class="fa-text nav-link"></span> User Management</a>
-          <a th:href="@{/c/form-management}" class="navbar-link"><span class="fa-text nav-link"></span> Employee Coaching Form</a>
+          <a th:href="@{/c/hr-home}" class="navbar-link"><span class="fa-text nav-link"></span> User Management</a>
+          <a th:href="@{/c/coach-home}" class="navbar-link"><span class="fa-text nav-link"></span> Employee Coaching Form</a>
         </div>
 
         <!-- DROPDOWN ACCOUNT AND LOGOUT -->
@@ -49,8 +49,8 @@
               <div class="flex-h">
                 <div class="fa-text profile icon-blue"></div>
                 <div class="flex-v">
-                  <div class="username" th:text="${session.member.firstName} + ' ' + ${session.member.lastName}"></div>
-                  <div class="position" th:text="${session.member.rolePosition}"></div>
+                  <div class="username" th:text="${session.employee.fullName}"></div>
+                  <div class="position" th:text="${session.employee.rolePosition}"></div>
                 </div>
               </div>
             </div>
@@ -77,8 +77,8 @@
       <div class="content-right">
         <div class="mb-4 mx-1">
           <!-- NAME -->
-          <div class="username">Adrian James A. Ruiz</div>
-          <div class="position">Project Lead</div>
+          <div class="username" th:text="${session.employee.fullName}"></div>
+          <div class="position" th:text="${session.employee.rolePosition}"></div>
         </div>
         <div class="flex-v">
           <!-- EMPLOYEE FORM -->
@@ -269,28 +269,28 @@
         <!-- USER OUTPUT CONTENT !!! LOOP HERE !!! -->
         <div class="grid-list">
           <!-- USER INFO -->
-          <div class="user-card card" th:each="member : ${members}">
+          <div class="user-card card" th:each="employee : ${employees}" th:if="${employee.id} != ${session.employee.id}">
             <!-- USER DETAILS -->
             <div class="flex-v">
               <!-- POSITION EMP TYPE -->
-              <div class="position" th:text="${member.rolePosition}"></div>
+              <div class="position" th:text="${employee.rolePosition}"></div>
 
               <!-- USERNAME -->
               <div class="flex-h">
                 <div class="fa-text profile"></div>
                 <div class="flex-v">
                   <!-- DISPLAY FIRST NAME -->
-                  <div class="username" th:text="${member.firstName}"></div>
+                  <div class="username" th:text="${employee.firstName}"></div>
                   <!-- DISPLAY LAST NAME -->
-                  <div class="username" th:text="${member.lastName}"></div>
+                  <div class="username" th:text="${employee.lastName}"></div>
                 </div>
               </div>
 
               <!-- CONTACT NUMBER -->
-              <div class="position" th:text="${member.contactNo}"></div>
+              <div class="position" th:text="${employee.contactNo}"></div>
 
               <!-- EMAIL -->
-              <div class="position" th:text="${member.username}"></div>
+              <div class="position" th:text="${employee.email}"></div>
             </div>
             <!-- END OF USER DETAILS -->
 
@@ -305,7 +305,7 @@
                 <div data-w-id="6cc70ac9-e968-f779-b11c-59f44e6a2bee" class="modal-overlay"></div>
 
                 <!-- FORM MODAL CONTENT -->
-                <form th:action="@{/c/user-update/} + ${member.id}" th:method="post" class="modal-content mob-full-screen">
+                <form th:action="@{/c/update-employee/} + ${employee.id}" th:method="post" class="modal-content mob-full-screen">
                   <!-- HEADING -->
                   <div class="content-center mb-0-5">
                     <div class="content-vcenter">
@@ -314,7 +314,7 @@
                     </div>
                   </div>
                   <!-- DISPLAY NAME ON STRONG -->
-                  <p class="modal-body mb-1">Update the information of <strong th:text="${member.firstName} + ' ' + ${member.lastName}"></strong>.</p>
+                  <p class="modal-body mb-1">Update the information of <strong th:text="${employee.fullName}"></strong>.</p>
                   <div data-w-id="6cc70ac9-e968-f779-b11c-59f44e6a2bf9" class="fa-text modal-close"></div>
                   <div class="block-weighted cf-block mb-1 mob-full-screen">
                     <div class="weight-50">
@@ -322,7 +322,7 @@
                         <!-- FIRST NAME INPUT -->
                         <div class="text-field-label"><strong>First name:</strong></div>
                         <div class="input-textfield w100 w-embed">
-                          <input type="text" th:name="firstName" th:value="${member.firstName}" class="text-field w100" placeholder="First Name" required="">
+                          <input type="text" th:name="firstName" th:value="${employee.firstName}" class="text-field w100" placeholder="First Name" required="">
                         </div>
                       </div>
                     </div>
@@ -332,7 +332,7 @@
                         <!-- LAST NAME INPUT -->
                         <div class="text-field-label"><strong>Last name:</strong></div>
                         <div class="input-textfield w-embed">
-                          <input type="text" th:name="lastName" th:value="${member.lastName}" class="text-field w100" placeholder="Last Name" required="">
+                          <input type="text" th:name="lastName" th:value="${employee.lastName}" class="text-field w100" placeholder="Last Name" required="">
                         </div>
                       </div>
                     </div>
@@ -356,7 +356,7 @@
                         <!-- ROLE / POSITION INPUT -->
                         <div class="text-field-label"><strong>Role / Position:</strong></div>
                         <div class="input-textfield w-embed">
-                          <input type="text" th:name="rolePosition" th:value="${member.rolePosition}" class="text-field w100" placeholder="Role / Position" required="">
+                          <input type="text" th:name="rolePosition" th:value="${employee.rolePosition}" class="text-field w100" placeholder="Role / Position" required="">
                         </div>
                       </div>
                     </div>
@@ -367,7 +367,7 @@
                         <!-- CONTACT NUMBER INPUT -->
                         <div class="text-field-label"><strong>Contact number:</strong></div>
                         <div class="input-textfield w100 w-embed">
-                          <input type="number" th:name="contactNo" th:value="${member.contactNo}" class="text-field w100" placeholder="Contact number" required="">
+                          <input type="number" th:name="contactNo" th:value="${employee.contactNo}" class="text-field w100" placeholder="Contact number" required="">
                         </div>
                       </div>
                     </div>
@@ -377,7 +377,7 @@
                         <!-- EMAIL INPUT -->
                         <div class="text-field-label"><strong>Email:</strong></div>
                         <div class="input-textfield w-embed">
-                          <input type="email" th:name="username" th:value="${member.username}" class="text-field w100" placeholder="Email" required="">
+                          <input type="email" th:name="username" th:value="${employee.email}" class="text-field w100" placeholder="Email" required="">
                         </div>
                       </div>
                     </div>
@@ -426,11 +426,11 @@
                   <div>
                     <div class="modal-icon"><span class="fa-text delete"></span></div>
                     <div class="modal-title">Delete Confirmation...</div>
-                    <p class="modal-body">Are you deleting <strong th:text="${member.firstName} + ' ' + ${member.lastName}"></strong>?</p>
+                    <p class="modal-body">Are you deleting <strong th:text="${employee.fullName}"></strong>?</p>
                   </div>
                   <!-- CONFIRM DELETE BUTTON -->
                   <div class="flex-h justify-center">
-                    <a th:href="@{/c/delete/} + ${member.id}" class="user-btn delete-button modal w-button">CONFIRM</a>
+                    <a th:href="@{/c/delete-employee/} + ${employee.id}" class="user-btn delete-button modal w-button">CONFIRM</a>
                   </div>
                   
                   <!-- CLOSE ICON -->
@@ -454,7 +454,7 @@
     <div data-w-id="e3c662ca-d710-e396-a08d-e0c7cfe0a891" class="modal-overlay"></div>
 
     <!-- REGISTER FORM -->
-    <form th:action="@{/c/user-register}" th:method="post" class="modal-content mob-full-screen">
+    <form th:action="@{/c/add-employee}" th:method="post" class="modal-content mob-full-screen">
       <!-- TITLE -->
       <div class="content-center mb-0-5">
         <div class="content-vcenter">
@@ -528,7 +528,7 @@
             <!-- EMAIL INPUT -->
             <div class="text-field-label"><strong>Email:</strong></div>
             <div class="input-textfield w-embed">
-              <input type="email" th:name="username" class="text-field w100" placeholder="Email" required="">
+              <input type="email" th:name="email" class="text-field w100" placeholder="Email" required="">
             </div>
           </div>
         </div>

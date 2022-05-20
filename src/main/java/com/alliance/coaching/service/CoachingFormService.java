@@ -1,7 +1,7 @@
 package com.alliance.coaching.service;
 
 import com.alliance.coaching.entity.CoachingForm;
-import com.alliance.coaching.repository.CoachingFormRepository;
+import com.alliance.coaching.repository.CoachingFormRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,53 +9,29 @@ import java.util.List;
 
 /**
  * @author Rieugene Basilisco (generieu17@gmail.com)
- * @project coaching
- * @created Mar 26, 2022 3:11 PM
+ * @project Alliance-Coach-App
+ * @created May 19, 2022 10:45 PM
  */
 
 @Service
 @RequiredArgsConstructor
 public class CoachingFormService {
 
-    private final CoachingFormRepository coachingFormRepository;
+    private final CoachingFormRepo coachingFormRepo;
 
-    // TODO: 3/26/2022 create new coaching form
+    // TODO: 5/19/2022 create new form
     public CoachingForm create(CoachingForm coachingForm) {
-        return coachingFormRepository.save(coachingForm);
+        return coachingFormRepo.save(coachingForm);
     }
 
-    // TODO: 3/26/2022 get coaching form by id
+    // TODO: 5/19/2022 get form by id
     public CoachingForm getById(Long id) {
-        if (coachingFormRepository.findById(id).isPresent()) {
-            return coachingFormRepository.findById(id).get();
-        }
-        throw new IllegalStateException("Coaching form not found");
+        return coachingFormRepo.findById(id).get();
     }
 
-    // TODO: 3/26/2022 get all coaching form by coach id
-    public List<CoachingForm> getAllCoachingFormByCoachId(Long id) {
-        return coachingFormRepository.findAllByCoachId(id);
-    }
-
-    // TODO: 3/26/2022 get all coaching form, this may be applicable to HR only
+    // TODO: 5/19/2022 get all forms
     public List<CoachingForm> getAll() {
-        return coachingFormRepository.findAll();
+        return coachingFormRepo.findAll();
     }
 
-    // TODO: 3/26/2022 update coaching form
-    public void update(Long id, CoachingForm coachingForm) {
-        CoachingForm currentCoachingForm = coachingFormRepository
-                .findById(id)
-                .orElseThrow(() -> new IllegalStateException("Coaching form not found"));
-        // TODO: 3/26/2022 validate new coaching content
-        // this will set new data to old action plan
-        currentCoachingForm.setTopicArea(coachingForm.getTopicArea());
-        currentCoachingForm.setBenefit(coachingForm.getBenefit());
-        coachingFormRepository.save(currentCoachingForm);
-    }
-
-    // TODO: 3/26/2022 delete coaching form
-    public void delete(Long id) {
-        coachingFormRepository.deleteById(id);
-    }
 }

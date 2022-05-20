@@ -3,17 +3,15 @@ package com.alliance.coaching.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
-import java.util.Date;
-
-import static javax.persistence.GenerationType.IDENTITY;
-
 /**
  * @author Rieugene Basilisco (generieu17@gmail.com)
- * @project coaching
- * @created Mar 26, 2022 2:50 PM
+ * @project Alliance-Coach-App
+ * @created May 19, 2022 9:15 PM
  */
 
 @Entity
@@ -23,21 +21,26 @@ import static javax.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 public class CoachingForm {
 
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "coaching_form_id")
+    @Column(name = "form_id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "coach_id", referencedColumnName = "user_id")
-    private Employee coach;
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", columnDefinition = "BIGINT NOT NULL")
+    private Employee supervisor;
 
-    @Column(name = "topic_area", columnDefinition = "VARCHAR(255)")
+    @Column(name = "team_member", columnDefinition = "VARCHAR (100) NOT NULL")
+    private String teamMember;
+
+    @Column(name = "role_position", columnDefinition = "VARCHAR (100) NOT NULL")
+    private String rolePosition;
+
+    @Column(name = "topic_area", columnDefinition = "VARCHAR (255) NOT NULL")
     private String topicArea;
 
-    @Column(name = "benefit", columnDefinition = "VARCHAR(255)")
-    private String benefit;
+    @Column(name = "created_at", columnDefinition = "DATE NOT NULL")
+    private String createdAt;
 
-    @Column(name = "created_at", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
-    private Date createdAt = new Date();
 }

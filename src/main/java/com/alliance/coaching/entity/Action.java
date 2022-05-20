@@ -11,19 +11,19 @@ import javax.persistence.*;
 /**
  * @author Rieugene Basilisco (generieu17@gmail.com)
  * @project Alliance-Coach-App
- * @created May 19, 2022 9:43 PM
+ * @created May 19, 2022 9:41 PM
  */
 
 @Entity
-@Table(name = "timeline")
+@Table(name = "action")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Timeline {
+public class Action {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "timeline_id")
+    @Column(name = "action_id")
     private Long id;
 
     @ManyToOne
@@ -31,7 +31,9 @@ public class Timeline {
     @JoinColumn(name = "form_id", referencedColumnName = "form_id", columnDefinition = "BIGINT NOT NULL")
     private CoachingForm form;
 
-    @Column(name = "timeline", columnDefinition = "VARCHAR (255) NOT NULL")
-    private String timeline;
+    @Column(name = "action_plan", columnDefinition = "VARCHAR (255) NOT NULL")
+    private String actionPlan;
 
+    @Column(name = "status", columnDefinition = "INT DEFAULT '0' NOT NULL")
+    private int status = 0;
 }

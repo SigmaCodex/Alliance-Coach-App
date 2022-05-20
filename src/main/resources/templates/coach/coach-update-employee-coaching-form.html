@@ -46,8 +46,8 @@
               <div class="flex-h">
                 <div class="fa-text profile icon-blue"></div>
                 <div class="flex-v">
-                  <div class="username">James Adrian Ruiz</div>
-                  <div class="position">Project Lead</div>
+                  <div class="username" th:text="${session.employee.fullName}"></div>
+                  <div class="position" th:text="${session.employee.rolePosition}"></div>
                 </div>
               </div>
             </div>
@@ -57,7 +57,7 @@
               <!-- ACCOUNT BUTTON -->
               <a data-w-id="af6d5567-f3a1-66bf-0592-eb65a9df0fd2" class="dropdown-link w-dropdown-link">Account Detail</a>
               <!-- LOGOUT BUTTON -->
-              <a href="#" class="dropdown-link w-dropdown-link">Logout</a>
+              <a th:href="@{/}" class="dropdown-link w-dropdown-link">Logout</a>
             </nav>
           </div>
         </div>
@@ -74,8 +74,8 @@
       <div class="content-right">
         <div class="mb-4 mx-1">
           <!-- NAME -->
-          <div class="username">Adrian James A. Ruiz</div>
-          <div class="position">Project Lead</div>
+          <div class="username" th:text="${session.employee.fullName}"></div>
+          <div class="position" th:text="${session.employee.rolePosition}"></div>
         </div>
         <div class="flex-v">
           <!-- EMPLOYEE FORM -->
