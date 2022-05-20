@@ -3,15 +3,15 @@ package com.alliance.coaching.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 /**
  * @author Rieugene Basilisco (generieu17@gmail.com)
- * @project coaching
- * @created Mar 26, 2022 2:55 PM
+ * @project Alliance-Coach-App
+ * @created May 19, 2022 9:34 PM
  */
 
 @Entity
@@ -21,15 +21,17 @@ import static javax.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 public class DesiredOutcome {
 
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "desired_outcome_id")
+    @Column(name = "outcome_id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "coaching_form_id", referencedColumnName = "coaching_form_id")
-    private CoachingForm coachingForm;
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "form_id", referencedColumnName = "form_id", columnDefinition = "BIGINT NOT NULL")
+    private CoachingForm form;
 
-    @Column(name = "desired_outcome", columnDefinition = "VARCHAR(255)")
+    @Column(name = "desired_outcome", columnDefinition = "VARCHAR (255) NOT NULL")
     private String desiredOutcome;
+
 }
