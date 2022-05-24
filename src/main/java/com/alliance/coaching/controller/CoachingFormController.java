@@ -1,16 +1,18 @@
 package com.alliance.coaching.controller;
 
 import com.alliance.coaching.entity.CoachingForm;
-import com.alliance.coaching.entity.DesiredOutcome;
 import com.alliance.coaching.service.CoachingFormService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.Arrays;
+import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Rieugene Basilisco (generieu17@gmail.com)
@@ -37,7 +39,9 @@ public class CoachingFormController {
 
     // TODO: 5/19/2022 create new form
     @PostMapping("/add-form")
-    public ModelAndView createForm(@ModelAttribute CoachingForm coachingForm) {
+    public ModelAndView createForm(@ModelAttribute CoachingForm coachingForm,
+                                   @RequestParam("file")MultipartFile file) throws IOException {
+        coachingFormService.create(coachingForm, file);
         return new ModelAndView(new RedirectView("/c/coach-home"));
     }
 

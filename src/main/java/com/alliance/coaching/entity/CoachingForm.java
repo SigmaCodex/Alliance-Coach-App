@@ -40,7 +40,26 @@ public class CoachingForm {
     @Column(name = "topic_area", columnDefinition = "VARCHAR (255) NOT NULL")
     private String topicArea;
 
+    @Column(name = "desired_outcome", columnDefinition = "VARCHAR (255) NOT NULL")
+    private String desiredOutcome;
+
+    @Column(name = "benefit", columnDefinition = "VARCHAR (255) NOT NULL")
+    private String benefit;
+
+    @Column(name = "timeline", columnDefinition = "VARCHAR (255) NOT NULL")
+    private String timeline;
+
+    @Column(name = "attached_file", columnDefinition = "VARCHAR (255) NOT NULL")
+    private String attachedFile;
+
     @Column(name = "created_at", columnDefinition = "DATE NOT NULL")
     private String createdAt;
+
+    @Transient
+    public String getAttachedFile() {
+        if (attachedFile == null)
+            return null;
+        return "/form-file/" + id + "/" + attachedFile;
+    }
 
 }
