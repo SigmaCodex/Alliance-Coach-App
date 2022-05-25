@@ -37,7 +37,7 @@ public class ActionService {
         for (Action action : actionRepo.findAllByFormId(id)) {
             progress += action.getStatus();
         }
-        return progress;
+        return progress / actionRepo.findAllByFormId(id).size();
     }
 
     // TODO: 5/26/2022 delete action using id 
