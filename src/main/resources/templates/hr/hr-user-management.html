@@ -96,7 +96,7 @@
   </div>
 
   <!-- ACCOUNT MODAL -->
-  <form action="" method="post" class="account-detail">
+  <form th:action="@{/c/update-employee/} + ${session.employee.id}" method="post" class="account-detail">
     <!-- OVERLAY -->
     <div data-w-id="c8296746-2933-484d-b09e-eaef5fce46a4" class="modal-overlay"></div>
 
@@ -120,7 +120,7 @@
           <div class="flex-v">
             <div class="text-field-label"><strong>First name:</strong></div>
             <div class="input-textfield w100 w-embed">
-              <input type="text" th:name="firstName" class="text-field w100" placeholder="First Name" required>
+              <input type="text" th:name="firstName" th:value="${session.employee.firstName}" class="text-field w100" placeholder="First Name" required>
             </div>
           </div>
         </div>
@@ -130,7 +130,7 @@
           <div class="flex-v">
             <div class="text-field-label"><strong>Last name:</strong></div>
             <div class="input-textfield w-embed">
-              <input type="text" th:name="lastName" class="text-field w100" placeholder="Last Name" required>
+              <input type="text" th:name="lastName" th:value="${session.employee.lastName}" class="text-field w100" placeholder="Last Name" required>
             </div>
           </div>
         </div>
@@ -142,7 +142,7 @@
           <div class="flex-v">
             <div class="text-field-label"><strong>Contact number:</strong></div>
             <div class="input-textfield w100 w-embed">
-              <input type="number" th:name="contactNo" class="text-field w100" placeholder="Contact number" required="">
+              <input type="number" th:name="contactNo" th:value="${session.employee.contactNo}" class="text-field w100" placeholder="Contact number" required="">
             </div>
           </div>
         </div>
@@ -151,7 +151,7 @@
         <div class="weight-50">
           <div class="flex-v">
             <div class="text-field-label"><strong>Email:</strong></div>
-            <div class="input-textfield w-embed"><input type="email" th:name="username" class="text-field w100" placeholder="Email" required=""></div>
+            <div class="input-textfield w-embed"><input type="email" th:name="email" th:value="${session.employee.email}" class="text-field w100" placeholder="Email" required=""></div>
           </div>
         </div>
       </div>
@@ -213,7 +213,7 @@
               <!-- SEARCH INPUT -->
               <div class="content-vcenter">
                 <div class="mr-0-5 w-embed">
-                  <input type="search" name="search" class="text-field" placeholder="search here...">
+                  <input type="search" name="search" id="search_user" class="text-field" placeholder="search here...">
                 </div>
                 <a href="#" class="primary-button w-button"><span class="fa-text"></span>  SEARCH</a>
               </div>
@@ -221,7 +221,7 @@
               <div class="p-0-5 mob-my-0-25"></div>
 
               <!-- SORT SELECT -->
-              <div class="content-vcenter mob-mb-0-5">
+              <!-- <div class="content-vcenter mob-mb-0-5">
                 <div class="mr-0-5">Sort by:</div>
                 <div class="w-embed">
                   <select name="search" class="text-field">
@@ -233,7 +233,7 @@
                     <option>Email</option>
                   </select>
                 </div>
-              </div>
+              </div> -->
             </div>
 
             <!-- RIGHT CONTENT -->
@@ -269,7 +269,7 @@
           <!-- USER INFO -->
           <div class="user-card card" th:each="employee : ${employees}" th:if="${employee.id != session.employee.id} AND ${employee.rolePosition != 'Super Admin'}">
             <!-- USER DETAILS -->
-            <div class="flex-v">
+            <div class="flex-v card-body">
               <!-- POSITION EMP TYPE -->
               <div class="position" th:text="${employee.rolePosition}"></div>
 
@@ -583,5 +583,25 @@
   ></script>
   <script th:src="@{/assets/js/webflow.js}" src="../../static/assets/js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <script>
+  //  search_coachform
+          //for to find uppercase letter
+          jQuery.expr[':'].contains = function(a, i, m) {
+            return jQuery(a).text().toUpperCase()
+                .indexOf(m[3].toUpperCase()) >= 0;
+          };
+
+          $('#search_user').keyup(function (){
+     
+            var filter = $(this).val(); // get the value of the input, which we filter on
+            $('.user-card').show();
+            $('.user-card').find('.card-body:not(:contains("'+filter+'"))').parent().hide();
+          
+        })      
+
+  </script>
 </body>
 </html>
