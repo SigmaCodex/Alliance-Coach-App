@@ -211,7 +211,7 @@
               <!-- SEARCH INPUT -->
               <div class="content-vcenter">
                 <div class="mr-0-5 w-embed">
-                  <input type="search" name="search" class="text-field" placeholder="search here...">
+                  <input type="search" name="search" id="search_coachform" class="text-field" placeholder="search here...">
                 </div>
                 <a href="#" class="primary-button w-button"><span class="fa-text"></span>  SEARCH</a>
               </div>
@@ -268,7 +268,7 @@
           <div class="user-card card" th:each="form : ${forms}" th:if="${form.supervisor.id} == ${session.employee.id}">
 
             <!-- FORM DETAILS -->
-            <div class="flex-v mobp-w60">
+            <div class="flex-v mobp-w60 card-body">
               <div class="flex-h">
                 <div class="flex-v">
                   <!-- TOPIC AREA ID -->
@@ -341,5 +341,26 @@
   ></script>
   <script th:src="@{/assets/js/webflow.js}" src="../../static/assets/js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <script>
+  //  search_coachform
+          //for to find uppercase letter
+          jQuery.expr[':'].contains = function(a, i, m) {
+            return jQuery(a).text().toUpperCase()
+                .indexOf(m[3].toUpperCase()) >= 0;
+          };
+
+          $('#search_coachform').keyup(function (){
+     
+            var filter = $(this).val(); // get the value of the input, which we filter on
+            $('.user-card').show();
+            $('.user-card').find('.card-body:not(:contains("'+filter+'"))').parent().hide();
+          
+        })      
+
+  </script>
+
 </body>
 </html>
