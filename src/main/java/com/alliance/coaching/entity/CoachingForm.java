@@ -7,6 +7,10 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * @author Rieugene Basilisco (generieu17@gmail.com)
@@ -60,6 +64,11 @@ public class CoachingForm {
         if (attachedFile == null)
             return null;
         return "/form-file/" + id + "/" + attachedFile;
+    }
+
+    @Transient
+    public Date getFormattedCreatedAt() throws ParseException {
+        return new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(createdAt);
     }
 
 }

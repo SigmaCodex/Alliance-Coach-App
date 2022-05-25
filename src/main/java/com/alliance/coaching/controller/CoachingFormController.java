@@ -1,5 +1,6 @@
 package com.alliance.coaching.controller;
 
+import com.alliance.coaching.entity.Action;
 import com.alliance.coaching.entity.CoachingForm;
 import com.alliance.coaching.service.CoachingFormService;
 import lombok.RequiredArgsConstructor;
@@ -40,15 +41,16 @@ public class CoachingFormController {
     // TODO: 5/19/2022 create new form
     @PostMapping("/add-form")
     public ModelAndView createForm(@ModelAttribute CoachingForm coachingForm,
+                                   @RequestParam String action,
                                    @RequestParam("file")MultipartFile file) throws IOException {
-        coachingFormService.create(coachingForm, file);
+        coachingFormService.create(coachingForm, action, file);
         return new ModelAndView(new RedirectView("/c/coach-home"));
     }
 
     // TODO: 5/20/2022 redirect to page for creating form
     @GetMapping("/form")
-    public ModelAndView formView() {
-        return new ModelAndView("coach/coach-create-employee-coaching-form");
+    public String formView() {
+        return "coach/coach-create-employee-coaching-form";
     }
 
     // TODO: 5/19/2022 view selected form
@@ -59,6 +61,13 @@ public class CoachingFormController {
         modelAndView.addObject("form", coachingForm);
         modelAndView.setViewName("coach/coach-view-employee-form");
         return modelAndView;
+    }
+
+    // TODO: 5/25/2022 delete selected form
+    @GetMapping("/delete-form/{id}")
+    public String deleteForm(@PathVariable("id") Long id) {
+        coachingFormService.delete(id);
+        return "redirect:/c/coach-home";
     }
 
 }

@@ -269,7 +269,7 @@
         <!-- USER OUTPUT CONTENT !!! LOOP HERE !!! -->
         <div class="grid-list">
           <!-- USER INFO -->
-          <div class="user-card card" th:each="employee : ${employees}" th:if="${employee.id} != ${session.employee.id}">
+          <div class="user-card card" th:each="employee : ${employees}" th:if="${employee.id != session.employee.id} AND ${employee.rolePosition != 'Super Admin'}">
             <!-- USER DETAILS -->
             <div class="flex-v">
               <!-- POSITION EMP TYPE -->

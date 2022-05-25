@@ -265,28 +265,28 @@
         <!-- FORM OUTPUT CONTENT !!! LOOP HERE !!! -->
         <div class="grid-list">
           <!-- FORM INFO -->
-          <div class="user-card card">
+          <div class="user-card card" th:each="form : ${forms}" th:if="${form.supervisor.id} == ${session.employee.id}">
 
             <!-- FORM DETAILS -->
             <div class="flex-v mobp-w60">
               <div class="flex-h">
                 <div class="flex-v">
                   <!-- TOPIC AREA ID -->
-                  <div class="username">topic_area (id)</div>
+                  <div class="username" th:text="${form.topicArea}"></div>
                   <!-- COACH -->
-                  <div class="position">Coach</div>
+                  <div class="position" th:text="${form.rolePosition}"></div>
                 </div>
               </div>
               <!-- TRAINEE -->
-              <div class="position">Trainee</div>
+              <div class="position" th:text="${form.teamMember}"></div>
               <!-- CREATED DATE -->
-              <div class="position">Created_at</div>
+              <div class="position" th:text="${#dates.format(form.getFormattedCreatedAt(), 'MMM dd, yyyy')}"></div>
             </div>
 
             <!-- ACTION BUTTONS -->
             <div class="flex-v">
               <!-- UPDATE BUTTON -->
-              <a data-w-id="964ab908-8291-0638-7797-493f54e02707" href="#" class="user-btn primary-button mb-0-5 w-button">UPDATE  <span class="fa-text"></span></a>
+              <a data-w-id="964ab908-8291-0638-7797-493f54e02707" th:href="@{/c/view-form/} + ${form.id}" class="user-btn primary-button mb-0-5 w-button">UPDATE  <span class="fa-text"></span></a>
               
               <!-- DELETE BUTTON -->
               <a data-w-id="964ab908-8291-0638-7797-493f54e02754" href="#" class="user-btn delete-button w-button">DELETE  <span class="fa-text"></span></a>
@@ -298,10 +298,10 @@
                   <div>
                     <div class="modal-icon"><span class="fa-text delete"></span></div>
                     <div class="modal-title">Delete Confirmation...</div>
-                    <p class="modal-body">Are you deleting <strong>[TOPIC AREA (ID)]</strong>?</p>
+                    <p class="modal-body">Are you deleting <strong th:text="${form.topicArea} + '(' + ${form.id} + ')'">[TOPIC AREA (ID)]</strong>?</p>
                   </div>
                   <div class="flex-h justify-center">
-                    <a href="#" class="user-btn delete-button modal w-button">CONFIRM</a>
+                    <a th:href="@{/c/delete-form/} + ${form.id}" class="user-btn delete-button modal w-button">CONFIRM</a>
                   </div>
                   <div data-w-id="964ab908-8291-0638-7797-493f54e02766" class="fa-text modal-close"></div>
                 </div>
