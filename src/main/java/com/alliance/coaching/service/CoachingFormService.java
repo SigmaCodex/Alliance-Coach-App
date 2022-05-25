@@ -4,6 +4,7 @@ import com.alliance.coaching.entity.Action;
 import com.alliance.coaching.entity.CoachingForm;
 import com.alliance.coaching.repository.ActionRepo;
 import com.alliance.coaching.repository.CoachingFormRepo;
+import com.alliance.coaching.util.Email;
 import com.alliance.coaching.util.FileUpload;
 import org.apache.commons.io.FilenameUtils;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,7 @@ public class CoachingFormService {
 
     private final CoachingFormRepo coachingFormRepo;
     private final ActionRepo actionRepo;
+    private final Email email;
 
     // TODO: 5/19/2022 create new form
     public void create(CoachingForm coachingForm, String action, MultipartFile file) throws IOException {
@@ -43,6 +45,15 @@ public class CoachingFormService {
         // TODO: 5/25/2022 save action plans delimited by new line
         String[] actions = action.split("\\R");
         createActionPlan(id, actions);
+        // TODO: 5/25/2022 send email / notify HR
+        email.setSender(coachingForm.getSupervisor().getFirstName() + " " + coachingForm.getSupervisor().getLastName());
+        email.setSenderEmail(coachingForm.getSupervisor().getEmail());
+        email.setSenderContact(coachingForm.getSupervisor().getContactNo());
+        email.setFile(file);
+        email.setFileName(fileName);
+        // TODO: 5/25/2022 by default hackmetry01@gmail.com will be the only HR to be notified for now
+        email.setTo("hackmetry01@gmail.com");
+        email.sendNewForm();
     }
 
     // TODO: 5/25/2022 save action plan

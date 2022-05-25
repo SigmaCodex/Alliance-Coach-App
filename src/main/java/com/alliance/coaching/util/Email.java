@@ -1,13 +1,16 @@
 package com.alliance.coaching.util;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -25,6 +28,8 @@ public class Email {
     private String sender = "";
     private String senderEmail = "";
     private String senderContact = "";
+    private MultipartFile file = null;
+    private String fileName = "";
 
     public void setTo(String to) {
         this.to = to;
@@ -42,6 +47,14 @@ public class Email {
         this.senderContact = senderContact;
     }
 
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
     public void sendNewForm() {
         try {
             MimeMessage mimeMessage = mailSender.createMimeMessage();
@@ -52,11 +65,12 @@ public class Email {
             helper.setText("" +
                     "<html>" +
                     "<body>" +
-                    "<h3>Attached below is a new form created by " + sender + ".</h3>" +
-                    "<h3>If you have any clarifications, you may contact them thru " + senderEmail + " or " + senderContact + ".</h3>" +
+                    "<h4>Attached below is a new form created by </h4><h3>" + sender + "</h3>." +
+                    "<h4>If you have any clarifications, you may contact them thru </h4><h3>" + senderEmail + "</h3> or <h3>" + senderContact + "</h3>." +
                     "</body>" +
                     "</html>" +
                     "", true);
+            helper.addAttachment(fileName, file);
             mailSender.send(mimeMessage);
         } catch (MessagingException | IOException e) {
             e.printStackTrace();
@@ -73,11 +87,12 @@ public class Email {
             helper.setText("" +
                     "<html>" +
                     "<body>" +
-                    "<h3>Attached below is an updated form created by " + sender + ".</h3>" +
-                    "<h3>If you have any clarifications, you may contact them thru " + senderEmail + " or " + senderContact + ".</h3>" +
+                    "<h4>Attached below is the updated form created by </h4><h3>" + sender + "</h3>." +
+                    "<h4>If you have any clarifications, you may contact them thru </h4><h3>" + senderEmail + "</h3> or <h3>" + senderContact + "</h3>." +
                     "</body>" +
                     "</html>" +
                     "", true);
+            helper.addAttachment(fileName, file);
             mailSender.send(mimeMessage);
         } catch (MessagingException | IOException e) {
             e.printStackTrace();
