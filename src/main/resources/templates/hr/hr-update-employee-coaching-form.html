@@ -210,17 +210,20 @@
           <div class="flex-v stick-top">
             <h2 class="h1 ccf">Udapte Coaching Form</h2>
             <div class="all-content tab-hidden">
-              <a href="#team-member" class="content-link w-inline-block">
+              <a href="#team-member" class="content-link  w-inline-block">
                 <div>Team Member</div>
               </a>
-              <a href="#sumamry-evidence" class="content-link w-inline-block">
-                <div>Summary &amp; Evidence</div>
+              <a href="#summary" class="content-link  w-inline-block">
+                <div>Summary</div>
               </a>
-              <a href="#action" class="content-link w-inline-block">
+              <a href="#action" class="content-link  w-inline-block">
                 <div>Actions</div>
               </a>
-              <a href="#timeline" class="content-link w-inline-block">
+              <a href="#timeline" class="content-link  w-inline-block">
                 <div>Timeline</div>
+              </a>
+              <a href="#evidence" class="content-link  w-inline-block">
+                <div>Evidence</div>
               </a>
             </div>
           </div>
@@ -239,7 +242,7 @@
                       <!-- TEAM MEMBER NAME INPUT -->
                       <div class="text-field-label"><strong>Team Member Name:</strong></div>
                       <div class="input-textfield w-embed">
-                        <input type="text" name="TeamMemberName" class="text-field w100" placeholder="Team Member Name">
+                        <input type="text" name="TeamMemberName" class="text-field w100" placeholder="Team Member Name" value="Daniel Gabriel Moratin" required>
                       </div>
                     </div>
                   </div>
@@ -249,7 +252,7 @@
                       <!-- DATE INPUT -->
                       <div class="text-field-label"><strong>Date:</strong></div>
                       <div class="input-textfield w-embed">
-                        <input type="date" name="date" class="text-field w100">
+                        <input type="date" name="date" class="text-field w100" value="2022-05-25" required>
                       </div>
                     </div>
                   </div>
@@ -259,7 +262,9 @@
                     <div class="flex-v mb-1">
                       <!-- ROLE / POSITION INPUT -->
                       <div class="text-field-label"><strong>Role / Position:</strong></div>
-                      <div class="input-textfield w-embed"><input type="text" name="rolePosition" class="text-field w100" placeholder="Role / Position"></div>
+                      <div class="input-textfield w-embed">
+                        <input type="text" name="rolePosition" class="text-field w100" placeholder="Role / Position" value="Software Engineer" required>
+                      </div>
                     </div>
                   </div>
                   <div class="px-1"></div>
@@ -267,7 +272,9 @@
                     <div class="flex-v">
                       <!-- SUPERVISE / MANAGER INPUT -->
                       <div class="text-field-label"><strong>Supervisor/Manager:</strong></div>
-                      <div class="input-textfield w-embed"><input type="text" name="supervisorManager" class="text-field w100" placeholder="Supervisor/Manager"></div>
+                      <div class="input-textfield w-embed">
+                        <input type="text" name="supervisorManager" class="text-field w100" placeholder="Supervisor/Manager" value="Rieugene Basilisco" required>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -275,7 +282,7 @@
             </div>
 
             <!-- SUMMARY AND EVIDENCE -->
-            <div id="sumamry-evidence" class="content-topic pb-0">
+            <div id="summary" class="content-topic pb-0">
               <h2 class="h2 cf">Summary &amp; Evidence  <span class="fa-text cf-icon"></span></h2>
               <div class="flex-v mb-1">
                 <!-- COACHING TOPIC / AREA -->
@@ -287,6 +294,7 @@
                     class="text-field w100" 
                     placeholder="Coaching Topic / Area" 
                     style="resize: none;"
+                    required
                   ></textarea>
                 </div>
               </div>
@@ -294,117 +302,32 @@
               <!-- DESIRED OUTCOME -->
               <div class="flex-v mb-1">
                 <div class="text-field-label"><strong>Desired Outcome (List desired behaviors, knowledge, skills, etc)</strong></div>
-                <div class="content-vcenter mb-0-5">
-                  <!-- OUTCOME INPUT -->
-                  <div class="input-textfield w-embed">
-                    <input type="text" id="outcomeInput" name="outcome" class="text-field w100" placeholder="Outcome">
-                  </div>
-                  <!-- ADD BUTTON -->
-                  <a href="#" id="addDesiredOutcome" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></a>
+                <div class="input-textfield w-embed">
+                  <textarea  
+                    rows="8" 
+                    name="coachingDesiredOutcome" 
+                    class="text-field w100" 
+                    placeholder="List desired behaviors, knowledge, skills, etc." 
+                    style="resize: none;"
+                    required
+                  ></textarea>
                 </div>
-                <!-- OUTCOME DISPLAY -->
-                <ul id="desired-outcome-list" role="list" class="mb-0 pl-1">
-                  
-                  <!-- OUTPUT -->
-                  <li>
-                    <div id="row" class="flex-h align-top">
-                      <div class="list-item">
-                        <p class="text-field-label">Lorem ipsum dolor sit amet, consectetur adipiscing eli</p>
-                        <textarea th:name="[]outcomes" class="text-field w100 hidden" rows="4" style="resize: none;">Lorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eli</textarea>
-                      </div>
-                      
-                      <!-- EDIT BUTTON -->
-                      <div class="edit-row">
-                        <div><span class="fa-text"></span></div>
-                      </div>
-
-                      <!-- REMOVE BUTTON -->
-                      <div class="remove-row">
-                        <div><span class="fa-text"></span></div>
-                      </div>
-
-                      <!-- UPDATE ACTIONS -->
-                      <div id="update-actions" class="content-center">
-
-                        <!-- UPDATE BUTTON -->
-                        <div class="update-row">
-                          <div class="primary-button w-button">SAVE</div>
-                        </div>
-                        <!-- CANCEL UPDATE BUTTON -->
-                        <div class="cancel-update-row">
-                          <div>CANCEL</div>
-                        </div>
-
-                      </div>
-
-                    </div>
-                  </li>
-
-                </ul>
               </div>
 
               <!-- BENEFITS OF CHANGE -->
               <div class="flex-v">
                 <div class="text-field-label"><strong>Benefits of Change (How will employee actions or performance be positively impacted?)</strong></div>
-                <div class="content-vcenter mb-0-5">
-                  <!-- INPUT -->
-                  <div class="input-textfield w-embed">
-                    <input type="text" id="benefitInput" name="benifits" class="text-field w100" placeholder="Benefit">
-                  </div>
-                  <!-- ADD BUTTON -->
-                  <a href="#" id="addBenefitsOfChange" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></a>
+                <div class="input-textfield w-embed">
+                  <textarea  
+                    rows="8" 
+                    name="coachingBenefitsOfChange" 
+                    class="text-field w100" 
+                    placeholder="How will employee actions or performance be positively impacted?" 
+                    style="resize: none;"
+                    required
+                  ></textarea>
                 </div>
-                <!-- BENEFITS DISPLAY -->
-                <ul id="benefits-of-change-list" role="list" class="mb-0 pl-1">
-                  
-                  <!-- OUTPUT -->
-                  <li>
-                    <div id="row" class="flex-h align-top">
-                      <div class="list-item">
-                        <p class="text-field-label">Lorem ipsum dolor sit amet, consectetur adipiscing eli</p>
-                        <textarea th:name="[]benefits" class="text-field w100 hidden" rows="4" style="resize: none;">Lorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eli</textarea>
-                      </div>
-                      
-                      <!-- EDIT BUTTON -->
-                      <div class="edit-row">
-                        <div><span class="fa-text"></span></div>
-                      </div>
-
-                      <!-- REMOVE BUTTON -->
-                      <div class="remove-row">
-                        <div><span class="fa-text"></span></div>
-                      </div>
-
-                      <!-- UPDATE ACTIONS -->
-                      <div id="update-actions" class="content-center">
-
-                        <!-- UPDATE BUTTON -->
-                        <div class="update-row">
-                          <div class="primary-button w-button">SAVE</div>
-                        </div>
-                        <!-- CANCEL UPDATE BUTTON -->
-                        <div class="cancel-update-row">
-                          <div>CANCEL</div>
-                        </div>
-
-                      </div>
-
-                    </div>
-                  </li>
-
-                </ul>
               </div>
-
-              <!-- ATTACHMENTS INPUT -->
-              <!-- <div class="flex-v">
-                <div class="content-vcenter mob-port-flex-v">
-                  <div class="text-field-label mr-1 mob-mb-0-5"><strong>Attachments</strong></div>
-                  <div class="w-embed">
-                    <input type="file" name="evidence">
-                  </div>
-                </div>
-              </div> -->
-
             </div>
 
             
@@ -419,47 +342,24 @@
                     <input type="text" id="actionInput"  name="actionPlan" class="text-field w100" placeholder="Action">
                   </div>
                   <!-- ADD BUTTON -->
-                  <a href="#" id="addActionPlan" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></a>
+                  <a href="#" id="addActionPlan" class="primary-button add-btn-cf w-button mr-1"><span class="fa-text">+</span></a>
+                  <!-- DELETE BUTTON -->
+                  <a href="#" id="removeActionPlans" class="user-btn delete-button w-button"><span class="fa-text"></span></a>
                 </div>
                 <!-- ACTION PLAN DISPLAY -->
                 <ul id="action-plan-list" role="list" class="ol mb-0 pl-1">
 
                   <!-- OUTPUT -->
-                  <li>
-                    <div id="row" class="flex-h align-top">
-                      <div class="list-item">
-                        <p class="text-field-label">Lorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eli</p>
-                        <textarea th:name="[]actions" class="text-field w100 hidden" rows="4" style="resize: none;">Lorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eli</textarea>
-                      </div>
-
-                      <!-- EDIT BUTTON -->
-                      <div class="edit-row">
-                        <div><span class="fa-text"></span></div>
-                      </div>
-
-                      <!-- REMOVE BUTTON -->
-                      <div class="remove-row">
-                        <div><span class="fa-text"></span></div>
-                      </div>
-
-                      <!-- UPDATE ACTIONS -->
-                      <div id="update-actions" class="content-center">
-
-                        <!-- UPDATE BUTTON -->
-                        <div class="update-row">
-                          <div class="primary-button w-button">SAVE</div>
-                        </div>
-                        <!-- CANCEL UPDATE BUTTON -->
-                        <div class="cancel-update-row">
-                          <div>CANCEL</div>
-                        </div>
-
-                      </div>
-
-                    </div>
-                  </li>
 
                 </ul>
+                <textarea  
+                    id="coachingActionPlans"
+                    name="coachingActionPlan" 
+                    class="text-field w100 hidden" 
+                    placeholder="Action plan" 
+                    style="resize: none;"
+                    required
+                  ></textarea>
               </div>
             </div>
 
@@ -468,55 +368,33 @@
               <h2 class="h2 cf">Timeline  <span class="fa-text cf-icon"></span></h2>
               <div class="flex-v">
                 <div class="text-field-label"><strong>Timeline (Write out a timeline for the plan and when to follow up)</strong></div>
-                <div class="content-vcenter mb-0-5">
-                  <!-- TIMELINE INPUT -->
-                  <div class="input-textfield w-embed">
-                    <input type="text" id="timelineInput" name="timeline" class="text-field w100" placeholder="Plan">
-                  </div>
-                  <!-- ADD BUTTON -->
-                  <a href="#" id="addTimeline" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></a>
+                <div class="input-textfield w-embed">
+                  <textarea  
+                    rows="8" 
+                    name="coachingTimeline" 
+                    class="text-field w100" 
+                    placeholder="Write out a timeline for the plan and when to follow up" 
+                    style="resize: none;"
+                    required
+                  ></textarea>
                 </div>
-                <!-- TIMELINE DISPLAY -->
-                <ul id="timeline-list" role="list" class="mb-0 pl-1">
-                  
-                  <!-- OUTPUT -->
-                  <li>
-                    <div id="row" class="flex-h align-top">
+              </div>
+            </div>
 
-                      <div class="list-item flex-v">
-                        <p class="text-field-label">Lorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eli</p>
-                        <textarea th:name="[]timelines" class="text-field w100 hidden" rows="4" style="resize: none;">Lorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eliLorem ipsum dolor sit amet, consectetur adipiscing eli</textarea>
-                      </div>
+            <!-- EVIDENCE -->
+            <div id="evidence" data-w-id="c0a6a371-4c36-094b-be6f-8be320ddb754" class="content-topic pb-0">
+              <h2 class="h2 cf">Evidence <span class="fa-text cf-icon"></span></h2>
+              <!-- ATTACHMENTS INPUT -->
+              <div class="content-hbetween">
+                <div class="content-vcenter mob-port-flex-v">
+                  <div class="text-field-label mr-1 mob-mb-0-5"><strong>Attachments</strong></div>
 
-                      <!-- EDIT BUTTON -->
-                      <div class="edit-row">
-                        <div><span class="fa-text"></span></div>
-                      </div>
-
-                      <!-- REMOVE BUTTON -->
-                      <div class="remove-row">
-                        <div><span class="fa-text"></span></div>
-                      </div>
-
-                      <!-- UPDATE ACTIONS -->
-                      <div id="update-actions" class="content-center">
-
-                        <!-- UPDATE BUTTON -->
-                        <div class="update-row">
-                          <div class="primary-button w-button">SAVE</div>
-                        </div>
-                        <!-- CANCEL UPDATE BUTTON -->
-                        <div class="cancel-update-row">
-                          <div>CANCEL</div>
-                        </div>
-
-                      </div>
-
-                    </div>
-                  </li>
-                  <!-- END OF OUTPUT -->
-
-                </ul>
+                  <div class="w-embed">
+                    <input type="file" name="evidence" required>
+                  </div>
+                </div>
+                
+                <a href="#" id="print" class="primary-button add-btn-cf w-button mr-1">PRINT FORM</a>
               </div>
             </div>
 
@@ -524,7 +402,7 @@
             <div class="content-topic">
               <div class="content-center">
                 <div class="content-vcenter">
-                  <button type="submit" class="primary-button w-button">UPDATE</button>
+                  <button type="submit" class="primary-button w-button">CREATE FORM</button>
                 </div>
               </div>
             </div>
