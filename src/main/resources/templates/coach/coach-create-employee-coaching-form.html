@@ -13,6 +13,8 @@
   <link th:href="@{/assets/css/webflow.css}" href="../../static/assets/css/webflow.css" rel="stylesheet" type="text/css">
   <link th:href="@{/assets/css/coaching-application-alliance.webflow.css}" href="../../static/assets/css/coaching-application-alliance.webflow.css" rel="stylesheet" type="text/css">
   <link rel="icon" th:href="@{/assets/svg/logo.svg}" href="../../static/assets/svg/logo.svg">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.1/html2pdf.bundle.min.js" integrity="sha512-1qLXyA3x0VSWeM+8vOotn6+KIRGdcQ8QMzsNeDXmdJsUAnoDGjzlxzqAuUGJGrGkGrtOrq4buDoAHxR89D9PWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
   <!-- SCRIPT -->
   <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
@@ -21,7 +23,54 @@
       var n=c.documentElement, t=" w-mod-";
       n.className+=t+"js", ("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")
     }(window,document);
+
+    // PRINT
+    function saveForm(){
+      // var defaultBody = document.body.innerHTML;
+      // var coachForm = $('#ecform').html();
+      // document.body.innerHTML = coachForm;
+      // window.print();
+      // document.body.innerHTML = defaultBody;
+      console.log('here')
+      const form = document.getElementById('ecform');
+      var opt = {
+        margin:       1,
+        filename:     'myfile.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 3 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(form).save();
+    }
+
+    // ACTION PLAN
+    function addActionPlan(){
+      if($('#actionInput').val() != ''){
+        var liList = $('<li>'+ $('#actionInput').val() +'</li>')
+        $('#coachingActionPlans').append($('#actionInput').val() + '&#13;&#10')
+        $('#action-plan-list').append(liList)
+        $('#actionInput').val('')
+      }
+    }
+
+    // REMOVE ROW BUTTON EVENT
+    function removeActionPlans(){
+      $('#action-plan-list').html('')
+      $('#coachingActionPlans').html('')
+    }
+
   </script>
+
+  <style>
+    @media print {
+      .not-printable {
+        display: none;
+      }
+      #ecform {
+        margin: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- NAVIGATION BAR -->
@@ -226,7 +275,7 @@
 
         <div class="weight-70">
           <!-- FORM -->
-          <form class="coaching-form" th:action="@{/c/add-form}" method="post" enctype="multipart/form-data">
+          <form class="coaching-form" id="ecform" th:action="@{/c/add-form}" method="post" enctype="multipart/form-data">
             <!-- TEAM MEMBER INFO -->
             <div id="team-member" class="content-topic pb-0">
               <h2 class="h2 cf">Team Member  <span class="fa-text cf-icon"></span></h2>
@@ -289,7 +338,6 @@
                     th:name="topicArea"
                     class="text-field w100" 
                     placeholder="Coaching Topic / Area" 
-                    style="resize: none;"
                     required
                   ></textarea>
                 </div>
@@ -319,7 +367,6 @@
                     th:name="benefit"
                     class="text-field w100" 
                     placeholder="How will employee actions or performance be positively impacted?" 
-                    style="resize: none;"
                     required
                   ></textarea>
                 </div>
@@ -332,15 +379,15 @@
               <h2 class="h2 cf">Actions  <span class="fa-text cf-icon"></span></h2>
               <div class="flex-v">
                 <div class="text-field-label"><strong>Action Plan (What actions can be taken to achieve these goals?)</strong></div>
-                <div class="content-vcenter mb-0-5">
+                <div class="content-vcenter mb-0-5 not-printable" data-html2canvas-ignore="true">
                   <!-- ACTION PLAN INPUT -->
                   <div class="input-textfield w-embed">
                     <input type="text" id="actionInput"  name="actionPlan" class="text-field w100" placeholder="Action">
                   </div>
                   <!-- ADD BUTTON -->
-                  <a href="#" id="addActionPlan" class="primary-button add-btn-cf w-button mr-1"><span class="fa-text">+</span></a>
+                  <a href="#" id="addActionPlan" class="primary-button add-btn-cf w-button mr-1" onclick="addActionPlan()"><span class="fa-text">+</span></a>
                   <!-- DELETE BUTTON -->
-                  <a href="#" id="removeActionPlans" class="user-btn delete-button w-button"><span class="fa-text"></span></a>
+                  <a href="#" id="removeActionPlans" class="user-btn delete-button w-button" onclick="removeActionPlans()"><span class="fa-text"></span></a>
                 </div>
                 <!-- ACTION PLAN DISPLAY -->
                 <ul id="action-plan-list" role="list" class="ol mb-0 pl-1">
@@ -353,7 +400,6 @@
                     th:name="action"
                     class="text-field w100 hidden" 
                     placeholder="Action plan" 
-                    style="resize: none;"
                     required
                   ></textarea>
               </div>
@@ -370,7 +416,6 @@
                     th:name="timeline"
                     class="text-field w100" 
                     placeholder="Write out a timeline for the plan and when to follow up" 
-                    style="resize: none;"
                     required
                   ></textarea>
                 </div>
@@ -378,7 +423,7 @@
             </div>
 
             <!-- EVIDENCE -->
-            <div id="evidence" data-w-id="c0a6a371-4c36-094b-be6f-8be320ddb754" class="content-topic pb-0">
+            <div id="evidence" data-w-id="c0a6a371-4c36-094b-be6f-8be320ddb754" class="content-topic pb-0 not-printable" data-html2canvas-ignore="true">
               <h2 class="h2 cf">Evidence <span class="fa-text cf-icon"></span></h2>
               <!-- ATTACHMENTS INPUT -->
               <div class="content-hbetween">
@@ -390,12 +435,12 @@
                   </div>
                 </div>
                 
-                <a href="#" id="print" class="primary-button add-btn-cf w-button mr-1">PRINT FORM</a>
+                <button type="button" class="primary-button add-btn-cf w-button mr-1" onclick="saveForm()">PRINT FORM</button>
               </div>
             </div>
 
             <!-- CREATE BUTTON -->
-            <div class="content-topic">
+            <div class="content-topic not-printable" data-html2canvas-ignore="true">
               <div class="content-center">
                 <div class="content-vcenter">
                   <button type="submit" class="primary-button w-button">CREATE FORM</button>
@@ -446,25 +491,4 @@
   integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY="
   crossorigin="anonymous"></script>
 </body>
-<script>
-  $(document).ready(function(){
-    
-    // ACTION PLAN
-    $('#addActionPlan').click(function(){
-      if($('#actionInput').val() != ''){
-        var liList = $('<li>'+ $('#actionInput').val() +'</li>')
-        $('#coachingActionPlans').append($('#actionInput').val() + '&#13;&#10')
-        $('#action-plan-list').append(liList)
-        $('#actionInput').val('')
-      }
-    })
-
-    // REMOVE ROW BUTTON EVENT
-    $('#removeActionPlans').click(function(){
-      $('#action-plan-list').html('')
-      $('#coachingActionPlans').html('')
-    })
-
-  })
-</script>
 </html>
