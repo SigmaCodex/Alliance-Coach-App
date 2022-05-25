@@ -94,7 +94,7 @@
   </div>
 
   <!-- ACCOUNT MODAL -->
-  <form action="" method="post" class="account-detail">
+  <form th:action="@{/c/update-coach/} + ${session.employee.id}" method="post" class="account-detail">
     <!-- OVERLAY -->
     <div data-w-id="c8296746-2933-484d-b09e-eaef5fce46a4" class="modal-overlay"></div>
 
@@ -118,7 +118,7 @@
           <div class="flex-v">
             <div class="text-field-label"><strong>First name:</strong></div>
             <div class="input-textfield w100 w-embed">
-              <input type="text" th:name="firstName" class="text-field w100" placeholder="First Name" required>
+              <input type="text" th:name="firstName" th:value="${session.employee.firstName}" class="text-field w100" placeholder="First Name" required>
             </div>
           </div>
         </div>
@@ -128,7 +128,7 @@
           <div class="flex-v">
             <div class="text-field-label"><strong>Last name:</strong></div>
             <div class="input-textfield w-embed">
-              <input type="text" th:name="lastName" class="text-field w100" placeholder="Last Name" required>
+              <input type="text" th:name="lastName" th:value="${session.employee.lastName}" class="text-field w100" placeholder="Last Name" required>
             </div>
           </div>
         </div>
@@ -140,7 +140,7 @@
           <div class="flex-v">
             <div class="text-field-label"><strong>Contact number:</strong></div>
             <div class="input-textfield w100 w-embed">
-              <input type="number" th:name="contactNo" class="text-field w100" placeholder="Contact number" required="">
+              <input type="number" th:name="contactNo" th:value="${session.employee.contactNo}" class="text-field w100" placeholder="Contact number" required="">
             </div>
           </div>
         </div>
@@ -149,7 +149,7 @@
         <div class="weight-50">
           <div class="flex-v">
             <div class="text-field-label"><strong>Email:</strong></div>
-            <div class="input-textfield w-embed"><input type="email" th:name="username" class="text-field w100" placeholder="Email" required=""></div>
+            <div class="input-textfield w-embed"><input type="email" th:name="email" th:value="${email}" class="text-field w100" placeholder="Email" required=""></div>
           </div>
         </div>
       </div>

@@ -4,6 +4,8 @@ import com.alliance.coaching.entity.Action;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author Rieugene Basilisco (generieu17@gmail.com)
  * @project Alliance-Coach-App
@@ -12,4 +14,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ActionRepo extends JpaRepository<Action, Long> {
+
+    List<Action> findAllByFormId(Long id);
+
 }

@@ -2,7 +2,10 @@ package com.alliance.coaching.controller;
 
 import com.alliance.coaching.entity.Action;
 import com.alliance.coaching.entity.CoachingForm;
+import com.alliance.coaching.entity.Employee;
+import com.alliance.coaching.service.ActionService;
 import com.alliance.coaching.service.CoachingFormService;
+import com.alliance.coaching.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -26,7 +29,9 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class CoachingFormController {
 
+    private final EmployeeService employeeService;
     private final CoachingFormService coachingFormService;
+    private final ActionService actionService;
 
     // TODO: 5/19/2022 view all forms associated with Coach on their home page
     @GetMapping("/coach-home")
@@ -58,7 +63,11 @@ public class CoachingFormController {
     public ModelAndView viewForm(@PathVariable("id") Long id) {
         ModelAndView modelAndView = new ModelAndView();
         CoachingForm coachingForm = coachingFormService.getById(id);
+        List<Action> actionList = actionService.getList(coachingForm.getId());
+        int currentProgress = actionService.currentProgress(coachingForm.getId());
         modelAndView.addObject("form", coachingForm);
+        modelAndView.addObject("actions", actionList);
+        modelAndView.addObject("currentProgress", currentProgress);
         modelAndView.setViewName("coach/coach-view-employee-form");
         return modelAndView;
     }
@@ -67,6 +76,13 @@ public class CoachingFormController {
     @GetMapping("/delete-form/{id}")
     public String deleteForm(@PathVariable("id") Long id) {
         coachingFormService.delete(id);
+        return "redirect:/c/coach-home";
+    }
+
+    // TODO: 5/26/2022 update coach information
+    @PostMapping("/update-coach/{id}")
+    public String updateCoach(@PathVariable("id") Long id, @ModelAttribute Employee employee) {
+        employeeService.update(id, employee);
         return "redirect:/c/coach-home";
     }
 

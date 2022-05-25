@@ -36,8 +36,8 @@
 
         <!-- NAV MENU ITEM -->
         <div class="content-vcenter tab-hidden">
-          <a th:href="@{/c/user-management}" class="navbar-link"><span class="fa-text nav-link"></span> User Management</a>
-          <a th:href="@{/c/form-management}" class="navbar-link"><span class="fa-text nav-link"></span> Employee Coaching Form</a>
+          <a href="#" class="navbar-link"><span class="fa-text nav-link"></span> User Management</a>
+          <a th:href="@{/c/coach-home}" class="navbar-link"><span class="fa-text nav-link"></span> Employee Coaching Form</a>
         </div>
 
         <!-- DROPDOWN ACCOUNT AND LOGOUT -->
@@ -96,7 +96,7 @@
   </div>
 
   <!-- ACCOUNT MODAL -->
-  <form action="" method="post" class="account-detail">
+  <form th:action="@{/c/update-coach/} + ${session.employee.id}" method="post" class="account-detail">
     <!-- OVERLAY -->
     <div data-w-id="c8296746-2933-484d-b09e-eaef5fce46a4" class="modal-overlay"></div>
 
@@ -120,7 +120,7 @@
           <div class="flex-v">
             <div class="text-field-label"><strong>First name:</strong></div>
             <div class="input-textfield w100 w-embed">
-              <input type="text" th:name="firstName" class="text-field w100" placeholder="First Name" required>
+              <input type="text" th:name="firstName" th:value="${session.employee.firstName}" class="text-field w100" placeholder="First Name" required>
             </div>
           </div>
         </div>
@@ -130,7 +130,7 @@
           <div class="flex-v">
             <div class="text-field-label"><strong>Last name:</strong></div>
             <div class="input-textfield w-embed">
-              <input type="text" th:name="lastName" class="text-field w100" placeholder="Last Name" required>
+              <input type="text" th:name="lastName" th:value="${session.employee.lastName}" class="text-field w100" placeholder="Last Name" required>
             </div>
           </div>
         </div>
@@ -142,7 +142,7 @@
           <div class="flex-v">
             <div class="text-field-label"><strong>Contact number:</strong></div>
             <div class="input-textfield w100 w-embed">
-              <input type="number" th:name="contactNo" class="text-field w100" placeholder="Contact number" required="">
+              <input type="number" th:name="contactNo" th:value="${session.employee.contactNo}" class="text-field w100" placeholder="Contact number" required="">
             </div>
           </div>
         </div>
@@ -151,7 +151,7 @@
         <div class="weight-50">
           <div class="flex-v">
             <div class="text-field-label"><strong>Email:</strong></div>
-            <div class="input-textfield w-embed"><input type="email" th:name="username" class="text-field w100" placeholder="Email" required=""></div>
+            <div class="input-textfield w-embed"><input type="email" th:name="email" th:value="${session.employee.email}" class="text-field w100" placeholder="Email" required=""></div>
           </div>
         </div>
       </div>
@@ -229,7 +229,7 @@
           <div>
             <div class="content-vcenter mb-1">
               <h2 class="h2 cf mb-0 mr-2">Coaching Form</h2>
-              <a href="#" class="primary-button mr-1 w-button">UDATE FORM</a>
+              <a href="#" class="primary-button mr-1 w-button">UPDATE FORM</a>
               <!-- <a href="#" class="delete-button cf w-button">DELETE FORM</a> -->
             </div>
           </div>
@@ -244,14 +244,14 @@
                   <div class="weight-50">
                     <!-- TEAM MEMBER NAME OUTPUT -->
                     <div class="flex-v">
-                      <div class="text-field-label"><strong>Team Member Name: </strong><span class="member-name">Daniel Gabriel Moratin</span></div>
+                      <div class="text-field-label">Team Member Name: <strong th:text="${form.teamMember}"></strong></div>
                     </div>
                   </div>
                   <div class="px-1"></div>
                   <div class="weight-50">
                     <!-- DATE OUTPUT -->
                     <div class="flex-v">
-                      <div class="text-field-label"><strong>Date: </strong>5/17/2022</div>
+                      <div class="text-field-label">Date: <strong th:text="${#dates.format(form.getFormattedCreatedAt(), 'MMM dd, yyyy')}"></strong></div>
                     </div>
                   </div>
                 </div>
@@ -259,14 +259,14 @@
                   <div class="weight-50">
                     <!-- ROLE / POSITION OUTPUT -->
                     <div class="flex-v">
-                      <div class="text-field-label"><strong>Role / Position: </strong><span class="role-position">Software Developer</span></div>
+                      <div class="text-field-label">Role / Position: <strong  th:text="${form.rolePosition}"></strong></div>
                     </div>
                   </div>
                   <div class="px-1"></div>
                   <div class="weight-50">
                     <!-- SUPERVISOR / MANAGER OUTPUT -->
                     <div class="flex-v">
-                      <div class="text-field-label"><strong>Supervisor/Manager: </strong>Rieugene Basilisco</div>
+                      <div class="text-field-label">Supervisor/Manager: <strong th:text="${form.supervisor.fullName}"></strong></div>
                     </div>
                   </div>
                 </div>
@@ -279,19 +279,22 @@
               <div class="flex-v mb-1">
                 <!-- COACHING TOPIC / AREA -->
                 <div class="text-field-label"><strong>Coaching Topic / Area</strong></div>
-                <div class="text-field-label ml-1">Communicating with the team:<br>Ned has struggled with communication and keeping the team updated on his tasks.<br>This has resulted in lack of visibility and workflow issues.</div>
+                <div class="text-field-label ml-1" th:text="${form.topicArea}"></div>
+<!--                <div class="text-field-label ml-1">Communicating with the team:<br>Ned has struggled with communication and keeping the team updated on his tasks.<br>This has resulted in lack of visibility and workflow issues.</div>-->
               </div>
               
-              <!-- DESITED OUTCOME -->
+              <!-- DESIRED OUTCOME -->
               <div class="flex-v mb-1">
                 <div class="text-field-label"><strong>Desired Outcome</strong></div>
-                <div class="text-field-label ml-1">Develop friendly relationships with co-workers.<br>Be more present and connected.<br>More visibility on what Ned is working on.</div>
+                <div class="text-field-label ml-1" th:text="${form.desiredOutcome}"></div>
+<!--                <div class="text-field-label ml-1">Develop friendly relationships with co-workers.<br>Be more present and connected.<br>More visibility on what Ned is working on.</div>-->
               </div>
 
               <!-- BENEFITS OF CHANGE -->
               <div class="flex-v">
                 <div class="text-field-label"><strong>Benefits of Change</strong></div>
-                <div class="text-field-label ml-1">Ned will be more comfortable sharing with teammates, increasing productivity and efficiency,<br>Ned will be more engaged and satisfied at work.<br>Improved team dynamic and office culture.</div>
+                <div class="text-field-label ml-1" th:text="${form.benefit}"></div>
+<!--                <div class="text-field-label ml-1">Ned will be more comfortable sharing with teammates, increasing productivity and efficiency,<br>Ned will be more engaged and satisfied at work.<br>Improved team dynamic and office culture.</div>-->
               </div>
             </div>
             
@@ -302,11 +305,11 @@
                 
                 <div class="text-field-label"><strong>Action Plan</strong></div>
                 <ol role="list" class="text-field-label">
-                  <li class="canvas">User the group Slack channel regularly to stay connected</li>
-                  <li class="canvas">Create a collaborative status update document or task board</li>
-                  <li class="canvas">Training in office communication norms and practices</li>
+                  <li th:each="action : ${actions}" class="canvas" th:text="${action.actionPlan}"></li>
+<!--                  <li class="canvas">Create a collaborative status update document or task board</li>-->
+<!--                  <li class="canvas">Training in office communication norms and practices</li>-->
                 </ol>
-                <div style="margin-bottom: 0.5rem;">Progress: <span style="font-weight: bold; color:#007bff; font-size: 21px;">0%</span></div>
+                <div style="margin-bottom: 0.5rem;">Progress: <span style="font-weight: bold; color:#007bff; font-size: 21px;" th:text="${currentProgress}">%</span></div>
                 <div><a href="#" class="primary-button w-button">UPDATE ACTION PLAN</a></div>
                 
               </div>
@@ -315,7 +318,8 @@
             <!-- TIMELINE -->
             <div id="timeline" data-w-id="c0a6a371-4c36-094b-be6f-8be320ddb754" class="content-topic">
               <h2 class="h2 cf">Timeline <span class="fa-text cf-icon"></span></h2>
-              <div class="text-field-label ml-1">Check in after one week to see how Slack and status updates are going.<br>After Ned&#x27;s training session in two weeks assess communication skill improvement.</div>
+              <div class="text-field-label ml-1" th:text="${form.timeline}"></div>
+<!--              <div class="text-field-label ml-1">Check in after one week to see how Slack and status updates are going.<br>After Ned&#x27;s training session in two weeks assess communication skill improvement.</div>-->
             </div>
 
           </div>
