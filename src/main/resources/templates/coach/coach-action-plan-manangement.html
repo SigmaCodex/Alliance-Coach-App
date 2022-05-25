@@ -2,7 +2,7 @@
 <html data-wf-page="626a596ad675de8a58c9368f" data-wf-site="6239f161359dbcff9a96c08a" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <title>Employee Coaching Form</title>
+  <title>Coach | Workflow Update</title>
   <meta content="Employee Coaching Form" property="og:title">
   <meta content="Employee Coaching Form" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -22,6 +22,28 @@
       n.className+=t+"js", ("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")
     }(window,document);
   </script>
+
+  <style>
+    th, td {
+      padding: 0.5rem 1rem;
+    }
+    .ui-slider-range {
+      background:green;
+    }
+    .percent {
+      color:green;
+      font-weight:bold;
+      text-align:center;
+      width:100%;
+      border:none;
+      outline: none;
+    }
+  </style>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 </head>
 <body>
   
@@ -32,12 +54,10 @@
         <!-- LOGO -->
         <div class="content-vcenter canvas">
           <h1 class="navbar-title">Coaching App</h1>
-          <div class="portal-position">Human Resource</div>
         </div>
 
         <!-- NAV MENU ITEM -->
         <div class="content-vcenter tab-hidden">
-          <a th:href="@{/c/hr-home}" class="navbar-link"><span class="fa-text nav-link"></span> User Management</a>
           <a th:href="@{/c/coach-home}" class="navbar-link"><span class="fa-text nav-link"></span> Employee Coaching Form</a>
         </div>
 
@@ -82,7 +102,6 @@
         </div>
         <div class="flex-v">
           <!-- EMPLOYEE FORM -->
-          <a href="#" class="navbar-link menubar mx-2">User Management</a>
           <a href="#" class="navbar-link menubar mx-2">Employee Coaching Form</a>
         </div>
       </div>
@@ -200,7 +219,146 @@
   </form>
   <!-- END ACCOUNT MODAL -->
 
-  
+  <!-- SECTION -->
+  <section class="section small">
+    <div class="container">
+      <!-- HEADING CONTENT -->
+      <div class="flex-v">
+        <!-- HEADING -->
+        <h2 class="h1 mb-flow tab-text-center"><span class="fa-text nav-link heading"></span> Action Plans</h2>
+        <div class="content-hbetween">
+          <h3 class="h2 mb-flow">Coaching ID: 10001</h3>
+          <div class="content-vcenter">
+            <!-- ACTION PLAN INPUT -->
+            <div class="input-textfield w-embed">
+              <input type="text" id="actionInput" name="actionPlan" class="text-field w100" placeholder="Action">
+            </div>
+            <!-- ADD BUTTON -->
+            <a href="#" id="addActionPlan" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></a>
+          </div>
+        </div>
+
+        <!-- TABLE -->
+        <table>
+          <thead>
+            <th>Plan ID</th>
+            <th>Actions</th>
+            <th>Status</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="content-center">1</td>
+              <td > <div class="content-center">User the group Slack channel regularly to stay connected</div></td>
+              <td > <div class="content-center">60%</div></td>
+              <td class="content-center"> 
+                <div class="content-vcenter">
+                  <button class="user-btn delete-button w-button">Delete</button>
+
+                  <div class="mx-1"></div>
+                  
+                  <button class="user-btn primary-button w-button">Update</button>
+                </div> 
+              </td>
+            </tr>
+            <tr>
+              <td class="content-center">2</td>
+              <td > <div class="content-center">Create a collaborative status update document or task board</div></td>
+              <td ><div class="content-center">0%</div></td>
+              <td class="content-center"> 
+                <div class="content-vcenter">
+                  <button class="user-btn delete-button w-button">Delete</button>
+
+                  <div class="mx-1"></div>
+                  
+                  <button class="user-btn primary-button w-button">Update</button>
+                </div> 
+              </td>
+            </tr>
+            <tr>
+              <td class="content-center">3</td>
+              <td > <div class="content-center">Training in office communication norms and practices</div></td>
+              <td ><div class="content-center">0%</div></td>
+              <td class="content-center"> 
+                <div class="content-vcenter">
+                  <button class="user-btn delete-button w-button">Delete</button>
+
+                  <div class="mx-1"></div>
+                  
+                  <button class="user-btn primary-button w-button">Update</button>
+                </div> 
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <!-- END OF SECTION -->
+
+  <!-- EDIT USER MODAL -->
+  <div class="update-modal" style="display: flex;">
+    <!-- OVERLAY -->
+    <div data-w-id="6cc70ac9-e968-f779-b11c-59f44e6a2bee" class="modal-overlay"></div>
+
+    <!-- FORM MODAL CONTENT -->
+    <form action="" th:method="post" class="modal-content mob-full-screen" style="height: 450px;">
+      <div data-w-id="964ab908-8291-0638-7797-493f54e02766" class="fa-text modal-close"></div>
+      <!-- HEADING -->
+      <div class="content-center mb-0-5">
+        <div class="content-vcenter">
+          <div class="mr-0-5"><span class="fa-text modal-action-icon"></span></div>
+          <div class="modal-title mb-0">Update Action Status</div>
+        </div>
+      </div>
+
+      <!-- progress bar -->
+      <div class="project mb-2">
+        <h1 class="text-center">Action ID: 1</h1>
+        <h2 class="text-center">
+          <input type="text" class="percent" readonly />
+        </h2>
+        <h3 class="text-center">complete</h3>
+        <div class="bar"></div>
+      </div>
+
+      <!-- evidence -->
+      <div class="content-vcenter mob-port-flex-v mb-2">
+        <div class="text-field-label mr-1 mob-mb-0-5"><strong>Attachments</strong></div>
+
+        <div class="w-embed">
+          <input type="file" th:name="file" required>
+        </div>
+      </div>
+
+
+      <!-- UPDATE BUTTON -->
+      <div class="flex-h justify-center">
+        <button type="submit" class="primary-button modal-button mob-mt-1 w-button">UPDATE</button>
+      </div>
+
+    </form>
+    <!-- END FORM MODAL CONTENT -->
+
+  </div>
+  <!-- END OF EDIT USER MODAL -->
+
+  <!-- DELETE MODAL -->
+  <div class="delete-modal">
+    <div data-w-id="964ab908-8291-0638-7797-493f54e02759" class="modal-overlay"></div>
+    <div class="modal-content delete">
+      <div>
+        <div class="modal-icon"><span class="fa-text delete"></span></div>
+        <div class="modal-title">Delete Confirmation...</div>
+        <p class="modal-body">Are you deleting <strong th:text="${form.topicArea} + '(' + ${form.id} + ')'">[Plan ID]</strong>?</p>
+      </div>
+      <div class="flex-h justify-center">
+        <a th:href="@{/c/delete-form/} + ${form.id}" class="user-btn delete-button modal w-button">CONFIRM</a>
+      </div>
+      <div data-w-id="964ab908-8291-0638-7797-493f54e02766" class="fa-text modal-close"></div>
+    </div>
+  </div>
+  <!-- END OF DELETE MODAL -->
 
   <!-- LOADING SCREEN -->
   <div data-w-id="9430a020-65d4-183b-ad78-94158639241f" class="loading-screen">
@@ -231,8 +389,50 @@
   crossorigin="anonymous"></script>
 </body>
 <script>
-  $(document).ready(function(){
-    
+
+  $(function() {
+    $('.project').each(function() {
+      var $projectBar = $(this).find('.bar');
+      var $projectPercent = $(this).find('.percent');
+      var $projectRange = $(this).find('.ui-slider-range');
+      $projectBar.slider({
+        range: "min",
+        animate: true,
+        value: 1,
+        min: 0,
+        max: 100,
+        step: 1,
+        slide: function(event, ui) {
+          $projectPercent.val(ui.value + "%");
+        },
+        change: function(event, ui) {
+          var $projectRange = $(this).find('.ui-slider-range');
+          var percent = ui.value;
+          if (percent < 30) {
+            $projectPercent.css({
+              'color': 'red'
+            });
+            $projectRange.css({
+              'background': '#f20000'
+            });
+          } else if (percent > 31 && percent < 70) {
+            $projectPercent.css({
+              'color': 'gold'
+            });
+            $projectRange.css({
+              'background': 'gold'
+            });
+          } else if (percent > 70) {
+            $projectPercent.css({
+              'color': 'green'
+            });
+            $projectRange.css({
+              'background': 'green'
+            });
+          }
+        }
+      });
+    })
   })
 </script>
 </html>
