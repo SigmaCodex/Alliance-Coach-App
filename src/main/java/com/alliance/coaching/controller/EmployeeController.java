@@ -44,15 +44,23 @@ public class EmployeeController {
 
     // TODO: 5/19/2022 login employee using email and password
     @PostMapping("/login")
-    public ModelAndView loginEmployee(@ModelAttribute Employee employee, HttpSession httpSession) {
+    @ResponseBody
+    public String loginEmployee(@ModelAttribute Employee employee, HttpSession httpSession) {
+
         Employee loginEmployee = employeeService.loginEmployee(employee.getEmail(), employee.getPassword());
-        httpSession.setAttribute("employee", loginEmployee);
-        // TODO: 5/19/2022 check employee type to redirect between portals, hr portal is default
-        if (loginEmployee.getEmployeeType().equals("Coach")) {
-            // TODO: 5/19/2022 endpoint can be found on Coaching Form Controller
-            return new ModelAndView(new RedirectView("/c/coach-home"));
+     
+    
+        if(loginEmployee != null){
+            httpSession.setAttribute("employee", loginEmployee);
+            if (loginEmployee.getEmployeeType().equals("Coach")) {
+                return "Coach";
+            }
+            if(loginEmployee.getEmployeeType().equals("HR")){
+                return "HR";
+            }
         }
-        return new ModelAndView(new RedirectView("/c/hr-home"));
+        return "invalid";
+
     }
 
     // TODO: 5/19/2022 update an existing employee record

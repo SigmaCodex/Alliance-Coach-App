@@ -67,15 +67,18 @@ public class EmployeeService {
 
     // TODO: 5/19/2022 login employee using their credentials
     public Employee loginEmployee(String email, String password) {
+//        Employee employee = null;
+
         if (employeeRepo.findByEmail(email).isPresent()) {
             Employee employee = employeeRepo.findByEmail(email).get();
-            // TODO: 5/19/2022 check if password match with hashed
             if (new BCryptPasswordEncoder().matches(password, employee.getPassword())) {
                 return employee;
             }
-            throw new IllegalStateException("Incorrect password.");
+            // throw new IllegalStateException("Incorrect password.");
         }
-        throw new IllegalStateException("Employee does not exist.");
+        return null;
+        // throw new IllegalStateException("Employee does not exist.");
     }
+
 
 }
