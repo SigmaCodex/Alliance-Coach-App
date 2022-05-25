@@ -1785,6 +1785,12 @@ p {
   cursor: pointer;
 }
 
+.oneline {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media screen and (min-width: 1280px) {
   .grid-list {
     -ms-grid-columns: 1fr 1fr 1fr 1fr;

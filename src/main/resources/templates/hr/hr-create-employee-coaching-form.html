@@ -192,7 +192,7 @@
         </div>
       </div>
 
-      <!-- BUTTON REGISTER -->
+      <!-- BUTTON UPDATE -->
       <div class="flex-h justify-center">
         <button type="submit" class="primary-button modal-button mob-mt-1 w-button">UPDATE</button>
       </div>
@@ -213,14 +213,17 @@
               <a href="#team-member" class="content-link  w-inline-block">
                 <div>Team Member</div>
               </a>
-              <a href="#sumamry-evidence" class="content-link  w-inline-block">
-                <div>Summary &amp; Evidence</div>
+              <a href="#summary" class="content-link  w-inline-block">
+                <div>Summary</div>
               </a>
               <a href="#action" class="content-link  w-inline-block">
                 <div>Actions</div>
               </a>
               <a href="#timeline" class="content-link  w-inline-block">
                 <div>Timeline</div>
+              </a>
+              <a href="#evidence" class="content-link  w-inline-block">
+                <div>Evidence</div>
               </a>
             </div>
           </div>
@@ -239,7 +242,7 @@
                       <!-- TEAM MEMBER NAME INPUT -->
                       <div class="text-field-label"><strong>Team Member Name:</strong></div>
                       <div class="input-textfield w-embed">
-                        <input type="text" name="TeamMemberName" class="text-field w100" placeholder="Team Member Name">
+                        <input type="text" name="TeamMemberName" class="text-field w100" placeholder="Team Member Name" required>
                       </div>
                     </div>
                   </div>
@@ -249,7 +252,7 @@
                       <!-- DATE INPUT -->
                       <div class="text-field-label"><strong>Date:</strong></div>
                       <div class="input-textfield w-embed">
-                        <input type="date" name="date" class="text-field w100">
+                        <input type="date" name="date" class="text-field w100" required>
                       </div>
                     </div>
                   </div>
@@ -259,7 +262,9 @@
                     <div class="flex-v mb-1">
                       <!-- ROLE / POSITION INPUT -->
                       <div class="text-field-label"><strong>Role / Position:</strong></div>
-                      <div class="input-textfield w-embed"><input type="text" name="rolePosition" class="text-field w100" placeholder="Role / Position"></div>
+                      <div class="input-textfield w-embed">
+                        <input type="text" name="rolePosition" class="text-field w100" placeholder="Role / Position" required>
+                      </div>
                     </div>
                   </div>
                   <div class="px-1"></div>
@@ -267,7 +272,9 @@
                     <div class="flex-v">
                       <!-- SUPERVISE / MANAGER INPUT -->
                       <div class="text-field-label"><strong>Supervisor/Manager:</strong></div>
-                      <div class="input-textfield w-embed"><input type="text" name="supervisorManager" class="text-field w100" placeholder="Supervisor/Manager"></div>
+                      <div class="input-textfield w-embed">
+                        <input type="text" name="supervisorManager" class="text-field w100" placeholder="Supervisor/Manager" required>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -275,7 +282,7 @@
             </div>
 
             <!-- SUMMARY AND EVIDENCE -->
-            <div id="sumamry-evidence" class="content-topic pb-0">
+            <div id="summary" class="content-topic pb-0">
               <h2 class="h2 cf">Summary &amp; Evidence  <span class="fa-text cf-icon"></span></h2>
               <div class="flex-v mb-1">
                 <!-- COACHING TOPIC / AREA -->
@@ -287,6 +294,7 @@
                     class="text-field w100" 
                     placeholder="Coaching Topic / Area" 
                     style="resize: none;"
+                    required
                   ></textarea>
                 </div>
               </div>
@@ -294,51 +302,32 @@
               <!-- DESIRED OUTCOME -->
               <div class="flex-v mb-1">
                 <div class="text-field-label"><strong>Desired Outcome (List desired behaviors, knowledge, skills, etc)</strong></div>
-                <div class="content-vcenter mb-0-5">
-                  <!-- OUTCOME INPUT -->
-                  <div class="input-textfield w-embed">
-                    <input type="text" id="outcomeInput" name="outcome" class="text-field w100" placeholder="Outcome">
-                  </div>
-                  <!-- ADD BUTTON -->
-                  <a href="#" id="addDesiredOutcome" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></a>
+                <div class="input-textfield w-embed">
+                  <textarea  
+                    rows="8" 
+                    name="coachingDesiredOutcome" 
+                    class="text-field w100" 
+                    placeholder="List desired behaviors, knowledge, skills, etc." 
+                    style="resize: none;"
+                    required
+                  ></textarea>
                 </div>
-                <!-- OUTCOME DISPLAY -->
-                <ul id="desired-outcome-list" role="list" class="mb-0 pl-1">
-                  
-                  <!-- OUTPUT -->
-
-                </ul>
               </div>
 
               <!-- BENEFITS OF CHANGE -->
               <div class="flex-v">
                 <div class="text-field-label"><strong>Benefits of Change (How will employee actions or performance be positively impacted?)</strong></div>
-                <div class="content-vcenter mb-0-5">
-                  <!-- INPUT -->
-                  <div class="input-textfield w-embed">
-                    <input type="text" id="benefitInput" name="benifits" class="text-field w100" placeholder="Benefit">
-                  </div>
-                  <!-- ADD BUTTON -->
-                  <a href="#" id="addBenefitsOfChange" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></a>
+                <div class="input-textfield w-embed">
+                  <textarea  
+                    rows="8" 
+                    name="coachingBenefitsOfChange" 
+                    class="text-field w100" 
+                    placeholder="How will employee actions or performance be positively impacted?" 
+                    style="resize: none;"
+                    required
+                  ></textarea>
                 </div>
-                <!-- BENEFITS DISPLAY -->
-                <ul id="benefits-of-change-list" role="list" class="mb-0 pl-1">
-                  
-                  <!-- OUTPUT -->
-
-                </ul>
               </div>
-
-              <!-- ATTACHMENTS INPUT -->
-              <!-- <div class="flex-v">
-                <div class="content-vcenter mob-port-flex-v">
-                  <div class="text-field-label mr-1 mob-mb-0-5"><strong>Attachments</strong></div>
-                  <div class="w-embed">
-                    <input type="file" name="evidence">
-                  </div>
-                </div>
-              </div> -->
-
             </div>
 
             
@@ -353,7 +342,9 @@
                     <input type="text" id="actionInput"  name="actionPlan" class="text-field w100" placeholder="Action">
                   </div>
                   <!-- ADD BUTTON -->
-                  <a href="#" id="addActionPlan" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></a>
+                  <a href="#" id="addActionPlan" class="primary-button add-btn-cf w-button mr-1"><span class="fa-text">+</span></a>
+                  <!-- DELETE BUTTON -->
+                  <a href="#" id="removeActionPlans" class="user-btn delete-button w-button"><span class="fa-text"></span></a>
                 </div>
                 <!-- ACTION PLAN DISPLAY -->
                 <ul id="action-plan-list" role="list" class="ol mb-0 pl-1">
@@ -361,6 +352,14 @@
                   <!-- OUTPUT -->
 
                 </ul>
+                <textarea  
+                    id="coachingActionPlans"
+                    name="coachingActionPlan" 
+                    class="text-field w100 hidden" 
+                    placeholder="Action plan" 
+                    style="resize: none;"
+                    required
+                  ></textarea>
               </div>
             </div>
 
@@ -369,21 +368,33 @@
               <h2 class="h2 cf">Timeline  <span class="fa-text cf-icon"></span></h2>
               <div class="flex-v">
                 <div class="text-field-label"><strong>Timeline (Write out a timeline for the plan and when to follow up)</strong></div>
-                <div class="content-vcenter mb-0-5">
-                  <!-- TIMELINE INPUT -->
-                  <div class="input-textfield w-embed">
-                    <input type="text" id="timelineInput" name="timeline" class="text-field w100" placeholder="Plan">
-                  </div>
-                  <!-- ADD BUTTON -->
-                  <a href="#" id="addTimeline" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></a>
+                <div class="input-textfield w-embed">
+                  <textarea  
+                    rows="8" 
+                    name="coachingTimeline" 
+                    class="text-field w100" 
+                    placeholder="Write out a timeline for the plan and when to follow up" 
+                    style="resize: none;"
+                    required
+                  ></textarea>
                 </div>
-                <!-- TIMELINE DISPLAY -->
-                <ul id="timeline-list" role="list" class="mb-0 pl-1">
-                  
-                  <!-- OUTPUT -->
-                  <!-- END OF OUTPUT -->
+              </div>
+            </div>
 
-                </ul>
+            <!-- EVIDENCE -->
+            <div id="evidence" data-w-id="c0a6a371-4c36-094b-be6f-8be320ddb754" class="content-topic pb-0">
+              <h2 class="h2 cf">Evidence <span class="fa-text cf-icon"></span></h2>
+              <!-- ATTACHMENTS INPUT -->
+              <div class="content-hbetween">
+                <div class="content-vcenter mob-port-flex-v">
+                  <div class="text-field-label mr-1 mob-mb-0-5"><strong>Attachments</strong></div>
+
+                  <div class="w-embed">
+                    <input type="file" name="evidence" required>
+                  </div>
+                </div>
+                
+                <a href="#" id="print" class="primary-button add-btn-cf w-button mr-1">PRINT FORM</a>
               </div>
             </div>
 
@@ -391,7 +402,7 @@
             <div class="content-topic">
               <div class="content-center">
                 <div class="content-vcenter">
-                  <button type="submit" class="primary-button w-button">UPDATE</button>
+                  <button type="submit" class="primary-button w-button">CREATE FORM</button>
                 </div>
               </div>
             </div>
@@ -442,275 +453,19 @@
 <script>
   $(document).ready(function(){
     
-    // DESIRED OUTCOME
-    $('#addDesiredOutcome').click(function(){
-      if($('#outcomeInput').val() != ''){
-        var updateAction = $('<div id="update-actions" class="content-center"></div>')
-        var updateRow = $('<div class="update-row"><div class="primary-button w-button">SAVE</div></div>').click(function(){
-          $(this).closest('li').find('p').html($(this).closest('li').find('textarea').val())
-          $(this).closest('li').find('textarea').hide()
-          $(this).closest('li').find('p').show()
-          $(this).closest('li').find('.list-item').css('width', 'auto')
-          $(this).closest('li').find('#update-actions').css('display', 'none')
-          $(this).closest('li').find('.edit-row').show()
-          $(this).closest('li').find('.remove-row').show()
-        })
-        var cancelUpdate = $('<div class="cancel-update-row"><div>CANCEL</div></div>').click(function(){
-          $(this).closest('li').find('textarea').val($(this).closest('li').find('p').html())
-          $(this).closest('li').find('textarea').hide()
-          $(this).closest('li').find('p').show()
-          $(this).closest('li').find('.list-item').css('width', 'auto')
-          $(this).closest('li').find('#update-actions').css('display', 'none')
-          $(this).closest('li').find('.edit-row').show()
-          $(this).closest('li').find('.remove-row').show()
-        })
-        updateAction.append(updateRow)
-        updateAction.append(cancelUpdate)
-
-        // desired outcome input
-        var inputVal = $('<textarea th:name="[]outcomes" class="text-field w100 hidden" rows="4" style="resize: none;"></textarea>')
-        inputVal.val($('#outcomeInput').val())
-        var listItemVal = $('<div class="list-item"><p class="text-field-label">' +  $('#outcomeInput').val() + '</p></div>')
-        $('#outcomeInput').val('')
-        // end of desired outcome input
-        var editBtn = $('<div class="edit-row"><div><span class="fa-text"></span></div></div>').click(function(){
-            $(this).closest('li').find('textarea').show()
-            $(this).closest('li').find('p').hide()
-            $(this).closest('li').find('.list-item').css('width', '100%')
-            $(this).closest('li').find('#update-actions').css('display', 'flex')
-            $(this).closest('li').find('.edit-row').hide()
-            $(this).closest('li').find('.remove-row').hide()            
-        })
-        var deleteBtn = $('<div class="remove-row"><div><span class="fa-text"></span></div></div>').click(function(){
-          $(this).closest('li').remove()
-        })
-
-        listItemVal.append(inputVal)
-
-        var liList = $('<li></li>')
-        var row = $('<div id="row" class="flex-h align-top"></div>')
-        row.append(listItemVal)
-        row.append(editBtn)
-        row.append(deleteBtn)
-        row.append(updateAction)
-        liList.html(row)
-
-        $('#desired-outcome-list').append(liList)
-      }
-    })
-
-    // BENEFITS OF CHANGE
-    $('#addBenefitsOfChange').click(function(){
-      if($('#benefitInput').val() != ''){
-        var updateAction = $('<div id="update-actions" class="content-center"></div>')
-        var updateRow = $('<div class="update-row"><div class="primary-button w-button">SAVE</div></div>').click(function(){
-          $(this).closest('li').find('p').html($(this).closest('li').find('textarea').val())
-          $(this).closest('li').find('textarea').hide()
-          $(this).closest('li').find('p').show()
-          $(this).closest('li').find('.list-item').css('width', 'auto')
-          $(this).closest('li').find('#update-actions').css('display', 'none')
-          $(this).closest('li').find('.edit-row').show()
-          $(this).closest('li').find('.remove-row').show()
-        })
-        var cancelUpdate = $('<div class="cancel-update-row"><div>CANCEL</div></div>').click(function(){
-          $(this).closest('li').find('textarea').val($(this).closest('li').find('p').html())
-          $(this).closest('li').find('textarea').hide()
-          $(this).closest('li').find('p').show()
-          $(this).closest('li').find('.list-item').css('width', 'auto')
-          $(this).closest('li').find('#update-actions').css('display', 'none')
-          $(this).closest('li').find('.edit-row').show()
-          $(this).closest('li').find('.remove-row').show()
-        })
-        updateAction.append(updateRow)
-        updateAction.append(cancelUpdate)
-
-        // benefits of change input
-        var inputVal = $('<textarea th:name="[]benefits" class="text-field w100 hidden" rows="4" style="resize: none;"></textarea>')
-        inputVal.val($('#benefitInput').val())
-        var listItemVal = $('<div class="list-item"><p class="text-field-label">' +  $('#benefitInput').val() + '</p></div>')
-        $('#benefitInput').val('')
-        // end of benefits of change input
-        var editBtn = $('<div class="edit-row"><div><span class="fa-text"></span></div></div>').click(function(){
-            $(this).closest('li').find('textarea').show()
-            $(this).closest('li').find('p').hide()
-            $(this).closest('li').find('.list-item').css('width', '100%')
-            $(this).closest('li').find('#update-actions').css('display', 'flex')
-            $(this).closest('li').find('.edit-row').hide()
-            $(this).closest('li').find('.remove-row').hide()            
-        })
-        var deleteBtn = $('<div class="remove-row"><div><span class="fa-text"></span></div></div>').click(function(){
-          $(this).closest('li').remove()
-        })
-
-        listItemVal.append(inputVal)
-
-        var liList = $('<li></li>')
-        var row = $('<div id="row" class="flex-h align-top"></div>')
-        row.append(listItemVal)
-        row.append(editBtn)
-        row.append(deleteBtn)
-        row.append(updateAction)
-        liList.html(row)
-
-        $('#benefits-of-change-list').append(liList)
-      }
-    })
-
     // ACTION PLAN
     $('#addActionPlan').click(function(){
       if($('#actionInput').val() != ''){
-        var updateAction = $('<div id="update-actions" class="content-center"></div>')
-        var updateRow = $('<div class="update-row"><div class="primary-button w-button">SAVE</div></div>').click(function(){
-          $(this).closest('li').find('p').html($(this).closest('li').find('textarea').val())
-          $(this).closest('li').find('textarea').hide()
-          $(this).closest('li').find('p').show()
-          $(this).closest('li').find('.list-item').css('width', 'auto')
-          $(this).closest('li').find('#update-actions').css('display', 'none')
-          $(this).closest('li').find('.edit-row').show()
-          $(this).closest('li').find('.remove-row').show()
-        })
-        var cancelUpdate = $('<div class="cancel-update-row"><div>CANCEL</div></div>').click(function(){
-          $(this).closest('li').find('textarea').val($(this).closest('li').find('p').html())
-          $(this).closest('li').find('textarea').hide()
-          $(this).closest('li').find('p').show()
-          $(this).closest('li').find('.list-item').css('width', 'auto')
-          $(this).closest('li').find('#update-actions').css('display', 'none')
-          $(this).closest('li').find('.edit-row').show()
-          $(this).closest('li').find('.remove-row').show()
-        })
-        updateAction.append(updateRow)
-        updateAction.append(cancelUpdate)
-
-        // action plan input
-        var inputVal = $('<textarea th:name="[]actions" class="text-field w100 hidden" rows="4" style="resize: none;"></textarea>')
-        inputVal.val($('#actionInput').val())
-        var listItemVal = $('<div class="list-item"><p class="text-field-label">' +  $('#actionInput').val() + '</p></div>')
-        $('#actionInput').val('')
-        // end of action plan input
-        var editBtn = $('<div class="edit-row"><div><span class="fa-text"></span></div></div>').click(function(){
-            $(this).closest('li').find('textarea').show()
-            $(this).closest('li').find('p').hide()
-            $(this).closest('li').find('.list-item').css('width', '100%')
-            $(this).closest('li').find('#update-actions').css('display', 'flex')
-            $(this).closest('li').find('.edit-row').hide()
-            $(this).closest('li').find('.remove-row').hide()            
-        })
-        var deleteBtn = $('<div class="remove-row"><div><span class="fa-text"></span></div></div>').click(function(){
-          $(this).closest('li').remove()
-        })
-
-        listItemVal.append(inputVal)
-
-        var liList = $('<li></li>')
-        var row = $('<div id="row" class="flex-h align-top"></div>')
-        row.append(listItemVal)
-        row.append(editBtn)
-        row.append(deleteBtn)
-        row.append(updateAction)
-        liList.html(row)
-
+        var liList = $('<li>'+ $('#actionInput').val() +'</li>')
+        $('#coachingActionPlans').append($('#actionInput').val() + '&#13;&#10')
         $('#action-plan-list').append(liList)
-      }
-    })
-
-    // TIMELINE
-    $('#addTimeline').click(function(){
-      if($('#timelineInput').val() != ''){
-        var updateAction = $('<div id="update-actions" class="content-center"></div>')
-        var updateRow = $('<div class="update-row"><div class="primary-button w-button">SAVE</div></div>').click(function(){
-          $(this).closest('li').find('p').html($(this).closest('li').find('textarea').val())
-          $(this).closest('li').find('textarea').hide()
-          $(this).closest('li').find('p').show()
-          $(this).closest('li').find('.list-item').css('width', 'auto')
-          $(this).closest('li').find('#update-actions').css('display', 'none')
-          $(this).closest('li').find('.edit-row').show()
-          $(this).closest('li').find('.remove-row').show()
-        })
-        var cancelUpdate = $('<div class="cancel-update-row"><div>CANCEL</div></div>').click(function(){
-          $(this).closest('li').find('textarea').val($(this).closest('li').find('p').html())
-          $(this).closest('li').find('textarea').hide()
-          $(this).closest('li').find('p').show()
-          $(this).closest('li').find('.list-item').css('width', 'auto')
-          $(this).closest('li').find('#update-actions').css('display', 'none')
-          $(this).closest('li').find('.edit-row').show()
-          $(this).closest('li').find('.remove-row').show()
-        })
-        updateAction.append(updateRow)
-        updateAction.append(cancelUpdate)
-
-        // timeline input
-        var inputVal = $('<textarea th:name="[]timelines" class="text-field w100 hidden" rows="4" style="resize: none;"></textarea>')
-        inputVal.val($('#timelineInput').val())
-        var listItemVal = $('<div class="list-item"><p class="text-field-label">' +  $('#timelineInput').val() + '</p></div>')
-        $('#timelineInput').val('')
-        // end of timeline input
-        var editBtn = $('<div class="edit-row"><div><span class="fa-text"></span></div></div>').click(function(){
-            $(this).closest('li').find('textarea').show()
-            $(this).closest('li').find('p').hide()
-            $(this).closest('li').find('.list-item').css('width', '100%')
-            $(this).closest('li').find('#update-actions').css('display', 'flex')
-            $(this).closest('li').find('.edit-row').hide()
-            $(this).closest('li').find('.remove-row').hide()            
-        })
-        var deleteBtn = $('<div class="remove-row"><div><span class="fa-text"></span></div></div>').click(function(){
-          $(this).closest('li').remove()
-        })
-
-        listItemVal.append(inputVal)
-
-        var liList = $('<li></li>')
-        var row = $('<div id="row" class="flex-h align-top"></div>')
-        row.append(listItemVal)
-        row.append(editBtn)
-        row.append(deleteBtn)
-        row.append(updateAction)
-        liList.html(row)
-
-        $('#timeline-list').append(liList)
+        $('#actionInput').val('')
       }
     })
 
     // REMOVE ROW BUTTON EVENT
-    $('.remove-row').click(function(){
-      $(this).closest('li').remove()
-    })
-
-    // EDIT ROW BUTTON EVENT
-    $('.edit-row').click(function(){
-
-      $(this).closest('li').find('textarea').show()
-      $(this).closest('li').find('p').hide()
-      $(this).closest('li').find('.list-item').css('width', '100%')
-      $(this).closest('li').find('#update-actions').css('display', 'flex')
-      $(this).closest('li').find('.edit-row').hide()
-      $(this).closest('li').find('.remove-row').hide()
-
-    })
-
-    // cancel update row
-    $('.update-row').click(function(){
-      
-      $(this).closest('li').find('p').html($(this).closest('li').find('textarea').val())
-      $(this).closest('li').find('textarea').hide()
-      $(this).closest('li').find('p').show()
-      $(this).closest('li').find('.list-item').css('width', 'auto')
-      $(this).closest('li').find('#update-actions').css('display', 'none')
-      $(this).closest('li').find('.edit-row').show()
-      $(this).closest('li').find('.remove-row').show()
-
-    })
-
-    // cancel update row
-    $('.cancel-update-row').click(function(){
-      
-      $(this).closest('li').find('textarea').val($(this).closest('li').find('p').html())
-      $(this).closest('li').find('textarea').hide()
-      $(this).closest('li').find('p').show()
-      $(this).closest('li').find('.list-item').css('width', 'auto')
-      $(this).closest('li').find('#update-actions').css('display', 'none')
-      $(this).closest('li').find('.edit-row').show()
-      $(this).closest('li').find('.remove-row').show()
-
+    $('#removeActionPlans').click(function(){
+      $('#action-plan-list').html('')
     })
 
   })
