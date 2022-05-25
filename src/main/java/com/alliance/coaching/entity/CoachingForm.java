@@ -7,6 +7,10 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * @author Rieugene Basilisco (generieu17@gmail.com)
@@ -40,7 +44,31 @@ public class CoachingForm {
     @Column(name = "topic_area", columnDefinition = "VARCHAR (255) NOT NULL")
     private String topicArea;
 
+    @Column(name = "desired_outcome", columnDefinition = "VARCHAR (255) NOT NULL")
+    private String desiredOutcome;
+
+    @Column(name = "benefit", columnDefinition = "VARCHAR (255) NOT NULL")
+    private String benefit;
+
+    @Column(name = "timeline", columnDefinition = "VARCHAR (255) NOT NULL")
+    private String timeline;
+
+    @Column(name = "attached_file", columnDefinition = "VARCHAR (255) NOT NULL")
+    private String attachedFile;
+
     @Column(name = "created_at", columnDefinition = "DATE NOT NULL")
     private String createdAt;
+
+    @Transient
+    public String getAttachedFile() {
+        if (attachedFile == null)
+            return null;
+        return "/form-file/" + id + "/" + attachedFile;
+    }
+
+    @Transient
+    public Date getFormattedCreatedAt() throws ParseException {
+        return new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(createdAt);
+    }
 
 }
