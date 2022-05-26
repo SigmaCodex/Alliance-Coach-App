@@ -225,7 +225,10 @@
       <!-- HEADING CONTENT -->
       <div class="flex-v">
         <!-- HEADING -->
-        <h2 class="h1 mb-flow tab-text-center"><span class="fa-text nav-link heading"></span> Action Plans</h2>
+        <div class="content-hbetween">
+          <h2 class="h1 mb-flow tab-text-center"><span class="fa-text nav-link heading"></span> Action Plans</h2>
+          <h3 class="h2 mb-flow" style="font-weight: 400; font-size: 18px;">Progress: <span style="font-weight: bold; font-size: 21px;">90%</span></h3>
+        </div>
         <div class="content-hbetween">
           <h3 class="h2 mb-flow">Coaching ID: 10001</h3>
           <div class="content-vcenter">
@@ -244,15 +247,20 @@
             <th>Plan ID</th>
             <th>Actions</th>
             <th>Status</th>
+            <th>Last Modified</th>
             <th>Action</th>
           </thead>
           <tbody>
+
+            <!-- row -->
             <tr>
               <td class="content-center apID">1</td>
               <td > <div class="content-center">User the group Slack channel regularly to stay connected</div></td>
               <td > <div class="content-center">60%</div></td>
+              <td > <div class="content-center text-center">9:44 PM<br>5/26/2022</div></td>
               <td class="content-center"> 
                 <div class="content-vcenter">
+
                   <button class="user-btn delete-button w-button">Delete</button>
                   <!-- DELETE MODAL -->
                   <div class="delete-modal">
@@ -274,37 +282,58 @@
                   <div class="mx-1"></div>
                   
                   <button class="user-btn primary-button w-button">Update</button>
-                </div> 
-              </td>
-            </tr>
-            <tr>
-              <td class="content-center apID">2</td>
-              <td > <div class="content-center">Create a collaborative status update document or task board</div></td>
-              <td ><div class="content-center">0%</div></td>
-              <td class="content-center"> 
-                <div class="content-vcenter">
-                  <button class="user-btn delete-button w-button">Delete</button>
+                  <!-- EDIT ACTION MODAL -->
+                  <div class="update-modal">
+                    <!-- OVERLAY -->
+                    <div data-w-id="6cc70ac9-e968-f779-b11c-59f44e6a2bee" class="modal-overlay"></div>
 
-                  <div class="mx-1"></div>
-                  
-                  <button class="user-btn primary-button w-button">Update</button>
-                </div> 
-              </td>
-            </tr>
-            <tr>
-              <td class="content-center apID">3</td>
-              <td > <div class="content-center">Training in office communication norms and practices</div></td>
-              <td ><div class="content-center">0%</div></td>
-              <td class="content-center"> 
-                <div class="content-vcenter">
-                  <button class="user-btn delete-button w-button">Delete</button>
+                    <!-- FORM MODAL CONTENT -->
+                    <form action="" th:method="post" class="modal-content mob-full-screen" style="height: 450px;">
+                      <div data-w-id="964ab908-8291-0638-7797-493f54e02766" class="fa-text modal-close"></div>
+                      <!-- HEADING -->
+                      <div class="content-center mb-0-5">
+                        <div class="content-vcenter">
+                          <div class="mr-0-5"><span class="fa-text modal-action-icon"></span></div>
+                          <div class="modal-title mb-0">Update Action Status</div>
+                        </div>
+                      </div>
 
-                  <div class="mx-1"></div>
-                  
-                  <button class="user-btn primary-button w-button">Update</button>
+                      <!-- progress bar -->
+                      <div class="project mb-2">
+                        <h1 class="text-center">Action ID: <span>1</span></h1>
+                        <h2 class="text-center">
+                          <input type="text" class="percent" readonly />
+                        </h2>
+                        <h3 class="text-center">complete</h3>
+                        <div class="bar"></div>
+                      </div>
+
+                      <!-- evidence -->
+                      <div class="content-vcenter mob-port-flex-v mb-2">
+                        <div class="text-field-label mr-1 mob-mb-0-5"><strong>Attachments</strong></div>
+
+                        <div class="w-embed">
+                          <input type="file" th:name="file" required>
+                        </div>
+                      </div>
+
+
+                      <!-- UPDATE BUTTON -->
+                      <div class="flex-h justify-center">
+                        <button type="submit" class="primary-button modal-button mob-mt-1 w-button">UPDATE</button>
+                      </div>
+
+                    </form>
+                    <!-- END FORM MODAL CONTENT -->
+
+                  </div>
+                  <!-- END OF EDIT USER MODAL -->
+
                 </div> 
               </td>
             </tr>
+            <!-- end row -->
+
           </tbody>
         </table>
       </div>
@@ -312,53 +341,7 @@
   </section>
   <!-- END OF SECTION -->
 
-  <!-- EDIT USER MODAL -->
-  <div class="update-modal">
-    <!-- OVERLAY -->
-    <div data-w-id="6cc70ac9-e968-f779-b11c-59f44e6a2bee" class="modal-overlay"></div>
-
-    <!-- FORM MODAL CONTENT -->
-    <form action="" th:method="post" class="modal-content mob-full-screen" style="height: 450px;">
-      <div data-w-id="964ab908-8291-0638-7797-493f54e02766" class="fa-text modal-close"></div>
-      <!-- HEADING -->
-      <div class="content-center mb-0-5">
-        <div class="content-vcenter">
-          <div class="mr-0-5"><span class="fa-text modal-action-icon"></span></div>
-          <div class="modal-title mb-0">Update Action Status</div>
-        </div>
-      </div>
-
-      <!-- progress bar -->
-      <div class="project mb-2">
-        <h1 class="text-center">Action ID: 1</h1>
-        <h2 class="text-center">
-          <input type="text" class="percent" readonly />
-        </h2>
-        <h3 class="text-center">complete</h3>
-        <div class="bar"></div>
-      </div>
-
-      <!-- evidence -->
-      <div class="content-vcenter mob-port-flex-v mb-2">
-        <div class="text-field-label mr-1 mob-mb-0-5"><strong>Attachments</strong></div>
-
-        <div class="w-embed">
-          <input type="file" th:name="file" required>
-        </div>
-      </div>
-
-
-      <!-- UPDATE BUTTON -->
-      <div class="flex-h justify-center">
-        <button type="submit" class="primary-button modal-button mob-mt-1 w-button">UPDATE</button>
-      </div>
-
-    </form>
-    <!-- END FORM MODAL CONTENT -->
-
-  </div>
-  <!-- END OF EDIT USER MODAL -->
-
+  
   
 
   <!-- LOADING SCREEN -->
@@ -391,7 +374,18 @@
 </body>
 <script>
   $(document).ready(function(){
-    $('#update-modal')
+    $('.delete-button').click(function(){
+      $(this).closest('tr').find('.delete-modal').css('display', 'flex');
+    })
+
+    $('.modal-overlay, .modal-close').click(function(){
+      $(this).closest('tr').find('.delete-modal').hide();
+      $(this).closest('tr').find('.update-modal').hide();
+    })
+    
+    $('.primary-button').click(function(){
+      $(this).closest('tr').find('.update-modal').css('display', 'flex');
+    })
   })
 
   $(function() {
