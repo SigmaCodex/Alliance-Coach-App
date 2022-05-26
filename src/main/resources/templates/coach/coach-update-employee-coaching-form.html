@@ -139,7 +139,7 @@
   </div>
 
   <!-- ACCOUNT MODAL -->
-  <form th:action="@{/c/update-coach/} + ${session.employee.id}" id="ecform" method="post" class="account-detail">
+  <form th:action="@{/c/update-coach/} + ${session.employee.id}" method="post" class="account-detail">
     <!-- OVERLAY -->
     <div data-w-id="c8296746-2933-484d-b09e-eaef5fce46a4" class="modal-overlay"></div>
 
@@ -268,7 +268,7 @@
 
         <div class="weight-70">
           <!-- FORM -->
-          <form class="coaching-form" th:action="@{/c/update-form/} + ${form.id}" method="post" enctype="multipart/form-data">
+          <form class="coaching-form" id="ecform" th:action="@{/c/update-form/} + ${form.id}" method="post" enctype="multipart/form-data">
             <!-- TEAM MEMBER INFO -->
             <div id="team-member" class="content-topic pb-0">
               <h2 class="h2 cf">Team Member  <span class="fa-text cf-icon"></span></h2>
