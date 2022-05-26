@@ -308,8 +308,8 @@
                         <div class="text-field-label"><strong>Employee type:</strong></div>
                         <div class="input-textfield w100 w-embed">
                           <select th:name="employeeType" class="text-field w100">
-                            <option th:value="HR">Human Resource</option>
-                            <option th:value="Coach">Coach</option>
+                            <option th:value="HR" th:selected="(${employee.employeeType} == 'HR')">Human Resource</option>
+                            <option th:value="Coach" th:selected="(${employee.employeeType} == 'Coach')">Coach</option>
                           </select>
                         </div>
                       </div>
