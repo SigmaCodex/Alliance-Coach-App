@@ -227,17 +227,19 @@
         <!-- HEADING -->
         <div class="content-hbetween">
           <h2 class="h1 mb-flow tab-text-center"><span class="fa-text nav-link heading"></span> Action Plans</h2>
-          <h3 class="h2 mb-flow" style="font-weight: 400; font-size: 18px;">Progress: <span style="font-weight: bold; font-size: 21px;">90%</span></h3>
+          <h3 class="h2 mb-flow" style="font-weight: 400; font-size: 18px;">Progress: <span style="font-weight: bold; font-size: 21px;" th:text="${currentProgress} + '%'"></span></h3>
         </div>
         <div class="content-hbetween">
-          <h3 class="h2 mb-flow">Coaching ID: 10001</h3>
+          <h3 class="h2 mb-flow" th:text="'Coaching ID: ' + ${formId}"></h3>
           <div class="content-vcenter">
-            <!-- ACTION PLAN INPUT -->
-            <div class="input-textfield w-embed">
-              <input type="text" id="actionInput" name="actionPlan" class="text-field w100" placeholder="Action">
-            </div>
-            <!-- ADD BUTTON -->
-            <a href="#" id="addActionPlan" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></a>
+            <form th:action="@{/c/add-action/} + ${formId}" method="post">
+              <!-- ACTION PLAN INPUT -->
+              <div class="input-textfield w-embed">
+                <input type="text" id="actionInput" th:name="actionPlan" class="text-field w100" placeholder="Action">
+              </div>
+              <!-- ADD BUTTON -->
+              <button type="submit" id="addActionPlan" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></button>
+            </form>
           </div>
         </div>
 
@@ -251,13 +253,11 @@
             <th>Action</th>
           </thead>
           <tbody>
-
-            <!-- row -->
-            <tr>
-              <td class="content-center apID">1</td>
-              <td > <div class="content-center">User the group Slack channel regularly to stay connected</div></td>
-              <td > <div class="content-center">60%</div></td>
-              <td > <div class="content-center text-center">9:44 PM<br>5/26/2022</div></td>
+            <tr th:each="action : ${actions}">
+              <td class="content-center apID" th:text="${action.id}"></td>
+              <td > <div class="content-center" th:text="${action.actionPlan}"></div></td>
+              <td > <div class="content-center" th:text="${action.status} + '%'"></div></td>
+              <td > <div class="content-center" th:text="${#dates.format(action.lastModified, 'MMM dd, yyyy hh:ss a')}"></div></td>
               <td class="content-center"> 
                 <div class="content-vcenter">
 
@@ -269,10 +269,10 @@
                       <div>
                         <div class="modal-icon"><span class="fa-text delete"></span></div>
                         <div class="modal-title">Delete Confirmation...</div>
-                        <p class="modal-body">Are you deleting <strong>[Plan ID]</strong>?</p>
+                        <p class="modal-body">Are you deleting <strong th:text="'[' + ${action.id} + ']'"></strong>?</p>
                       </div>
                       <div class="flex-h justify-center">
-                        <a th:href="@{/c/delete-form/} + ${form.id}" class="user-btn delete-button modal w-button">CONFIRM</a>
+                        <a th:href="@{/c/delete-action/} + ${action.id} + '/' + ${formId}" class="user-btn delete-button modal w-button">CONFIRM</a>
                       </div>
                       <div data-w-id="964ab908-8291-0638-7797-493f54e02766" class="fa-text modal-close"></div>
                     </div>
@@ -288,7 +288,7 @@
                     <div data-w-id="6cc70ac9-e968-f779-b11c-59f44e6a2bee" class="modal-overlay"></div>
 
                     <!-- FORM MODAL CONTENT -->
-                    <form action="" th:method="post" class="modal-content mob-full-screen" style="height: 450px;">
+                    <form th:action="@{/c/update-action/} + ${action.id} + '/' + ${formId}" enctype="multipart/form-data" th:method="post" class="modal-content mob-full-screen" style="height: 450px;">
                       <div data-w-id="964ab908-8291-0638-7797-493f54e02766" class="fa-text modal-close"></div>
                       <!-- HEADING -->
                       <div class="content-center mb-0-5">
@@ -300,9 +300,9 @@
 
                       <!-- progress bar -->
                       <div class="project mb-2">
-                        <h1 class="text-center">Action ID: <span>1</span></h1>
+                        <h1 class="text-center">Action ID: <span th:text="${action.id}"></span></h1>
                         <h2 class="text-center">
-                          <input type="text" class="percent" readonly />
+                          <input type="text" th:name="status" th:value="${action.status} + '%'" class="percent" readonly />
                         </h2>
                         <h3 class="text-center">complete</h3>
                         <div class="bar"></div>
@@ -317,6 +317,13 @@
                         </div>
                       </div>
 
+<!--                      hidden types for session user-->
+                      <input type="hidden" th:name="id" th:value="${session.employee.id}" />
+                      <input type="hidden" th:name="firstName" th:value="${session.employee.firstName}" />
+                      <input type="hidden" th:name="lastName" th:value="${session.employee.lastName}" />
+                      <input type="hidden" th:name="email" th:value="${session.employee.email}" />
+                      <input type="hidden" th:name="contactNo" th:value="${session.employee.contactNo}" />
+                      <input type="hidden" th:name="actionPlan" th:value="${action.actionPlan}" />
 
                       <!-- UPDATE BUTTON -->
                       <div class="flex-h justify-center">
@@ -333,7 +340,6 @@
               </td>
             </tr>
             <!-- end row -->
-
           </tbody>
         </table>
       </div>

@@ -7,6 +7,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 /**
  * @author Rieugene Basilisco (generieu17@gmail.com)
@@ -36,4 +37,8 @@ public class Action {
 
     @Column(name = "status", columnDefinition = "INT DEFAULT '0' NOT NULL")
     private int status = 0;
+
+    @Column(name = "last_modified", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    public Timestamp lastModified = new Timestamp(System.currentTimeMillis());
+
 }

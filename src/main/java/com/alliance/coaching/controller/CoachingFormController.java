@@ -47,11 +47,40 @@ public class CoachingFormController {
     @PostMapping("/add-form")
     public ModelAndView createForm(@ModelAttribute CoachingForm coachingForm,
                                    @RequestParam String action,
-                                   @RequestParam("file")MultipartFile file) throws IOException {
+                                   @RequestParam("file") MultipartFile file) throws IOException {
         coachingFormService.create(coachingForm, action, file);
         return new ModelAndView(new RedirectView("/c/coach-home"));
     }
 
+    // TODO: 5/26/2022 add new action plan by coach id
+    @PostMapping("/add-action/{id}")
+    public ModelAndView addNewAction(@PathVariable("id") Long id, @ModelAttribute Action action) {
+        actionService.create(id, action);
+        return new ModelAndView(new RedirectView("/c/view-action/" + id));
+    }
+
+    // TODO: 5/26/2022 update form
+    @PostMapping("/update-form/{id}")
+    public ModelAndView updateForm(@PathVariable("id") Long id,
+                                   @ModelAttribute CoachingForm coachingForm,
+                                   @RequestParam("file") MultipartFile file) throws IOException {
+        coachingFormService.updateForm(id, coachingForm, file);
+        return new ModelAndView(new RedirectView("/c/view-form/" + id));
+    }
+
+    // TODO: 5/26/2022 update action plan
+    @PostMapping("/update-action/{id}/{formId}")
+    public ModelAndView updateActionPlan(@PathVariable("id") Long id,
+                                         @RequestParam String status,
+                                         @RequestParam String actionPlan,
+                                         @ModelAttribute Employee employee,
+                                         @RequestParam MultipartFile file,
+                                         @PathVariable("formId") Long formId) {
+        actionService.update(id, status);
+        actionService.sendEmail(employee, file, status, formId, actionPlan);
+        return new ModelAndView(new RedirectView("/c/view-action/" + formId)) ;
+    }
+    
     // TODO: 5/20/2022 redirect to page for creating form
     @GetMapping("/form")
     public String formView() {
@@ -72,11 +101,38 @@ public class CoachingFormController {
         return modelAndView;
     }
 
+    // TODO: 5/26/2022 view all action plan by coaching id
+    @GetMapping("/view-action/{id}")
+    public ModelAndView viewActions(@PathVariable("id") Long id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("formId", id);
+        modelAndView.addObject("actions", actionService.getList(id));
+        modelAndView.addObject("currentProgress", actionService.currentProgress(id));
+        modelAndView.setViewName("coach/coach-action-plan-management");
+        return modelAndView;
+    }
+
+    // TODO: 5/26/2022 view form ready to update
+    @GetMapping("/update/{id}")
+    public ModelAndView updateReadyForm(@PathVariable("id") Long id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("form", coachingFormService.getById(id));
+        modelAndView.setViewName("coach/coach-update-employee-coaching-form");
+        return modelAndView;
+    }
+
     // TODO: 5/25/2022 delete selected form
     @GetMapping("/delete-form/{id}")
     public String deleteForm(@PathVariable("id") Long id) {
         coachingFormService.delete(id);
         return "redirect:/c/coach-home";
+    }
+
+    // TODO: 5/26/2022 delete action plan
+    @GetMapping("/delete-action/{id}/{formId}")
+    public String deleteAction(@PathVariable("id") Long id, @PathVariable("formId") Long formId) {
+        actionService.delete(id);
+        return "redirect:/c/view-action/" + formId;
     }
 
     // TODO: 5/26/2022 update coach information

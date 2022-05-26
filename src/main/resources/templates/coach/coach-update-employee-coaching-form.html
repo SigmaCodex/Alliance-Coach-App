@@ -268,7 +268,7 @@
 
         <div class="weight-70">
           <!-- FORM -->
-          <form class="coaching-form" id="ecform" th:action="@{/c/add-form}" method="post" enctype="multipart/form-data">
+          <form class="coaching-form" th:action="@{/c/update-form/} + ${form.id}" method="post" enctype="multipart/form-data">
             <!-- TEAM MEMBER INFO -->
             <div id="team-member" class="content-topic pb-0">
               <h2 class="h2 cf">Team Member  <span class="fa-text cf-icon"></span></h2>
@@ -279,7 +279,7 @@
                       <!-- TEAM MEMBER NAME INPUT -->
                       <div class="text-field-label"><strong>Team Member Name:</strong></div>
                       <div class="input-textfield w-embed">
-                        <input type="text" th:name="teamMember" class="text-field w100" placeholder="Team Member Name" required>
+                        <input type="text" th:name="teamMember" th:value="${form.teamMember}" class="text-field w100" placeholder="Team Member Name" required>
                       </div>
                     </div>
                   </div>
@@ -289,7 +289,7 @@
                       <!-- DATE INPUT -->
                       <div class="text-field-label"><strong>Date:</strong></div>
                       <div class="input-textfield w-embed">
-                        <input type="date" th:name="createdAt" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" class="text-field w100" required>
+                        <input type="date" th:name="createdAt" th:value="${#dates.format(form.getFormattedCreatedAt(), 'yyyy-MM-dd')}" class="text-field w100" required>
                       </div>
                     </div>
                   </div>
@@ -300,7 +300,7 @@
                       <!-- ROLE / POSITION INPUT -->
                       <div class="text-field-label"><strong>Role / Position:</strong></div>
                       <div class="input-textfield w-embed">
-                        <input type="text" th:name="rolePosition" class="text-field w100" placeholder="Role / Position" required>
+                        <input type="text" th:name="rolePosition" th:value="${form.rolePosition}" class="text-field w100" placeholder="Role / Position" required>
                       </div>
                     </div>
                   </div>
@@ -310,8 +310,8 @@
                       <!-- SUPERVISE / MANAGER INPUT -->
                       <div class="text-field-label"><strong>Supervisor/Manager:</strong></div>
                       <div class="input-textfield w-embed">
-                        <input type="hidden" th:name="supervisor" th:value="${session.employee.id}" />
-                        <input type="text" name="supervisor" th:value="${session.employee.fullName}" class="text-field w100" placeholder="Supervisor/Manager" required>
+                        <input type="hidden" th:name="supervisor" th:value="${form.supervisor.id}" />
+                        <input type="text" name="supervisor" th:value="${form.supervisor.fullName}" class="text-field w100" placeholder="Supervisor/Manager" required>
                       </div>
                     </div>
                   </div>
@@ -329,6 +329,7 @@
                   <textarea  
                     rows="8" 
                     th:name="topicArea"
+                    th:text="${form.topicArea}"
                     class="text-field w100" 
                     placeholder="Coaching Topic / Area" 
                     style="resize: none;"
@@ -344,6 +345,7 @@
                   <textarea  
                     rows="8" 
                     th:name="desiredOutcome"
+                    th:text="${form.desiredOutcome}"
                     class="text-field w100" 
                     placeholder="List desired behaviors, knowledge, skills, etc." 
                     style="resize: none;"
@@ -359,6 +361,7 @@
                   <textarea  
                     rows="8" 
                     th:name="benefit"
+                    th:text="${form.benefit}"
                     class="text-field w100" 
                     placeholder="How will employee actions or performance be positively impacted?" 
                     style="resize: none;"
@@ -378,6 +381,7 @@
                   <textarea  
                     rows="8" 
                     th:name="timeline"
+                    th:text="${form.timeline}"
                     class="text-field w100" 
                     placeholder="Write out a timeline for the plan and when to follow up" 
                     style="resize: none;"

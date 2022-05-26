@@ -229,7 +229,7 @@
           <div>
             <div class="content-vcenter mb-1">
               <h2 class="h2 cf mb-0 mr-2">Coaching Form</h2>
-              <a href="#" class="primary-button mr-1 w-button">UPDATE FORM</a>
+              <a th:href="@{/c/update/} + ${form.id}" class="primary-button mr-1 w-button">UPDATE FORM</a>
               <!-- <a href="#" class="delete-button cf w-button">DELETE FORM</a> -->
             </div>
           </div>
@@ -310,7 +310,7 @@
 <!--                  <li class="canvas">Training in office communication norms and practices</li>-->
                 </ol>
                 <div style="margin-bottom: 0.5rem;">Progress: <span style="font-weight: bold; color:#007bff; font-size: 21px;" th:text="${currentProgress} + '%'"></span></div>
-                <div><a href="#" class="primary-button w-button">UPDATE ACTION PLAN</a></div>
+                <div><a th:href="@{/c/view-action/} + ${form.id}" class="primary-button w-button">UPDATE ACTION PLAN</a></div>
                 
               </div>
             </form>
