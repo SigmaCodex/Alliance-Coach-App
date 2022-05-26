@@ -233,16 +233,16 @@
         </div>
         <div class="content-hbetween">
           <h3 class="h2 mb-flow" th:text="'Coaching ID: ' + ${formId}"></h3>
-          <div class="content-vcenter">
-            <form th:action="@{/c/add-action/} + ${formId}" method="post">
-              <!-- ACTION PLAN INPUT -->
-              <div class="input-textfield w-embed">
-                <input type="text" id="actionInput" th:name="actionPlan" class="text-field w100" placeholder="Action">
-              </div>
-              <!-- ADD BUTTON -->
-              <button type="submit" id="addActionPlan" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></button>
-            </form>
-          </div>
+
+          <!-- ADD ACTION PLAN -->
+          <form th:action="@{/c/add-action/} + ${formId}" method="post" class="content-vcenter">
+            <!-- ACTION PLAN INPUT -->
+            <div class="input-textfield w-embed">
+              <input type="text" id="actionInput" th:name="actionPlan" class="text-field w100" placeholder="Action">
+            </div>
+            <!-- ADD BUTTON -->
+            <button type="submit" id="addActionPlan" class="primary-button add-btn-cf w-button"><span class="fa-text">+</span></button>
+          </form>
         </div>
 
         <!-- TABLE -->
