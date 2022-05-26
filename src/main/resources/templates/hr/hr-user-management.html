@@ -80,7 +80,7 @@
           <div class="position" th:text="${session.employee.rolePosition}"></div>
         </div>
         <div class="flex-v">
-          <!-- EMPLOYEE FORM -->
+          <!-- USER MANAGEMENT -->
           <a th:href="@{/c/hr-home}" class="navbar-link menubar mx-2">User Management</a>
         </div>
       </div>
@@ -101,7 +101,7 @@
     <div data-w-id="c8296746-2933-484d-b09e-eaef5fce46a4" class="modal-overlay"></div>
 
     <!-- MODAL CONTENT -->
-    <div class="modal-content mob-full-screen account-modal">
+    <div class="modal-content mob-full-screen account-modal" style="height: 385px;">
       <!-- HEADER TITLE -->
       <div class="content-center mb-2">
         <div class="content-vcenter">
@@ -152,40 +152,6 @@
           <div class="flex-v">
             <div class="text-field-label"><strong>Email:</strong></div>
             <div class="input-textfield w-embed"><input type="email" th:name="email" th:value="${session.employee.email}" class="text-field w100" placeholder="Email" required=""></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="block-weighted cf-block mb-1 mob-full-screen">
-        <!-- PASSOWRD INPUT -->
-        <div class="weight-50">
-          <div class="flex-v">
-            <div class="text-field-label"><strong>Password:</strong></div>
-            <div class="input-textfield w100 w-embed">
-              <input type="password" th:name="password" class="text-field w100" placeholder="Password">
-            </div>
-            <div class="content-vcenter">
-              <!-- CHECKBOX FOR PASSWORD -->
-              <!-- <div class="content-vcenter w-embed"><input type="checkbox" class="passToggle" id="passToggle"></div>
-              <div class="pass-text">Show password</div> -->
-            </div>
-          </div>
-        </div>
-
-        <div class="p-0-5"></div>
-
-        <!-- CONFIRM INPUT -->
-        <div class="weight-50">
-          <div class="flex-v">
-            <div class="text-field-label"><strong>Confirm password:</strong></div>
-            <div class="input-textfield w-embed">
-              <input type="password" th:name="confirmPassword" class="text-field w100" placeholder="Confirm Password" required="">
-            </div>
-            <div class="content-vcenter">
-              <!-- CHECKBOX FOR CONFIRM PASSWORD -->
-              <!-- <div class="content-vcenter w-embed"><input type="checkbox" class="cPassToggle" id="cPassToggle"></div>
-              <div class="pass-text">Show password</div> -->
-            </div>
           </div>
         </div>
       </div>
@@ -303,7 +269,7 @@
                 <div data-w-id="6cc70ac9-e968-f779-b11c-59f44e6a2bee" class="modal-overlay"></div>
 
                 <!-- FORM MODAL CONTENT -->
-                <form th:action="@{/c/update-employee/} + ${employee.id}" th:method="post" class="modal-content mob-full-screen">
+                <form th:action="@{/c/update-employee/} + ${employee.id}" th:method="post" class="modal-content mob-full-screen" style="height: 400px;">
                   <!-- HEADING -->
                   <div class="content-center mb-0-5">
                     <div class="content-vcenter">
@@ -359,7 +325,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="block-weighted cf-block mb-1 mob-full-screen">
+                  <div class="block-weighted cf-block mb-2 mob-full-screen">
                     <div class="weight-50">
                       <div class="flex-v">
                         <!-- CONTACT NUMBER INPUT -->
@@ -375,27 +341,8 @@
                         <!-- EMAIL INPUT -->
                         <div class="text-field-label"><strong>Email:</strong></div>
                         <div class="input-textfield w-embed">
-                          <input type="email" th:name="username" th:value="${employee.email}" class="text-field w100" placeholder="Email" required="">
+                          <input type="email" th:name="username" th:value="${employee.email}" class="text-field w100" placeholder="Email" required="" readonly>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="block-weighted cf-block mb-flow mob-full-screen">
-                    <div class="weight-50">
-                      <div class="flex-v">
-                        <!-- PASSWORD INPUT -->
-                        <div class="text-field-label"><strong>Password:</strong></div>
-                        <div class="input-textfield w100 w-embed">
-                          <input type="password" th:name="password" class="text-field w100" placeholder="Password" required="">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="p-0-5"></div>
-                    <div class="weight-50">
-                      <div class="flex-v">
-                        <!-- CONFIRM PASSWORD INPUT -->
-                        <div class="text-field-label"><strong>Confirm password:</strong></div>
-                        <div class="input-textfield w-embed"><input type="password" th:name="confirmPassword" class="text-field w100" placeholder="Confirm Password" required=""></div>
                       </div>
                     </div>
                   </div>
