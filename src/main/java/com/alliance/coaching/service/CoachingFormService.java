@@ -46,9 +46,41 @@ public class CoachingFormService {
         String[] actions = action.split("\\R");
         createActionPlan(id, actions);
         // TODO: 5/25/2022 send email / notify HR
-        email.setSender(coachingForm.getSupervisor().getFirstName() + " " + coachingForm.getSupervisor().getLastName());
-        email.setSenderEmail(coachingForm.getSupervisor().getEmail());
-        email.setSenderContact(coachingForm.getSupervisor().getContactNo());
+        setEmailContent(coachingForm.getSupervisor().getFirstName() + " " + coachingForm.getSupervisor().getLastName(),
+                coachingForm.getSupervisor().getEmail(),
+                coachingForm.getSupervisor().getContactNo(),
+                file,
+                fileName);
+        email.sendNewForm();
+    }
+
+    // TODO: 5/26/2022  update form
+    public void updateForm(Long id, CoachingForm coachingForm, MultipartFile file) {
+        CoachingForm currentRecord = coachingFormRepo.findById(id).get();
+        String fileName = coachingForm.getSupervisor().getId()
+                + "-"
+                + coachingForm.getSupervisor().getLastName()
+                + "_" + coachingForm.getCreatedAt()
+                + "." + FilenameUtils.getExtension(file.getOriginalFilename());
+        currentRecord.setTopicArea(coachingForm.getTopicArea());
+        currentRecord.setBenefit(coachingForm.getBenefit());
+        currentRecord.setDesiredOutcome(coachingForm.getDesiredOutcome());
+        currentRecord.setTimeline(coachingForm.getTimeline());
+        currentRecord.setAttachedFile(fileName);
+        coachingFormRepo.save(currentRecord);
+        // TODO: 5/26/2022 send email / notify HR for the update
+        setEmailContent(coachingForm.getSupervisor().getFirstName() + " " + coachingForm.getSupervisor().getLastName(),
+                coachingForm.getSupervisor().getEmail(),
+                coachingForm.getSupervisor().getContactNo(),
+                file,
+                fileName);
+        email.sendUpdatedForm();
+    }
+
+    public void setEmailContent(String sender, String senderEmail, String contactNo, MultipartFile file, String fileName) {
+        email.setSender(sender);
+        email.setSenderEmail(senderEmail);
+        email.setSenderContact(contactNo);
         email.setFile(file);
         email.setFileName(fileName);
         // TODO: 5/25/2022 by default hackmetry01@gmail.com will be the only HR to be notified for now

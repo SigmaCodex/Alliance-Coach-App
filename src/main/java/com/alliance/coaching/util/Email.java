@@ -83,12 +83,37 @@ public class Email {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
             helper.setFrom(String.valueOf(new InternetAddress("ai.coachingapp@gmail.com", "Coaching App")));
             helper.setTo(to);
-            helper.setSubject("New Coaching Form");
+            helper.setSubject("Updated Coaching Form");
             helper.setText("" +
                     "<html>" +
                     "<body>" +
                     "<h4>Attached below is the updated form created by </h4><h3>" + sender + "</h3>." +
                     "<h4>If you have any clarifications, you may contact them thru </h4><h3>" + senderEmail + "</h3> or <h3>" + senderContact + "</h3>." +
+                    "</body>" +
+                    "</html>" +
+                    "", true);
+            helper.addAttachment(fileName, file);
+            mailSender.send(mimeMessage);
+        } catch (MessagingException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendUpdateAction(String status, Long id, String actionPlan) {
+        try {
+            MimeMessage mimeMessage = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+            helper.setFrom(String.valueOf(new InternetAddress("ai.coachingapp@gmail.com", "Coaching App")));
+            helper.setTo(to);
+            helper.setSubject("Update Coaching Form Action Plan");
+            helper.setText("" +
+                    "<html>" +
+                    "<body>" +
+                    "<h4>Attached below is the updated action plan created by </h4><h3>" + sender + "</h3>." +
+                    "<h4>If you have any clarifications, you may contact them thru </h4><h3>" + senderEmail + "</h3> or <h3>" + senderContact + "</h3>." +
+                    "<h4>Status: " + status + "</h4>" +
+                    "<h4>Coach Form Id: " + id + "</h4>" +
+                    "<h4>Action plan: " + actionPlan + "</h4>" +
                     "</body>" +
                     "</html>" +
                     "", true);
