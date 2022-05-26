@@ -248,12 +248,28 @@
           </thead>
           <tbody>
             <tr>
-              <td class="content-center">1</td>
+              <td class="content-center apID">1</td>
               <td > <div class="content-center">User the group Slack channel regularly to stay connected</div></td>
               <td > <div class="content-center">60%</div></td>
               <td class="content-center"> 
                 <div class="content-vcenter">
                   <button class="user-btn delete-button w-button">Delete</button>
+                  <!-- DELETE MODAL -->
+                  <div class="delete-modal">
+                    <div data-w-id="964ab908-8291-0638-7797-493f54e02759" class="modal-overlay"></div>
+                    <div class="modal-content delete">
+                      <div>
+                        <div class="modal-icon"><span class="fa-text delete"></span></div>
+                        <div class="modal-title">Delete Confirmation...</div>
+                        <p class="modal-body">Are you deleting <strong>[Plan ID]</strong>?</p>
+                      </div>
+                      <div class="flex-h justify-center">
+                        <a th:href="@{/c/delete-form/} + ${form.id}" class="user-btn delete-button modal w-button">CONFIRM</a>
+                      </div>
+                      <div data-w-id="964ab908-8291-0638-7797-493f54e02766" class="fa-text modal-close"></div>
+                    </div>
+                  </div>
+                  <!-- END OF DELETE MODAL -->
 
                   <div class="mx-1"></div>
                   
@@ -262,7 +278,7 @@
               </td>
             </tr>
             <tr>
-              <td class="content-center">2</td>
+              <td class="content-center apID">2</td>
               <td > <div class="content-center">Create a collaborative status update document or task board</div></td>
               <td ><div class="content-center">0%</div></td>
               <td class="content-center"> 
@@ -276,7 +292,7 @@
               </td>
             </tr>
             <tr>
-              <td class="content-center">3</td>
+              <td class="content-center apID">3</td>
               <td > <div class="content-center">Training in office communication norms and practices</div></td>
               <td ><div class="content-center">0%</div></td>
               <td class="content-center"> 
@@ -297,7 +313,7 @@
   <!-- END OF SECTION -->
 
   <!-- EDIT USER MODAL -->
-  <div class="update-modal" style="display: flex;">
+  <div class="update-modal">
     <!-- OVERLAY -->
     <div data-w-id="6cc70ac9-e968-f779-b11c-59f44e6a2bee" class="modal-overlay"></div>
 
@@ -343,22 +359,7 @@
   </div>
   <!-- END OF EDIT USER MODAL -->
 
-  <!-- DELETE MODAL -->
-  <div class="delete-modal">
-    <div data-w-id="964ab908-8291-0638-7797-493f54e02759" class="modal-overlay"></div>
-    <div class="modal-content delete">
-      <div>
-        <div class="modal-icon"><span class="fa-text delete"></span></div>
-        <div class="modal-title">Delete Confirmation...</div>
-        <p class="modal-body">Are you deleting <strong th:text="${form.topicArea} + '(' + ${form.id} + ')'">[Plan ID]</strong>?</p>
-      </div>
-      <div class="flex-h justify-center">
-        <a th:href="@{/c/delete-form/} + ${form.id}" class="user-btn delete-button modal w-button">CONFIRM</a>
-      </div>
-      <div data-w-id="964ab908-8291-0638-7797-493f54e02766" class="fa-text modal-close"></div>
-    </div>
-  </div>
-  <!-- END OF DELETE MODAL -->
+  
 
   <!-- LOADING SCREEN -->
   <div data-w-id="9430a020-65d4-183b-ad78-94158639241f" class="loading-screen">
@@ -389,6 +390,9 @@
   crossorigin="anonymous"></script>
 </body>
 <script>
+  $(document).ready(function(){
+    $('#update-modal')
+  })
 
   $(function() {
     $('.project').each(function() {
