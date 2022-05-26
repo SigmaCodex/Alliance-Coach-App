@@ -14,6 +14,8 @@
   <link th:href="@{/assets/css/coaching-application-alliance.webflow.css}" href="../../static/assets/css/coaching-application-alliance.webflow.css" rel="stylesheet" type="text/css">
   <link rel="icon" th:href="@{/assets/svg/logo.svg}" href="../../static/assets/svg/logo.svg">
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.1/html2pdf.bundle.min.js" integrity="sha512-1qLXyA3x0VSWeM+8vOotn6+KIRGdcQ8QMzsNeDXmdJsUAnoDGjzlxzqAuUGJGrGkGrtOrq4buDoAHxR89D9PWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
   <!-- SCRIPT -->
   <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
   <script type="text/javascript">
@@ -21,7 +23,50 @@
       var n=c.documentElement, t=" w-mod-";
       n.className+=t+"js", ("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")
     }(window,document);
+    
+    // PRINT
+    function saveForm(){
+      console.log('here')
+      const form = document.getElementById('ecform');
+      var opt = {
+        margin:       1,
+        filename:     'coachingform.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+      };
+      html2pdf().set(opt).from(form).save();
+    }
+
+    // ACTION PLAN
+    function addActionPlan(){
+      if($('#actionInput').val() != ''){
+        var liList = $('<li>'+ $('#actionInput').val() +'</li>')
+        $('#coachingActionPlans').append($('#actionInput').val() + '&#13;&#10')
+        $('#action-plan-list').append(liList)
+        $('#actionInput').val('')
+      }
+    }
+
+    // REMOVE ROW BUTTON EVENT
+    function removeActionPlans(){
+      $('#action-plan-list').html('')
+      $('#coachingActionPlans').html('')
+    }
+
   </script>
+  
+  <style>
+    @media print {
+      .not-printable {
+        display: none;
+      }
+      #ecform {
+        margin: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- NAVIGATION BAR -->
@@ -223,7 +268,7 @@
 
         <div class="weight-70">
           <!-- FORM -->
-          <form class="coaching-form" th:action="@{/c/add-form}" method="post" enctype="multipart/form-data">
+          <form class="coaching-form" id="ecform" th:action="@{/c/add-form}" method="post" enctype="multipart/form-data">
             <!-- TEAM MEMBER INFO -->
             <div id="team-member" class="content-topic pb-0">
               <h2 class="h2 cf">Team Member  <span class="fa-text cf-icon"></span></h2>
@@ -343,7 +388,7 @@
             </div>
 
             <!-- EVIDENCE -->
-            <div id="evidence" data-w-id="c0a6a371-4c36-094b-be6f-8be320ddb754" class="content-topic pb-0">
+            <div id="evidence" data-w-id="c0a6a371-4c36-094b-be6f-8be320ddb754" class="content-topic pb-0"  data-html2canvas-ignore="true">
               <h2 class="h2 cf">Evidence <span class="fa-text cf-icon"></span></h2>
               <!-- ATTACHMENTS INPUT -->
               <div class="content-hbetween">
@@ -355,12 +400,12 @@
                   </div>
                 </div>
                 
-                <a href="#" id="print" class="primary-button add-btn-cf w-button mr-1">PRINT FORM</a>
+                <button type="button" class="primary-button add-btn-cf w-button mr-1" onclick="saveForm()">PRINT FORM</button>
               </div>
             </div>
 
             <!-- UPDATE BUTTON -->
-            <div class="content-topic">
+            <div class="content-topic" data-html2canvas-ignore="true">
               <div class="content-center">
                 <div class="content-vcenter">
                   <button type="submit" class="primary-button w-button">UPDATE FORM</button>
