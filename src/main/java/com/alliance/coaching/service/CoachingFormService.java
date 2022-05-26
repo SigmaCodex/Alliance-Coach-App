@@ -52,7 +52,7 @@ public class CoachingFormService {
         email.setFile(file);
         email.setFileName(fileName);
         // TODO: 5/25/2022 by default hackmetry01@gmail.com will be the only HR to be notified for now
-        email.setTo("hackmetry01@gmail.com");
+        email.setTo("danielmoratin4th@gmail.com");
         email.sendNewForm();
     }
 
