@@ -8,15 +8,14 @@ import com.alliance.coaching.service.CoachingFormService;
 import com.alliance.coaching.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @author Rieugene Basilisco (generieu17@gmail.com)
@@ -137,8 +136,9 @@ public class CoachingFormController {
 
     // TODO: 5/26/2022 update coach information
     @PostMapping("/update-coach/{id}")
-    public String updateCoach(@PathVariable("id") Long id, @ModelAttribute Employee employee) {
+    public String updateCoach(@PathVariable("id") Long id, @ModelAttribute Employee employee, HttpSession httpSession) {
         employeeService.update(id, employee);
+        httpSession.setAttribute("employee", employeeService.getById(id));
         return "redirect:/c/coach-home";
     }
 

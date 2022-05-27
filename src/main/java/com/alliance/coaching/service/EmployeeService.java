@@ -4,7 +4,6 @@ import com.alliance.coaching.entity.Employee;
 import com.alliance.coaching.repository.EmployeeRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
