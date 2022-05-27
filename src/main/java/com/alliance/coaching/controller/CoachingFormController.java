@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -135,8 +136,9 @@ public class CoachingFormController {
 
     // TODO: 5/26/2022 update coach information
     @PostMapping("/update-coach/{id}")
-    public String updateCoach(@PathVariable("id") Long id, @ModelAttribute Employee employee) {
+    public String updateCoach(@PathVariable("id") Long id, @ModelAttribute Employee employee, HttpSession httpSession) {
         employeeService.update(id, employee);
+        httpSession.setAttribute("employee", employeeService.getById(id));
         return "redirect:/c/coach-home";
     }
 

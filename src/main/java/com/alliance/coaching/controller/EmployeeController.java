@@ -66,6 +66,13 @@ public class EmployeeController {
         return new ModelAndView(new RedirectView("/c/hr-home"));
     }
 
+    // TODO: 5/27/2022 update an existing employee record from cards
+    @PostMapping("/update-card-employee/{id}")
+    public ModelAndView updateEmployeeCard(@PathVariable("id") Long id, @ModelAttribute Employee employee) {
+        employeeService.update(id, employee);
+        return new ModelAndView(new RedirectView("/c/hr-home"));
+    }
+
     // TODO: 5/19/2022 delete an employee record
     @PostMapping("/delete-employee/{id}")
     public ModelAndView deleteEmployee(@PathVariable("id") Long id) {

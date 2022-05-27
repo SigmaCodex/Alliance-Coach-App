@@ -149,41 +149,7 @@
         <div class="weight-50">
           <div class="flex-v">
             <div class="text-field-label"><strong>Email:</strong></div>
-            <div class="input-textfield w-embed"><input type="email" th:name="email" th:value="${email}" class="text-field w100" placeholder="Email" required=""></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="block-weighted cf-block mb-1 mob-full-screen">
-        <!-- PASSOWRD INPUT -->
-        <div class="weight-50">
-          <div class="flex-v">
-            <div class="text-field-label"><strong>Password:</strong></div>
-            <div class="input-textfield w100 w-embed">
-              <input type="password" th:name="password" class="text-field w100" placeholder="Password">
-            </div>
-            <div class="content-vcenter">
-              <!-- CHECKBOX FOR PASSWORD -->
-              <!-- <div class="content-vcenter w-embed"><input type="checkbox" class="passToggle" id="passToggle"></div>
-              <div class="pass-text">Show password</div> -->
-            </div>
-          </div>
-        </div>
-
-        <div class="p-0-5"></div>
-
-        <!-- CONFIRM INPUT -->
-        <div class="weight-50">
-          <div class="flex-v">
-            <div class="text-field-label"><strong>Confirm password:</strong></div>
-            <div class="input-textfield w-embed">
-              <input type="password" th:name="confirmPassword" class="text-field w100" placeholder="Confirm Password" required="">
-            </div>
-            <div class="content-vcenter">
-              <!-- CHECKBOX FOR CONFIRM PASSWORD -->
-              <!-- <div class="content-vcenter w-embed"><input type="checkbox" class="cPassToggle" id="cPassToggle"></div>
-              <div class="pass-text">Show password</div> -->
-            </div>
+            <div class="input-textfield w-embed"><input type="email" th:name="email" th:value="${session.employee.email}" class="text-field w100" placeholder="Email" required="" readonly></div>
           </div>
         </div>
       </div>
