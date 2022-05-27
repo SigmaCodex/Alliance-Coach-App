@@ -68,7 +68,7 @@ public class CoachingForm {
 
     @Transient
     public Date getFormattedCreatedAt() throws ParseException {
-        return new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(createdAt);
+        return new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(createdAt);
     }
 
 }

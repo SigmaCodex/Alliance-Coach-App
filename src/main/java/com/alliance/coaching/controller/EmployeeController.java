@@ -1,6 +1,5 @@
 package com.alliance.coaching.controller;
 
-import com.alliance.coaching.entity.CoachingForm;
 import com.alliance.coaching.entity.Employee;
 import com.alliance.coaching.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -46,10 +45,7 @@ public class EmployeeController {
     @PostMapping("/login")
     @ResponseBody
     public String loginEmployee(@ModelAttribute Employee employee, HttpSession httpSession) {
-
         Employee loginEmployee = employeeService.loginEmployee(employee.getEmail(), employee.getPassword());
-     
-    
         if(loginEmployee != null){
             httpSession.setAttribute("employee", loginEmployee);
             if (loginEmployee.getEmployeeType().equals("Coach")) {
@@ -60,13 +56,13 @@ public class EmployeeController {
             }
         }
         return "invalid";
-
     }
 
     // TODO: 5/19/2022 update an existing employee record
     @PostMapping("/update-employee/{id}")
-    public ModelAndView updateEmployee(@PathVariable("id") Long id, @ModelAttribute Employee employee) {
+    public ModelAndView updateEmployee(@PathVariable("id") Long id, @ModelAttribute Employee employee, HttpSession httpSession) {
         employeeService.update(id, employee);
+        httpSession.setAttribute("employee", employeeService.getById(id));
         return new ModelAndView(new RedirectView("/c/hr-home"));
     }
 
