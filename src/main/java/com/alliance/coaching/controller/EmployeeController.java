@@ -74,7 +74,7 @@ public class EmployeeController {
     }
 
     // TODO: 5/19/2022 delete an employee record
-    @PostMapping("/delete-employee/{id}")
+    @GetMapping("/delete-employee/{id}")
     public ModelAndView deleteEmployee(@PathVariable("id") Long id) {
         employeeService.delete(id);
         return new ModelAndView(new RedirectView("/c/hr-home"));
